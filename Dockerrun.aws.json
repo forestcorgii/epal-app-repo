@@ -1,0 +1,33 @@
+{
+	"AWSEDockerrunVersion":2,
+	"containerDefinition":[
+		{
+			"name": "nginx",
+			"image": "",
+			"hostname": "nginx",
+			"essential": true,
+			"portMappings": [
+				{
+					"hostPort": 80,
+					"containerPort": 80
+				}
+			],
+			"links": ["client", "backend"],
+			"memory": 100
+		},
+		{
+			"name": "client",
+			"image": "",
+			"hostname": "client",
+			"essential": false,
+			"memory": 300
+		},
+		{
+			"name": "backend",
+			"image": "",
+			"hostname": "backend",
+			"essential": false,
+			"memory": 300
+		}
+	]
+}
