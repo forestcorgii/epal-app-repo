@@ -1,4 +1,4 @@
-FROM node:14-alpine as build
+FROM node:12-alpine as build
 
 WORKDIR /app
 
@@ -8,7 +8,10 @@ COPY package-lock.json packege-lock.json
 RUN npm install
 
 COPY . .
+FROM build as dev
+CMD ["npm","run","dev"]
 
+FROM build as prod
 RUN npm run build
 
 FROM nginx

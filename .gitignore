@@ -95,4 +95,4 @@ db/
 
 # dev specific files
 *-dev
-*.dev
+*.dev*
