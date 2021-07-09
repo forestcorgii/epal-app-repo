@@ -1,6 +1,6 @@
 {
 	"AWSEBDockerrunVersion":2,
-	"containerDefinition":[
+	"containerDefinitions":[
 		{
 			"name": "nginx",
 			"image": "forestcorgi/e-pal_nginx",
