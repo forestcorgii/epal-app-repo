@@ -3,7 +3,7 @@
 	"containerDefinition":[
 		{
 			"name": "nginx",
-			"image": "",
+			"image": "forestcorgi/e-pal_nginx",
 			"hostname": "nginx",
 			"essential": true,
 			"portMappings": [
@@ -17,14 +17,14 @@
 		},
 		{
 			"name": "client",
-			"image": "",
+			"image": "forestcorgi/e-pal_client",
 			"hostname": "client",
 			"essential": false,
 			"memory": 300
 		},
 		{
 			"name": "backend",
-			"image": "",
+			"image": "forestcorgi/e-pal_backend",
 			"hostname": "backend",
 			"essential": false,
 			"memory": 300
