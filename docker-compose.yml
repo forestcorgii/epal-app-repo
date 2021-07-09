@@ -15,7 +15,7 @@ services:
       container_name: client
       build:
          context: ./client
-         target: prod
+         # target: prod
       volumes:
          - '/app/node_modules'
       restart: on-failure
@@ -24,4 +24,5 @@ services:
          context: ./backend
          # target: prod
       container_name: backend
-
+      # ports:
+      #    - 3001:3001
