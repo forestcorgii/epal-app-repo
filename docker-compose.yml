@@ -1,28 +1,35 @@
 version: '3.8'
 
 services:
+
+   # ---------NGINX---------
    nginx:
       depends_on: 
          - client
          - backend
+      image: forestcorgi/merkado_nginx
+      container_name: merkado_nginx
       build:
          context: ./nginx
-         # target: prod
       restart: always
       ports:
          - 80:80
+
+   # --------CLIENT----------
    client:
-      container_name: client
+      image: forestcorgi/merkado_client
+      container_name: merkado_client
       build:
          context: ./client
-         # target: prod
+         dockerfile: Dockerfile.prod
       volumes:
          - '/app/node_modules'
       restart: on-failure
+
+   # ---------BACKEND---------
    backend:
+      image: forestcorgi/merkado_backend
       build:
          context: ./backend
-         # target: prod
-      container_name: backend
-      # ports:
-      #    - 3001:3001
+      container_name: merkado_backend
+      

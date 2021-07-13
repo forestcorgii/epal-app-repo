@@ -1,6 +1,7 @@
 # dotenv environment variables file
 env/*.env
 
+.vscode/
 # Created by .ignore support plugin (hsz.mobi)
 ### Node template
 # Logs

@@ -1,0 +1,39 @@
+const mongoose = require("mongoose");
+
+const profileSchema = new mongoose.Schema({
+	firstname: {
+		type: String,
+		required: true,
+		max: 45,
+	},
+
+	lastname: {
+		type: String,
+		required: true,
+		max: 45,
+	},
+
+	middlename: {
+		type: String,
+		required: true,
+		max: 45,
+	},
+
+	address: {
+		type: String,
+		required: true,
+		max: 45,
+	},
+
+	location: {
+		type: String,
+		required: true,
+		max: 45,
+	},
+
+	storename: {
+		type: String,
+		required: true,
+		max: 45,
+	},
+});

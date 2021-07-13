@@ -1,22 +1,16 @@
-FROM node:12-alpine as build
+FROM node:12-alpine AS build
 
 WORKDIR /app
 
-COPY package.json package.json
-COPY package-lock.json packege-lock.json
+ENV PATH /app/node_modules/.bin:$PATH
 
-RUN npm install
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm install --silent
+RUN npm install react-scripts@4.0.3 -g --silent
 
-COPY . .
-# FROM build as dev
-# CMD ["npm","run","dev"]
+# add app
+COPY . ./
 
-# FROM build as prod
-RUN npm run build
-
-# FROM nginx
-# EXPOSE 3000
-# COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
-# COPY --from=build /app/build /usr/share/nginx/html
-
-CMD ["npm","run","start"]
+# start app
+CMD ["npm", "start"]
