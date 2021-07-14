@@ -13,16 +13,10 @@ const profileSchema = new mongoose.Schema({
 		max: 45,
 	},
 
-	middlename: {
-		type: String,
-		required: true,
-		max: 45,
-	},
-
 	address: {
 		type: String,
 		required: true,
-		max: 45,
+		max: 145,
 	},
 
 	location: {
@@ -37,3 +31,5 @@ const profileSchema = new mongoose.Schema({
 		max: 45,
 	},
 });
+
+module.exports = mongoose.model('Profile', profileSchema);

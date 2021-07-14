@@ -10,7 +10,7 @@ var poolData = {
   UserPoolId: "...", // Your user pool id here
   ClientId: "...", // Your client id here
 };
-var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+var userPool = new CognitoUserPool(poolData);
 
 var attributeList = [];
 
@@ -23,8 +23,8 @@ var dataPhoneNumber = {
   Name: "phone_number",
   Value: "+15555555555",
 };
-var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
-var attributePhoneNumber = new AmazonCognitoIdentity.CognitoUserAttribute(
+var attributeEmail = new CognitoUserAttribute(dataEmail);
+var attributePhoneNumber = new CognitoUserAttribute(
   dataPhoneNumber
 );
 
@@ -47,13 +47,13 @@ userPool.signUp(
 );
 
 // 
-var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+var userPool = new CognitoUserPool(poolData);
 var userData = {
   Username: "username",
   Pool: userPool,
 };
 
-var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+var cognitoUser = new CognitoUser(userData);
 cognitoUser.confirmRegistration("123456", true, function (err, result) {
   if (err) {
     alert(err.message || JSON.stringify(err));

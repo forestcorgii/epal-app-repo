@@ -16,6 +16,9 @@ var poolData = {
 var identityPoolId = env.IDENTITY_POOL_ID;
 var authKey = `cognito-idp.${env.AWS_REGION}.amazonaws.com/${env.USER_POOL_ID}`;
 
+export var AccessKey;
+
+
 export function GetSession(setauth) {
 	var userPool = new CognitoUserPool(poolData);
   var cognitoUser = userPool.getCurrentUser();
@@ -26,6 +29,9 @@ export function GetSession(setauth) {
         alert(err.message || JSON.stringify(err));
         return;
       }
+
+      AccessKey = session.getAccessToken().getJwtToken();
+      
       console.log("session validity: " + session.isValid());
 
       // NOTE: getSession must be called to authenticate user before calling getUserAttributes
@@ -46,7 +52,6 @@ export function GetSession(setauth) {
             .getJwtToken(),
         },
 		});
-		 
 		 setauth({Username: cognitoUser.getUsername()});
       // Instantiate aws sdk service objects now that the credentials have been updated.
       // example: var s3 = new AWS.S3();
@@ -84,7 +89,6 @@ export function Login(authenticationData) {
             .getJwtToken(),
         },
       });
-console.log("to refresh")
       //refreshes credentials using AWS.CognitoIdentity.getCredentialsForIdentity()
       AWS.config.credentials.refresh((error) => {
         if (error) {
@@ -93,12 +97,14 @@ console.log("to refresh")
           // Instantiate aws sdk service objects now that the credentials have been updated.
           // example: var s3 = new AWS.S3();
           console.log("Successfully logged!");
+          return true;
         }
       });
     },
 
     onFailure: function (err) {
       alert(err.message || JSON.stringify(err));
+      return false;
     },
   });
 }
