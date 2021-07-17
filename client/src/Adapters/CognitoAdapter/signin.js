@@ -1,26 +1,16 @@
 import * as AWS from "aws-sdk/global";
-import env from "react-dotenv";
+
+import * as xhr from "../xhr/index";
+import { authKey, identityPoolId, poolData } from "./index";
 
 import {
-	AuthenticationDetails,
+  AuthenticationDetails,
   CognitoUserPool,
   CognitoUser,
 } from "amazon-cognito-identity-js";
 
-
-var poolData = {
-  UserPoolId: env.USER_POOL_ID, // Your user pool id here
-  ClientId: env.APP_CLIENT_ID, // Your client id here
-};
-
-var identityPoolId = env.IDENTITY_POOL_ID;
-var authKey = `cognito-idp.${env.AWS_REGION}.amazonaws.com/${env.USER_POOL_ID}`;
-
-export var AccessKey;
-
-
-export function GetSession(setauth) {
-	var userPool = new CognitoUserPool(poolData);
+export function GetSession(callback) {
+  var userPool = new CognitoUserPool(poolData);
   var cognitoUser = userPool.getCurrentUser();
 
   if (cognitoUser != null) {
@@ -30,8 +20,8 @@ export function GetSession(setauth) {
         return;
       }
 
-      AccessKey = session.getAccessToken().getJwtToken();
-      
+      xhr.setAccessKey(session.getAccessToken().getJwtToken());
+
       console.log("session validity: " + session.isValid());
 
       // NOTE: getSession must be called to authenticate user before calling getUserAttributes
@@ -47,35 +37,34 @@ export function GetSession(setauth) {
         IdentityPoolId: identityPoolId, // your identity pool id here
         Logins: {
           // Change the key below according to the specific region your user pool is in.
-          authKey: session
-            .getIdToken()
-            .getJwtToken(),
+          authKey: session.getIdToken().getJwtToken(),
         },
-		});
-		 setauth({Username: cognitoUser.getUsername()});
+      });
+      cognitoUser.getUserData((err, result) => {
+        if (!err) {
+          result = getAttributes(result);
+          callback(true, result);                    
+        }else{callback(false,{})}
+      });
       // Instantiate aws sdk service objects now that the credentials have been updated.
       // example: var s3 = new AWS.S3();
     });
   }
 }
 
-export function Login(authenticationData) {
-
-  var authenticationDetails = new AuthenticationDetails(
-    authenticationData
-  );
+export function SignIn(authenticationData, callback) {
+  var authenticationDetails = new AuthenticationDetails(authenticationData);
 
   var userPool = new CognitoUserPool(poolData);
   var userData = {
     Username: authenticationData.Username,
     Pool: userPool,
-	};
-	
-	var cognitoUser = new CognitoUser(userData);
-	
+  };
+  var cognitoUser = new CognitoUser(userData);
+
   cognitoUser.authenticateUser(authenticationDetails, {
     onSuccess: function (result) {
-      // var accessToken = result.getAccessToken().getJwtToken();
+      xhr.setAccessKey(result.getAccessToken().getJwtToken());
 
       //POTENTIAL: Region needs to be set if not already set previously elsewhere.
       AWS.config.region = "us-east-1";
@@ -84,9 +73,7 @@ export function Login(authenticationData) {
         IdentityPoolId: identityPoolId, // your identity pool id here
         Logins: {
           // Change the key below according to the specific region your user pool is in.
-          [authKey] : result
-            .getIdToken()
-            .getJwtToken(),
+          [authKey]: result.getIdToken().getJwtToken(),
         },
       });
       //refreshes credentials using AWS.CognitoIdentity.getCredentialsForIdentity()
@@ -97,14 +84,40 @@ export function Login(authenticationData) {
           // Instantiate aws sdk service objects now that the credentials have been updated.
           // example: var s3 = new AWS.S3();
           console.log("Successfully logged!");
-          return true;
+          cognitoUser.getUserData((err, result) => {
+            if (err) {
+              alert(err.message || JSON.stringify(err));
+              return;
+            }
+
+            result = getAttributes(result);
+            callback(true, result);
+          });
         }
       });
     },
 
     onFailure: function (err) {
       alert(err.message || JSON.stringify(err));
-      return false;
+      callback(false,{});
     },
   });
+}
+
+function getAttributes(result) {
+  var attrs={};
+  for (let i = 1; i < result.UserAttributes.length; i++) {
+    attrs[result.UserAttributes[i].Name]= result.UserAttributes[i].Value
+  }
+  return {
+    ...attrs,
+    Username: result.Username,
+  };
+}
+
+export function SignOut() {
+  var userPool = new CognitoUserPool(poolData);
+  var cognitoUser = userPool.getCurrentUser();
+  cognitoUser.signOut();
+  console.log("signed out");
 }
