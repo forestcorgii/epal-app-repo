@@ -20,7 +20,8 @@ export default function Home() {
         <Header auth={auth} className="p-6 mx-auto bg-white shadow-md flex items-center space-x-4">
             <div className="bg-red-700 text-white p-2 rounded-sm">
               <Link to="/">Home</Link>
-            </div>
+          </div>
+          
             <div>
               <Link to="/profile">Profile</Link>
             </div>
