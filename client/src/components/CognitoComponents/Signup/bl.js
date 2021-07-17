@@ -1,4 +1,4 @@
-import * as RegistrationAdapter from "../../../Adapters/CognitoAdapter/signup";
+import * as RegistrationAdapter from "../../../adapters/CognitoAdapter/signup";
 import { useHistory } from "react-router-dom";
 import * as yup from "yup";
 import { useFormik } from "formik";

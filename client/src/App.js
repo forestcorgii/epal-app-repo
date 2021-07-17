@@ -1,4 +1,3 @@
-import "./App.css";
 import React, { lazy, useState, useEffect, useContext, Suspense } from "react";
 import {
   BrowserRouter as Router,
@@ -20,7 +19,7 @@ function App() {
     <div className="App">
       <AuthenticatedUserContext.Provider value={{ auth, setauth }}>
         <Suspense fallback={<div>Loading...</div>}>
-          <h3>Welcome{" " + JSON.stringify(auth)}</h3>
+          {/* <h3>Welcome{" " + JSON.stringify(auth)}</h3> */}
           <Router>
             <Switch>
               <PublicRoute path="/cognito" auth={auth}>

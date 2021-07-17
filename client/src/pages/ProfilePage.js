@@ -1,6 +1,6 @@
 import React,{useState,useContext} from "react";
 
-import * as ProfileAdapter from "../Adapters/ProfileAdapter/index";
+import * as ProfileAdapter from "../adapters/ProfileAdapter/index";
 import AuthenticatedUserContext from "../contexts/CognitoContext/index"
 
 function Profile() {

@@ -1,10 +1,6 @@
+import { CognitoUserPool, CognitoUser } from "amazon-cognito-identity-js";
 
-import {
-  CognitoUserPool,
-  CognitoUser,
-} from "amazon-cognito-identity-js";
-
-import {poolData} from "./index";
+import { poolData } from "./index";
 
 export function ConfirmRegistration(username, code, callback) {
   var userPool = new CognitoUserPool(poolData);
@@ -12,7 +8,7 @@ export function ConfirmRegistration(username, code, callback) {
     Username: username,
     Pool: userPool,
   };
-  
+
   var cognitoUser = new CognitoUser(userData);
   cognitoUser.confirmRegistration(code, true, function (err, result) {
     if (err) {
@@ -21,7 +17,6 @@ export function ConfirmRegistration(username, code, callback) {
     }
     console.log("call result: " + result);
   });
-  
 }
 export function ResendConfirmationCode(username) {
   var userPool = new CognitoUserPool(poolData);
@@ -29,7 +24,7 @@ export function ResendConfirmationCode(username) {
     Username: username,
     Pool: userPool,
   };
-  
+
   var cognitoUser = new CognitoUser(userData);
   cognitoUser.resendConfirmationCode(function (err, result) {
     if (err) {
@@ -37,5 +32,5 @@ export function ResendConfirmationCode(username) {
       return;
     }
     console.log("call result: " + result);
-  });   
+  });
 }

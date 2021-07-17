@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useHistory } from "react-router-dom";
-import * as LoginAdapter from "../../../Adapters/CognitoAdapter/signin";
+import * as LoginAdapter from "../../../adapters/CognitoAdapter/signin";
 import AuthenticatedUserContext from "../../../contexts/CognitoContext/index";
 
 export default function LoginFormBL() {

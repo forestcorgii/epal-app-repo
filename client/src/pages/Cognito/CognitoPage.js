@@ -1,31 +1,35 @@
 // import env from "react-dotenv"
-import React, { lazy } from "react";
+import React, { lazy, useContext } from "react";
 import {
   BrowserRouter as Router,
-  Link,
+  Redirect,
   Route,
   Switch,
   useRouteMatch,
 } from "react-router-dom";
-import LoginForm from "../../components/CognitoComponents/LoginComponent/index";
+
+
+import LoginForm from "../../components/CognitoComponents/Signin/index";
+import AuthenticatedUserContext from "../../contexts/CognitoContext";
 
 const RegistrationForm = lazy(() =>
-  import("../../components/CognitoComponents/RegistrationComponents/index")
+  import("../../components/CognitoComponents/Signup/index")
 );
-const EmailVerificationForm = lazy(()=>import("../../components/CognitoComponents/EmailVerificationComponent/index"))
+const EmailVerificationForm = lazy(() =>
+  import("../../components/CognitoComponents/EmailVerification/index")
+);
+
+
+
+
 export default function Login() {
   let { path, url } = useRouteMatch();
+  const { auth } = useContext(AuthenticatedUserContext);
+
   return (
     <Router>
-      <div>
-        <Link to={`${url}/`}>Sign In</Link>
-      </div>
-      <div>
-        <Link to={`${url}/signup`}>Sign Up</Link>
-      </div>
-      <div>
-        <Link to={`${url}/confirmcode`}></Link>
-      </div>
+      {auth.Username && !auth.email_verified ? <Redirect to={`${url}/verifyemail`} /> : null}
+
       <Switch>
         <Route path={`${path}/signup`}>
           <RegistrationForm />

@@ -1,6 +1,6 @@
 import React, { lazy, useState,useEffect, useContext, Suspense } from "react";
 import AuthenticatedUserContext from "./contexts/CognitoContext/index";
-import LoginFormBL from "./components/CognitoComponents/LoginComponent/bl";
+import LoginFormBL from "./components/CognitoComponents/Signin/bl";
 
 
 export default function AppBL(){

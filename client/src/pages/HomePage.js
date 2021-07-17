@@ -1,5 +1,6 @@
 import React, { lazy, useContext } from "react";
-import Header from "../components/AppComponents/HeaderComponent/index";
+import '../assets/main.css'
+import Header from "../components/AppComponents/Header/index";
 import {
   BrowserRouter as Router,
   Route,
@@ -11,24 +12,22 @@ import AuthenticatedUserContext from "../contexts/CognitoContext/index";
 const Profile = lazy(() => import("../pages/ProfilePage"));
 
 export default function Home() {
-  // const { auth } = useContext(AuthenticatedUserContext);
+  const { auth } = useContext(AuthenticatedUserContext);
 
   return (
     <div>
       <Router>
-        <Header>
-          <ul>
-            <li>
+        <Header auth={auth} className="p-6 mx-auto bg-white shadow-md flex items-center space-x-4">
+            <div className="bg-red-700 text-white p-2 rounded-sm">
               <Link to="/">Home</Link>
-            </li>
-            <li>
+            </div>
+            <div>
               <Link to="/profile">Profile</Link>
-            </li>
-          </ul>
+            </div>
         </Header>
-          <PrivateRoute path="/profile">
-            <Profile></Profile>
-          </PrivateRoute>
+        <PrivateRoute path="/profile">
+          <Profile></Profile>
+        </PrivateRoute>
       </Router>
     </div>
   );
