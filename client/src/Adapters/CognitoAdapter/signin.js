@@ -1,6 +1,6 @@
 import * as AWS from "aws-sdk/global";
 
-import * as xhr from "../xhr/index";
+// import * as xhr from "../xhr/index";
 import { authKey, identityPoolId, poolData } from "./index";
 
 import {
@@ -20,7 +20,8 @@ export function GetSession(callback) {
         return;
       }
 
-      xhr.setAccessKey(session.getAccessToken().getJwtToken());
+      // xhr.setAccessKey(session.getAccessToken().getJwtToken());
+      localStorage.setItem('merkado-token',session.getAccessToken().getJwtToken());
 
       console.log("session validity: " + session.isValid());
 
@@ -64,7 +65,8 @@ export function SignIn(authenticationData, callback) {
 
   cognitoUser.authenticateUser(authenticationDetails, {
     onSuccess: function (result) {
-      xhr.setAccessKey(result.getAccessToken().getJwtToken());
+      // xhr.setAccessKey(result.getAccessToken().getJwtToken());
+      localStorage.setItem('merkado-token',result.getAccessToken().getJwtToken());
 
       //POTENTIAL: Region needs to be set if not already set previously elsewhere.
       AWS.config.region = "us-east-1";

@@ -1,25 +1,28 @@
 var jwt = require("jsonwebtoken");
 var jwkToPem = require("jwk-to-pem");
-var jwk = require('../jwks');
-// console.log(jwk);
+var jwk = require("../jwks");
 var pem = jwkToPem(jwk.keys[1]);
+const { AuthenticationError } = require("apollo-server");
 
-module.exports = function (req, res, next) {
+// module.exports = function (req, res, next) {
+module.exports = function (req) {
 	const token = req.header("authorization");
 	// if (!token) return res.status(401).send("Access Denied");
-	
-	const verified = jwt.verify(
-			token,
-			pem,
-			{ algorithms: ["RS256"] },
-			function (err, decodedToken) {
-				if (err) {
-					res.status(400).send(err);					
-				}
+	var user = "";
+	// const verified = jwt.verify(
+	jwt.verify(
+		token,
+		pem,
+		{ algorithms: ["RS256"] },
+		function (err, decodedToken) {
+			if (err) {
+				// res.status(400).send(err);
+				throw new AuthenticationError(err);
 			}
-		);
-		req.user = verified;
-		next();
-	
+			user = decodedToken.username;
+		}
+	);
+	// req.user = verified;
+	// next();
+	return user;
 };
-

@@ -1,16 +1,16 @@
 import Axios from "axios";
 
-var AccessKey;
+// var AccessKey;
 
-export function setAccessKey(_AccessKey) {
-	AccessKey = _AccessKey;
-}
+// export function setAccessKey(_AccessKey) {
+// 	AccessKey = _AccessKey;
+// }
 
 function returnAxiosInstance() {
   return Axios.create({
     baseURL: "http://localhost:3001/api",
     timeout: 10000,
-    headers: { "authorization": AccessKey },
+    headers: { "authorization":  localStorage.getItem('merkado-token') },
   });
 }
 

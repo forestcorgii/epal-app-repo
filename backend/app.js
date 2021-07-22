@@ -1,36 +1,35 @@
-const express = require("express");
-const app = express();
-const cors = require('cors');
-var helmet = require("helmet");
-var compression = require("compression");
-
+const { ApolloServer } = require("apollo-server");
+// const gql = require('graphql')
 require("dotenv").config();
 
 // console.log(process.env.MONGODB_URI);
 // console.log(env.PORT);
-const mongoose = require("mongoose");
-mongoose.connect(
-	process.env.MONGODB_URI,
-	{ useNewUrlParser: true, useUnifiedTopology: true },
-	() => {
-		console.log("connected to mongoose.");
-	}
-);
-app.use(cors());
-app.use(express.json());
-app.use(helmet());
-app.use(compression());
+const resolvers = require("./graphql/resolvers/index");
+const typeDefs = require("./graphql/typeDefs");
 
-const ProfileRoute = require('./router/profiles');
-
-app.use('/api/profiles', ProfileRoute);
-
-// Set up mongoose connection
-// var dev_db_url = 'mongodb+srv://cooluser:coolpassword@cluster0-mbdj7.mongodb.net/local_library?retryWrites=true'
-// var mongoDB = process.env.MONGODB_URI || dev_db_url;
-
-
-const port = process.env.PORT || 80;
-app.listen(port,'0.0.0.0', () => {
-	console.log(`Example app listening at http://localhost:${port}`);
+const verify = require("./router/verifyToken");
+const server = new ApolloServer({
+	typeDefs,
+	resolvers,
+	context: ({ req }) => {
+		user = "";
+		// user = "7798f9ab-406d-4cad-94a7-8ef8da977331";
+		user = verify(req);
+		// if (user == "") { throw new Error('Request not authorized')	}
+		return { user };
+	},
 });
+
+const mongoose = require("mongoose");
+mongoose
+	.connect(process.env.MONGODB_URI, {
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+	})
+	.then(() => {
+		console.log("connected to mongoose.");
+		return server.listen({ port: 3001 });
+	})
+	.then(() => {
+		console.log(`Server listening in port ${3001}`);
+	});

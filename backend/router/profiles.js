@@ -47,6 +47,7 @@ router.delete("/",verify, (req, res) => {
 
 router.get("/", verify, async (req, res) => {
 	const profiles = await Profile.find({});
+	console.log(req.user)
 	res.send(profiles);
 });
 module.exports = router;
