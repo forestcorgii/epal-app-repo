@@ -22,7 +22,7 @@ const server = new ApolloServer({
 
 const mongoose = require("mongoose");
 mongoose
-	.connect(process.env.MONGODB_URI, {
+	.connect(process.env.MONGODB_ATLAS_URI, {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 	})

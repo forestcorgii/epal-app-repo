@@ -5,14 +5,12 @@ const SellerSchema = Schema({
 	username: String,
 	email:String,
 	store: {
-		name:String,descrtiption:String,category:String,
+		storename:String,descrtiption:String,category:String,
 		address:String,
 		location: [Number],
 		products: [{ type: Schema.Types.ObjectId, ref: Product }],
 		orders: [{ type: Schema.Types.ObjectId, ref: Order }],
 	},
-
-	
 	createdAt: { type: Date, default: Date.now },
 });
 module.exports = model("Seller", SellerSchema);

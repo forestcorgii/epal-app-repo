@@ -1,15 +1,18 @@
-const usersResolvers = require("./users");
+const buyerResolvers = require("./buyers");
+const sellerResolvers = require("./sellers");
 const productResolvers = require("./products");
-const orderResolvers = require("./orders")
+const orderResolvers = require("./orders");
 
 module.exports = {
 	Query: {
-		...usersResolvers.Query,
+		...buyerResolvers.Query,
+		...sellerResolvers.Query,
 		...productResolvers.Query,
 		...orderResolvers.Query,
 	},
 	Mutation: {
-		...usersResolvers.Mutation,
+		...buyerResolvers.Mutation,
+		...sellerResolvers.Mutation,
 		...productResolvers.Mutation,
 		...orderResolvers.Mutation,
 	},

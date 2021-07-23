@@ -7,13 +7,16 @@ import { AuthContext } from "../contexts/Auth";
 export default function BL() {
 	let history = useHistory();
 	const [cred, setcred] = useState({ Username: "", Password: "" });
-	const { relogin, login } = useContext(AuthContext);
+	const {user, relogin, login } = useContext(AuthContext);
 
 	useEffect(() => {
-		relogin(() => {
-			history.push("/");
-		});
-	}, []);
+		if (!user) {
+			relogin(() => {
+				history.push("/");
+			});
+		}
+	});
+
 
 	const handleSubmit = (e) => {
 		e.preventDefault();

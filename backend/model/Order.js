@@ -1,8 +1,8 @@
 const { Schema, model } = require("mongoose");
 
 const OrderSchema = Schema({
-	sellerid: String,
-	buyerid: String,
+	// sellerid: String,
+	// buyerid: String,
 	paidAt: Date,
 	cancelledAt: Date,
 	price: Number,
