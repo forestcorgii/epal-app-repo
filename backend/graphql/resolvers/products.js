@@ -9,26 +9,31 @@ module.exports = {
 			return products;
 		},
 		async getProduct(_, { id }, { user }) {
-			const product = await Product.findById(id).populate('seller')
-			return product
+			const product = await Product.findById(id).populate("seller");
+			return product;
 		},
 	},
 	Mutation: {
-		async createProduct(_, { name, price, description, quantity }, { user }) {
+		async createProduct(
+			_,
+			{ data: { name, price, description, technicalDefinition,categories } },
+			{ user }
+		) {
 			const seller = await Seller.findOne({ username: user });
 			// if (seller) {
-				const product = new Product({
-					name: name,
-					price: price,
-					description: description,
-					quantity: quantity,
-					seller: seller._id,
-				});
-				await product.save();
+			const product = new Product({
+				name,				
+				price,
+				description,
+				technicalDefinition,
+				categories,	
+				seller: seller._id,
+			});
+			await product.save();
 
-				await seller.products.push(product);
-				await seller.save();
-				return product;
+			await seller.products.push(product);
+			await seller.save();
+			return product;
 			// } else throw new UserInputError("Request is not Authorized");
 		},
 		async updateProduct(
@@ -38,7 +43,7 @@ module.exports = {
 		) {
 			const seller = await Seller.findOne({ username: user });
 			if (seller) {
-				const product =await  Product.findByIdAndUpdate(id,{
+				const product = await Product.findByIdAndUpdate(id, {
 					name: name,
 					price: price,
 					description: description,
@@ -55,8 +60,8 @@ module.exports = {
 		async deleteProduct(_, { id }, { user }) {
 			const seller = await Seller.findOne({ username: user });
 			if (seller) {
-				await Product.findByIdAndDelete(id)
+				await Product.findByIdAndDelete(id);
 			} else throw new UserInputError("Request is not Authorized");
-		}
+		},
 	},
 };
