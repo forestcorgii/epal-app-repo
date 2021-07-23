@@ -8,7 +8,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import AuthenticatedUserContext from "../../../contexts/CognitoContext/index";
-import { gql, useLazyQuery, useQuery } from "@apollo/client";
+import { gql,  useQuery } from "@apollo/client";
 
 const Profile = lazy(() => import("../ProfilePage"));
 

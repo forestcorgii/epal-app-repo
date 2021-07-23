@@ -3,7 +3,8 @@ const ProductSchema = Schema({
 	name: String,
 	price: String,
 	description: String,
-	quantity: Number,
+	technicalInformation:{size:[Number],color:String,},
+	categories:[String],
 	createdAt: { type: Date, default: Date.now },
 	seller: {
 		type: Schema.Types.ObjectId,

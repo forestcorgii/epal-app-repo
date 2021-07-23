@@ -3,12 +3,15 @@ const Product = require('./Product')
 const Order = require('./Order')
 const SellerSchema = Schema({
 	username: String,
-	storename:String,
-	address:String,
-	location: [Number],
+	email:String,
+	store: {
+		name:String,descrtiption:String,category:String,
+		address:String,
+		location: [Number],
+		products: [{ type: Schema.Types.ObjectId, ref: Product }],
+		orders: [{ type: Schema.Types.ObjectId, ref: Order }],
+	},
 
-	products: [{ type: Schema.Types.ObjectId, ref: Product }],
-	orders: [{ type: Schema.Types.ObjectId, ref: Order }],
 	
 	createdAt: { type: Date, default: Date.now },
 });
