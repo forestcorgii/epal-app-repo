@@ -1,58 +1,84 @@
-import React, { lazy,  useContext, Suspense } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Redirect,
-  Switch,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch,Redirect } from "react-router-dom";
 
-import AuthenticatedUserContext from "./contexts/CognitoContext/index";
-import AppBL from "./AppBL";
+import AboutHome from "./pages/AboutHome";
+import BuyerInfo from "./pages/BuyerInfo";
+import Checkout from "./pages/Checkout";
+import HowToPage from "./pages/HowToPage";
+import Locate from "./pages/Locate";
+import Order from "./pages/Order";
+import Products from "./pages/Products";
+import SellerInfo from "./pages/SellerInfo";
+import SellerPage from "./pages/SellerPage";
+import UserRegistration from "./pages/UserRegistration";
 
-const Cognito = lazy(() => import("./pages/Cognito/CognitoPage"));
-const Home = lazy(() => import("./pages/Seller/HomePage"));
-
+import MainNavigation from "./layout/MainNavigation";
+import React, { useState, lazy, Suspense, useEffect, useContext } from "react";
+import { AuthProvider } from "./contexts/Auth";
+// const UserLogin = lazy(() => import("./pages/UserLogin"));
+import UserLogin from "./pages/UserLogin";
+import { AuthContext } from "./contexts/Auth";
 function App() {
-  const { auth, setauth } = AppBL();
-  return (
-    <div className="App">
-      <AuthenticatedUserContext.Provider value={{ auth, setauth }}>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Router>
-            <Switch>
-              <PublicRoute path="/cognito" auth={auth}>
-                <Cognito />
-              </PublicRoute>
-              <PrivateRoute path="/" auth={auth}>
-                <Home></Home>
-              </PrivateRoute>
-            </Switch>
-          </Router>
-        </Suspense>
-      </AuthenticatedUserContext.Provider>
-    </div>
-  );
+	
+	const { user } = useContext(AuthContext);
+	console.log(user)
+	return (
+		<div>
+			<AuthProvider>
+				<Suspense fallback={<div>Loading..</div>}>
+					<Router>
+						<MainNavigation />
+						<Switch>
+							<PrivateRoute path="/" exact>
+								<Products />
+							</PrivateRoute>
+							<Route path="/buyerinfo">
+								<BuyerInfo />
+							</Route>
+							<Route path="/checkout">
+								<Checkout />
+							</Route>
+							<Route path="/howtopage">
+								<HowToPage />
+							</Route>
+							<Route path="/locate">
+								<Locate />
+							</Route>
+							<Route path="/order">
+								<Order />
+							</Route>
+							<Route path="/Login">
+								<UserLogin />
+							</Route>
+							<Route path="/sellerInfo">
+								<SellerInfo />
+							</Route>
+							<Route path="/sellerPage">
+								<SellerPage />
+							</Route>
+							<Route path="/userRegistration">
+								<UserRegistration />
+							</Route>
+							<Route path="/AboutUs">
+								<AboutHome />
+							</Route>
+						</Switch>
+					</Router>
+				</Suspense>
+			</AuthProvider>
+		</div>
+	);
 }
 
 function PrivateRoute({ children, ...props }) {
-  const { auth } = useContext(AuthenticatedUserContext);
-  return (
-    <Route {...props}>
-      {auth.Username && auth.email_verified ? (
-        children
-      ) : (
-        <Redirect to={{ pathname: "/cognito" }} />
-      )}
-    </Route>
-  );
-}
-
-function PublicRoute({ children, ...props }) {
-  const { auth } = useContext(AuthenticatedUserContext);
-  return (
-    <Route {...props}>
-      {auth.Username ? <Redirect to={{ pathname: "/" }} /> : children}
-    </Route>
-  );
+	const { user } = useContext(AuthContext);
+	return (
+		<Route {...props}>
+			{user && user.Username && user.email_verified ? (
+				children
+			) : (
+				<Redirect to={{ pathname: "/Login" }} />
+			)}
+		</Route>
+	);
 }
 export default App;
