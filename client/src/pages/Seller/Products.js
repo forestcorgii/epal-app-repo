@@ -11,6 +11,7 @@ import "./Products.css";
 import ProductsBL from "./ProductsBL";
 function Products() {
 	const { user, getProducts, loading, error } = ProductsBL();
+	console.log(getProducts)
 	return (
 		<div className="product-layout">
 			<div className="products-navigation">

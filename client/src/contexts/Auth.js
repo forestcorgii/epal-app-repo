@@ -33,13 +33,11 @@ export function authReducer(state, action) {
 export function AuthProvider(props) {
 	const [state, dispatch] = useReducer(authReducer, { user: null });
 
-	function login(userData, callback) {
+	function login(userData ) {
 		dispatch({ type: "LOGIN", payload: userData });
-		callback();
 	}
-	function relogin(callback) {
+	function relogin() {
 		dispatch({ type: "RELOGIN" });
-		callback();
 	}
 	function logout() {
 		dispatch({ type: "LOGOUT" });

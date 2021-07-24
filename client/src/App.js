@@ -1,21 +1,21 @@
 import { BrowserRouter as Router, Route, Switch,Redirect } from "react-router-dom";
 
-import AboutHome from "./pages/AboutHome";
-import BuyerInfo from "./pages/BuyerInfo";
-import Checkout from "./pages/Checkout";
-import HowToPage from "./pages/HowToPage";
+import AboutHome from "./pages/Public/AboutHome";
+import BuyerInfo from "./pages/Buyer/BuyerInfo";
+import Checkout from "./pages/Buyer/Checkout";
+import HowToPage from "./pages/Public/HowToPage";
 import Locate from "./pages/Locate";
 import Order from "./pages/Order";
-import Products from "./pages/Products";
-import SellerInfo from "./pages/SellerInfo";
-import SellerPage from "./pages/SellerPage";
-import UserRegistration from "./pages/UserRegistration";
+import Products from "./pages/Seller/Products";
+import SellerInfo from "./pages/Seller/SellerInfo";
+import SellerPage from "./pages/Seller/SellerPage";
+import UserRegistration from "./pages/Public/UserRegistration";
 
 import MainNavigation from "./layout/MainNavigation";
 import React, { useState, lazy, Suspense, useEffect, useContext } from "react";
 import { AuthProvider } from "./contexts/Auth";
 // const UserLogin = lazy(() => import("./pages/UserLogin"));
-import UserLogin from "./pages/UserLogin";
+import UserLogin from "./pages/Public/UserLogin";
 import { AuthContext } from "./contexts/Auth";
 function App() {
 	

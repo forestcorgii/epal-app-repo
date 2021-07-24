@@ -1,28 +1,26 @@
-import  { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { useHistory } from "react-router-dom";
 
-import { AuthContext } from "../contexts/Auth";
+import { AuthContext } from "../../contexts/Auth";
 
 export default function BL() {
 	let history = useHistory();
 	const [cred, setcred] = useState({ Username: "", Password: "" });
-	const {user, relogin, login } = useContext(AuthContext);
-
+	const { user, relogin, login } = useContext(AuthContext);
 	useEffect(() => {
 		if (!user) {
-			relogin(() => {
-				history.push("/");
-			});
+			relogin();
 		}
-	});
-
+		if (user) {
+			history.push("/");
+		}
+	}, [user]);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		login(cred, () => {
-			history.push("/");
-		});
+		login(cred);
+		history.push("/");
 	};
 
 	const handleChange = (e) => {

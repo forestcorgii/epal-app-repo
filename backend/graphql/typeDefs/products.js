@@ -2,7 +2,7 @@ const { gql } = require("apollo-server");
 
 module.exports = gql`
 	input TechnicalInformationInput {
-		size: [Int]
+		size: [Float]
 		color: String
 	}
 	input ProductInput {

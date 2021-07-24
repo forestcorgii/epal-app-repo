@@ -7,7 +7,7 @@ import Brownies from "./imagesProducts/brownies1.jpeg";
 import M1 from "./imagesProducts/marijuana1.jpeg";
 import M2 from "./imagesProducts/marijuana2.jpeg";
 import M3 from "./imagesProducts/marijuana3.jpeg";
-import "./Pages.css";
+import "../Pages.css";
 import SellerPageBL from "./SellerPageBL";
 function SellerPage() {
 	const { loading, error,data } = SellerPageBL();

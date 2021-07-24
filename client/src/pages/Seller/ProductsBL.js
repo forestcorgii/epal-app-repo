@@ -3,7 +3,7 @@ import { useQuery, gql } from "@apollo/client";
 
 import { useHistory } from "react-router-dom";
 
-import { AuthContext } from "../contexts/Auth";
+import { AuthContext } from "../../contexts/Auth";
 
 const GET_PRODUCTS = gql`
 	query ExampleQuery {

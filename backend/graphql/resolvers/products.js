@@ -31,7 +31,7 @@ module.exports = {
 			});
 			await product.save();
 
-			await seller.products.push(product);
+			await seller.store.products.push(product);
 			await seller.save();
 			return product;
 			// } else throw new UserInputError("Request is not Authorized");

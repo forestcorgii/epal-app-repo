@@ -1,7 +1,7 @@
 import * as AWS from "aws-sdk/global";
 
 // import * as xhr from "../xhr/index";
-import {authKey, identityPoolId, poolData } from "./index";
+import { authKey, identityPoolId, poolData } from "./index";
 
 import {
 	AuthenticationDetails,
@@ -10,9 +10,8 @@ import {
 } from "amazon-cognito-identity-js";
 
 export function GetSession(callback) {
-  var userPool = new CognitoUserPool(poolData);
+	var userPool = new CognitoUserPool(poolData);
 	var cognitoUser = userPool.getCurrentUser();
-
 	if (cognitoUser != null) {
 		cognitoUser.getSession(function (err, session) {
 			if (err) {
