@@ -1,5 +1,5 @@
 const Seller = require("../../model/Seller");
-const { UserInputError } = require("apollo-server");
+const { UserInputError } = require("apollo-server-lambda");
 module.exports = {
 	Query: {
 		async getSellerInfo(_, body, context) {

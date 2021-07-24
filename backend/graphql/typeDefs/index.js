@@ -1,4 +1,4 @@
-const { gql } = require("apollo-server");
+const { gql } = require("apollo-server-lambda");
 const BuyerType = require('./buyers')
 const SellerType = require('./sellers')
 const ProductType = require('./products')

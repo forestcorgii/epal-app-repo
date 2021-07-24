@@ -2,7 +2,7 @@ var jwt = require("jsonwebtoken");
 var jwkToPem = require("jwk-to-pem");
 var jwk = require("../jwks");
 var pem = jwkToPem(jwk.keys[1]);
-const { AuthenticationError } = require("apollo-server");
+const { AuthenticationError } = require("apollo-server-lambda");
 
 // module.exports = function (req, res, next) {
 module.exports = function (req) {

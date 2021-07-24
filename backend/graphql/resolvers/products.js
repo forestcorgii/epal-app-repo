@@ -1,6 +1,6 @@
 const Seller = require("../../model/Seller");
 const Product = require("../../model/Product");
-const { UserInputError } = require("apollo-server");
+const { UserInputError } = require("apollo-server-lambda");
 
 module.exports = {
 	Query: {

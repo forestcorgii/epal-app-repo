@@ -3,7 +3,7 @@ const Buyer = require("../../model/Buyer");
 const Product = require("../../model/Product");
 const Order = require("../../model/Order");
 
-const { UserInputError } = require("apollo-server");
+const { UserInputError } = require("apollo-server-lambda");
 
 module.exports = {
 	Query: {
