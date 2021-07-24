@@ -20,7 +20,8 @@
     "helmet": "^4.6.0",
     "jsonwebtoken": "^8.5.1",
     "jwk-to-pem": "^2.0.5",
-    "mongoose": "^5.13.3"
+    "mongoose": "^5.13.3",
+    "serverless": "^2.52.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.12"

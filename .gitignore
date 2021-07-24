@@ -1,7 +1,7 @@
 # dotenv environment variables file
 env/*.env
 *.env
-
+/oldclient
 .vscode/
 # Created by .ignore support plugin (hsz.mobi)
 ### Node template
@@ -98,3 +98,4 @@ db/
 # dev specific files
 *-dev
 *.dev*
+oldclient.zip
