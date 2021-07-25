@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import f from '../merkado.png';
-import '../Pages.css';
+// import '../Pages.css';
 
 
 function UserRegistration(){

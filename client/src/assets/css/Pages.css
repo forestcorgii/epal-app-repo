@@ -3,7 +3,7 @@
 
 .container{
     
-    background-image: url(./market.jpeg);
+    background-image: url(../img/market.jpeg);
     background-size: cover;
     background-attachment: fixed;
     background-position: center center;
@@ -85,7 +85,7 @@ form .form-details .input-box{
 
 .SellerPage-whole-page{
 
-  background-image: url(market.jpeg);
+  background-image: url(../img/market.jpeg);
 }
 .SellerPage{
   background-color:  rgb(255, 232, 206);

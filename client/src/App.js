@@ -1,34 +1,44 @@
-import { BrowserRouter as Router, Route, Switch,Redirect } from "react-router-dom";
+import {
+	BrowserRouter as Router,
+	Route,
+	Switch,
+	Redirect,
+} from "react-router-dom";
+import React, { lazy, Suspense, useContext } from "react";
 
-import AboutHome from "./pages/Public/AboutHome";
-import BuyerInfo from "./pages/Buyer/BuyerInfo";
-import Checkout from "./pages/Buyer/Checkout";
-import HowToPage from "./pages/Public/HowToPage";
-import Locate from "./pages/Locate";
-import Order from "./pages/Order";
-import Products from "./pages/Seller/Products";
-import SellerInfo from "./pages/Seller/SellerInfo";
-import SellerPage from "./pages/Seller/SellerPage";
-import UserRegistration from "./pages/Public/UserRegistration";
+// import MainNavigation from "./layout/MainNavigation";
+import { AuthProvider, AuthContext } from "./contexts/Auth";
 
-import MainNavigation from "./layout/MainNavigation";
-import React, { useState, lazy, Suspense, useEffect, useContext } from "react";
-import { AuthProvider } from "./contexts/Auth";
-// const UserLogin = lazy(() => import("./pages/UserLogin"));
-import UserLogin from "./pages/Public/UserLogin";
-import { AuthContext } from "./contexts/Auth";
+// import AboutHome from "./pages/AboutHome";
+// import BuyerInfo from "./pages/Buyer/BuyerInfo";
+// import Checkout from "./pages/Buyer/Checkout";
+// import HowToPage from "./pages/HowToPage";
+// import Locate from "./pages/Buyer/Locate";
+// import Order from "./pages/Buyer/Order";
+// import Products from "./pages/Seller/Products";
+// import SellerInfo from "./pages/Seller/SellerInfo";
+// import SellerPage from "./pages/Seller/SellerPage";
+
+import Cognito from "./pages/CognitoPage";
+const SellerHome = lazy(() => import("./pages/Seller/HomePage"));
+const BuyerHome = lazy(() => import("./pages/Buyer/HomePage"));
 function App() {
-	
 	const { user } = useContext(AuthContext);
-	console.log(user)
 	return (
 		<div>
 			<AuthProvider>
 				<Suspense fallback={<div>Loading..</div>}>
 					<Router>
-						<MainNavigation />
+						{/* <MainNavigation /> */}
 						<Switch>
 							<PrivateRoute path="/" exact>
+								{user && user.logged_as === "SELLER" ? (
+									<SellerHome />
+								) : (
+									<BuyerHome />
+								)}
+							</PrivateRoute>
+							{/* <PrivateRoute path="/" exact>
 								<Products />
 							</PrivateRoute>
 							<Route path="/buyerinfo">
@@ -46,21 +56,24 @@ function App() {
 							<Route path="/order">
 								<Order />
 							</Route>
-							<Route path="/Login">
-								<UserLogin />
-							</Route>
 							<Route path="/sellerInfo">
 								<SellerInfo />
 							</Route>
 							<Route path="/sellerPage">
 								<SellerPage />
 							</Route>
+							<Route path="/Login">
+								<UserLogin />
+							</Route>
 							<Route path="/userRegistration">
 								<UserRegistration />
-							</Route>
-							<Route path="/AboutUs">
+							</Route> */}
+							<PublicRoute path="/cognito">
+								<Cognito />
+							</PublicRoute>
+							{/* <PublicRoute path="/AboutUs">
 								<AboutHome />
-							</Route>
+							</PublicRoute> */}
 						</Switch>
 					</Router>
 				</Suspense>
@@ -71,13 +84,20 @@ function App() {
 
 function PrivateRoute({ children, ...props }) {
 	const { user } = useContext(AuthContext);
+	console.log("private route " + JSON.stringify(user));
 	return (
 		<Route {...props}>
-			{user && user.Username && user.email_verified ? (
-				children
-			) : (
-				<Redirect to={{ pathname: "/Login" }} />
-			)}
+			{user && user.Username && user.email_verified ? (children) : (<Redirect to={{ pathname: "/cognito" }} />)}
+		</Route>
+	);
+}
+
+function PublicRoute({ children, ...props }) {
+	const { user } = useContext(AuthContext);
+	console.log("public route " + JSON.stringify(user));
+	return (
+		<Route {...props}>
+			{user ? <Redirect to={{ pathname: "/" }} /> : children}
 		</Route>
 	);
 }

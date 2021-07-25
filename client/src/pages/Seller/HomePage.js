@@ -7,10 +7,10 @@ import Brownies from "./imagesProducts/brownies1.jpeg";
 import M1 from "./imagesProducts/marijuana1.jpeg";
 import M2 from "./imagesProducts/marijuana2.jpeg";
 import M3 from "./imagesProducts/marijuana3.jpeg";
-import "../Pages.css";
-import SellerPageBL from "./SellerPageBL";
+// import "../Pages.css";
+import HomePageBL from "./HomePageBL";
 function SellerPage() {
-	const { loading, error,data } = SellerPageBL();
+	const { loading, error,data } = HomePageBL();
 	return (
 		<div className="SellerPage-whole-page">
 			<section>

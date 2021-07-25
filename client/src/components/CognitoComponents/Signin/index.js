@@ -1,12 +1,13 @@
+import React from "react";
+
+import businessLogic from "./bl";
 import { Link } from "react-router-dom";
-// import f from "./merkado.png";
-import "../Pages.css";
-import UserLoginBL from "./UserLoginBL";
+import f from "../../../assets/img/merkado.png"
+import "../../../assets/css/Pages.css";
+export default function LoginForm() {
+  const { handleSubmit } = businessLogic();
 
-function UserLogin() {
-	const { cred, handleSubmit, handleChange } = UserLoginBL();
-
-	return (
+  return (
 		<div className="container">
 			<center>
 				<br />
@@ -21,8 +22,6 @@ function UserLogin() {
 							USERNAME:{" "}
 							<input
 								name="Username"
-								value={cred.username}
-								onChange={handleChange}
 								type="text"
 								placeholder="Enter Username"
 								required
@@ -31,8 +30,6 @@ function UserLogin() {
 							PASSWORD:{" "}
 							<input
 								name="Password"
-								value={cred.password}
-								onChange={handleChange}
 								type="password"
 								placeholder="Password"
 								required
@@ -45,7 +42,7 @@ function UserLogin() {
 						</form>
 						<br />
 						Don't have account yet?{" "}
-						<Link to="/UserRegistration">Register here</Link>
+						<Link to="/cognito/signup">Register here</Link>
 					</div>
 				</div>
 			</center>
@@ -56,4 +53,3 @@ function UserLogin() {
 		</div>
 	);
 }
-export default UserLogin;
