@@ -1,34 +1,40 @@
 import { createContext, useReducer } from "react";
 import * as CognitoAdapter from "../adapters/CognitoAdapter/signin";
 export const AuthContext = createContext({
-	// user: null,
-				user: {
-			Username: "TestUsername",
-			email: "test@test.com",
-			email_verified: true,
-			logged_as:"SELLER"
-		},
+	user: null,
+	// user: {
+	// 	Username: "TestUsername",
+	// 	email: "test@test.com",
+	// 	email_verified: true,
+	// 	logged_as: "SELLER",
+	// },
 	login: (userData) => {},
 	relogin: () => {},
 	logout: () => {},
 });
 export function authReducer(state, action) {
 	let userData;
+	let logged_as;
 	switch (action.type) {
 		case "LOGIN":
 			CognitoAdapter.SignIn(action.payload, (valid, result) => {
 				if (valid) {
-					userData = result;
+					userData ={ logged_as, ...result } ;
+					logged_as = action.payload.logged_as;
+					localStorage.setItem("merkado_logged_as", logged_as);
 				}
 			});
-			return { ...state, user: userData };
+			
+			return { ...state, user: userData};
 		case "RELOGIN":
 			CognitoAdapter.GetSession((valid, result) => {
 				if (valid) {
-					userData = result;
+					userData ={ logged_as, ...result } ;
+					logged_as = localStorage.getItem("merkado_logged_as");
 				}
 			});
-			return { ...state, user: userData };
+
+			return { ...state, user: userData};
 		case "LOGOUT":
 			CognitoAdapter.SignOut();
 			return { ...state, user: null };
@@ -37,17 +43,15 @@ export function authReducer(state, action) {
 	}
 }
 export function AuthProvider(props) {
-	const [state, dispatch] = useReducer(authReducer,
-		{
-			// user: null
-			user: {
-			Username: "TestUsername",
-			email: "test@test.com",
-			email_verified: true,
-			logged_as:"SELLER"
-		}
-	},
-	);
+	const [state, dispatch] = useReducer(authReducer, {
+		user: null
+		// user: {
+		// 	Username: "TestUsername",
+		// 	email: "test@test.com",
+		// 	email_verified: true,
+		// 	logged_as: "SELLER",
+		// },
+	});
 
 	function login(userData) {
 		dispatch({ type: "LOGIN", payload: userData });

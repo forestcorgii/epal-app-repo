@@ -17,7 +17,7 @@ export default function RegistrationFormBL() {
 			// alert(JSON.stringify(values, null, 2));
 			SignUp(values, (success,username) => {
         if (success) {
-          // registration succeeded, create user profile to mongodb 
+          // registration succeeded, create user profile to mongodb depending on the user type
           history.replace("/cognito/verifyemail");          
         }
         setSubmitting(false);

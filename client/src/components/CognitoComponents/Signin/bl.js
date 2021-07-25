@@ -24,6 +24,7 @@ export default function LoginFormBL() {
     const val = {
       Username: e.target.username.value,
       Password: e.target.password.value,
+		logged_as:e.target.logged_as.value
     };
 
     login(val);

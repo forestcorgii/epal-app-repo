@@ -2,12 +2,12 @@ import React from "react";
 
 import businessLogic from "./bl";
 import { Link } from "react-router-dom";
-import f from "../../../assets/img/merkado.png"
+import f from "../../../assets/img/merkado.png";
 import "../../../assets/css/Pages.css";
 export default function LoginForm() {
-  const { handleSubmit } = businessLogic();
+	const { handleSubmit } = businessLogic();
 
-  return (
+	return (
 		<div className="container">
 			<center>
 				<br />
@@ -21,7 +21,7 @@ export default function LoginForm() {
 						<form onSubmit={handleSubmit}>
 							USERNAME:{" "}
 							<input
-								name="Username"
+								name="username"
 								type="text"
 								placeholder="Enter Username"
 								required
@@ -29,11 +29,24 @@ export default function LoginForm() {
 							<br />
 							PASSWORD:{" "}
 							<input
-								name="Password"
+								name="password"
 								type="password"
 								placeholder="Password"
 								required
 							></input>
+							<br />
+							<div className="radio">
+								<label>
+									<input type="radio" name="logged_as" value="BUYER" checked={true} />
+									Customer
+								</label>
+							</div>
+							<div className="radio">
+								<label>
+									<input type="radio" name="logged_as" value="SELLER" />
+									Retail Owner
+								</label>
+							</div>
 							<br />
 							<br />
 							<center>
