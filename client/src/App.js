@@ -26,21 +26,17 @@ function App() {
 	return (
 		<div>
 			<AuthProvider>
+				<LogoutButton/>
 				<Suspense fallback={<div>Loading..</div>}>
 					<Router>
-						{/* <MainNavigation /> */}
-						{/* {user && user.logged_as === "SELLER" ? (
-							<Redirect to="seller" />
-						) : null
-						// <BuyerHome />
-						} */}
 						<Switch>
 							<PrivateRoute path="/" exact>
 								<SellerHome />
 							</PrivateRoute>
-							{/* <PrivateRoute path="/buyer">
-								<BuyerHome />
-							</PrivateRoute> */}
+							<PrivateRoute path="/buyer">
+								<p>BUYER</p>
+								{/* <BuyerHome /> */}
+							</PrivateRoute>
 							{/* <PrivateRoute path="/" exact>
 								<Products />
 							</PrivateRoute>
@@ -85,6 +81,11 @@ function App() {
 	);
 }
 
+function LogoutButton() {
+	const { logout } = useContext(AuthContext);
+	return (<button onClick={() => { logout(); window.location.reload()}}>Logout</button>)
+}
+
 function PrivateRoute({ children, ...props }) {
 	const { user } = useContext(AuthContext);
 	console.log("private route " + JSON.stringify(user));
@@ -106,7 +107,7 @@ function PublicRoute({ children, ...props }) {
 		<Route {...props}>
 			{user && user.email_verified ? (
 				user.logged_as === "SELLER" ? (
-					<Redirect to={{ pathname: "/seller" }} />
+					<Redirect to={{ pathname: "/" }} />
 				) : (
 					<Redirect to={{ pathname: "/buyer" }} />
 				)

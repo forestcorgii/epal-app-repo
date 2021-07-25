@@ -2,12 +2,6 @@ import { createContext, useReducer } from "react";
 import * as CognitoAdapter from "../adapters/CognitoAdapter/signin";
 export const AuthContext = createContext({
 	user: null,
-	// user: {
-	// 	Username: "TestUsername",
-	// 	email: "test@test.com",
-	// 	email_verified: true,
-	// 	logged_as: "SELLER",
-	// },
 	login: (userData) => {},
 	relogin: () => {},
 	logout: () => {},
@@ -46,12 +40,6 @@ export function authReducer(state, action) {
 export function AuthProvider(props) {
 	const [state, dispatch] = useReducer(authReducer, {
 		user: null
-		// user: {
-		// 	Username: "TestUsername",
-		// 	email: "test@test.com",
-		// 	email_verified: true,
-		// 	logged_as: "SELLER",
-		// },
 	});
 
 	function login(userData) {

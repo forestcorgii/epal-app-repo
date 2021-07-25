@@ -27,7 +27,8 @@ export default function LoginFormBL() {
 		logged_as:e.target.logged_as.value
     };
 
-    login(val);
+	  login(val);
+	  history.push("/")
   }
   return { handleSubmit };
 }

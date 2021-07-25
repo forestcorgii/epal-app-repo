@@ -127,6 +127,8 @@ function getAttributes(result) {
 export function SignOut() {
 	var userPool = new CognitoUserPool(poolData);
 	var cognitoUser = userPool.getCurrentUser();
-	cognitoUser.signOut();
-	console.log("signed out");
+	if (cognitoUser != null) {
+		cognitoUser.signOut();
+		console.log("signed out");
+	}
 }
