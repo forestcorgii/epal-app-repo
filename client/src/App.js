@@ -23,7 +23,6 @@ import Cognito from "./pages/CognitoPage";
 const SellerHome = lazy(() => import("./pages/Seller/HomePage"));
 // const BuyerHome = lazy(() => import("./pages/Buyer/HomePage"));
 function App() {
-	const { user } = useContext(AuthContext);
 	return (
 		<div>
 			<AuthProvider>
