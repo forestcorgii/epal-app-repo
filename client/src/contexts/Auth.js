@@ -19,9 +19,10 @@ export function authReducer(state, action) {
 		case "LOGIN":
 			CognitoAdapter.SignIn(action.payload, (valid, result) => {
 				if (valid) {
-					userData ={ logged_as, ...result } ;
 					logged_as = action.payload.logged_as;
 					localStorage.setItem("merkado_logged_as", logged_as);
+					
+					userData ={ logged_as, ...result } ;
 				}
 			});
 			
@@ -29,8 +30,8 @@ export function authReducer(state, action) {
 		case "RELOGIN":
 			CognitoAdapter.GetSession((valid, result) => {
 				if (valid) {
-					userData ={ logged_as, ...result } ;
 					logged_as = localStorage.getItem("merkado_logged_as");
+					userData ={ logged_as, ...result } ;
 				}
 			});
 

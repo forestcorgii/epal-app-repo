@@ -21,7 +21,7 @@ import { AuthProvider, AuthContext } from "./contexts/Auth";
 
 import Cognito from "./pages/CognitoPage";
 const SellerHome = lazy(() => import("./pages/Seller/HomePage"));
-const BuyerHome = lazy(() => import("./pages/Buyer/HomePage"));
+// const BuyerHome = lazy(() => import("./pages/Buyer/HomePage"));
 function App() {
 	const { user } = useContext(AuthContext);
 	return (
@@ -30,14 +30,18 @@ function App() {
 				<Suspense fallback={<div>Loading..</div>}>
 					<Router>
 						{/* <MainNavigation /> */}
+						{/* {user && user.logged_as === "SELLER" ? (
+							<Redirect to="seller" />
+						) : null
+						// <BuyerHome />
+						} */}
 						<Switch>
-							<PrivateRoute path="/" exact>
-								{user && user.logged_as === "SELLER" ? (
-									<SellerHome />
-								) : (
-									<BuyerHome />
-								)}
+							<PrivateRoute path="/seller">
+								<SellerHome />
 							</PrivateRoute>
+							{/* <PrivateRoute path="/buyer">
+								<BuyerHome />
+							</PrivateRoute> */}
 							{/* <PrivateRoute path="/" exact>
 								<Products />
 							</PrivateRoute>
@@ -87,7 +91,11 @@ function PrivateRoute({ children, ...props }) {
 	console.log("private route " + JSON.stringify(user));
 	return (
 		<Route {...props}>
-			{user && user.Username && user.email_verified ? (children) : (<Redirect to={{ pathname: "/cognito" }} />)}
+			{user && user.Username && user.email_verified ? (
+				children
+			) : (
+				<Redirect to={{ pathname: "/cognito" }} />
+			)}
 		</Route>
 	);
 }
@@ -97,7 +105,15 @@ function PublicRoute({ children, ...props }) {
 	console.log("public route " + JSON.stringify(user));
 	return (
 		<Route {...props}>
-			{user ? <Redirect to={{ pathname: "/" }} /> : children}
+			{user && user.email_verified ? (
+				user.logged_as === "SELLER" ? (
+					<Redirect to={{ pathname: "/seller" }} />
+				) : (
+					<Redirect to={{ pathname: "/buyer" }} />
+				)
+			) : (
+				children
+			)}
 		</Route>
 	);
 }

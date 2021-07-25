@@ -6,16 +6,16 @@ import {AuthContext} from "../../../contexts/Auth";
 export default function LoginFormBL() {
 	let history = useHistory();
 	const { user, relogin, login } = useContext(AuthContext);
-	// useEffect(() => {
-	// 	if (!user) {
-	// 		relogin();
-	// 	}
-	// }, []);
-	// useEffect(() => {
-	// 	if (user) {
-	// 		history.push("/");
-	// 	}
-	// }, [user]);
+	useEffect(() => {
+		if (!user) {
+			relogin();
+		}
+	}, []);
+	useEffect(() => {
+		if (user) {
+			history.push("/");
+		}
+	}, [user]);
 
 
 
