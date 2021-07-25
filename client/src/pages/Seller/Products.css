@@ -8,10 +8,10 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: center;
-
 	flex-grow: 1;
 }
 
 .catalog-product {
 	margin: 2rem;
+	width: 100%;
 }

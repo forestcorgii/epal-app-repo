@@ -9,16 +9,15 @@
     background-position: center center;
     height: 610px;
     max-height: 100%;
+    
   }
-.container-form1{
+/* .container-form1{
     position: absolute;
     top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 5;
     background-color: rgba(0,0,0,0.6);
-    /* border: 2px inset white;
-    border-radius: 20px; */
    
     color: white;
     padding-left: 80px;
@@ -40,9 +39,6 @@
     transform: translate(-50%, -50%);
     z-index: 5;
     background-color: rgba(0,0,0,0.6);
-    /* border: 2px inset white;
-    border-radius: 20px; */
-   
     color: white;
     padding-left: 40px;
     padding-right: 50px;
@@ -77,13 +73,13 @@ form .form-details .input-box{
 .container-form-registration a {
   text-decoration: none;
   color: #ffffff;
-}
+} */
 
 /* SELLER PAGE AND SELLER INFO */
 
 
 
-.SellerPage-whole-page{
+/* .SellerPage-whole-page{
 
   background-image: url(../img/market.jpeg);
 }
@@ -135,7 +131,7 @@ form .form-details .input-box{
 
 } */
 
-.seller-product-display{
+/* .seller-product-display{
   background-color:rgb(255, 255, 255);
   height:100px;
   height: 600px;
@@ -170,4 +166,4 @@ form .form-details .input-box{
   color: rgb(129, 129, 129);
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 23px;
-}
+} */ 
