@@ -9,31 +9,26 @@ function MainNavigation(){
     
         <div className={classes.logo}> 
         
-        <Link to ='/' >MERKADO</Link>
+        
         
          </div>
          <br/>
-        <nav>
-            <ul>
-                <li>
+
+        <div className="header">
+         <Link to ='/' >MERKADO</Link>
+            <div className="header-right">
+          
+                
                    <Link to ='/'>Products</Link>
-                </li>
-                <li>
+              
                    <Link to ='/Login'>Login</Link>
-                </li>
-                <li>
+                
                    <Link to ='/SellerInfo'>SellerInfo</Link>
-                </li>
-                <li>
+                
                    <Link to ='/SellerPage'>SellerPage</Link>
-                </li>
-                <li></li>
-               
-            </ul>
-        
-        
-        </nav>
-    
+           
+            </div>
+        </div>
 
     </header>
     );
