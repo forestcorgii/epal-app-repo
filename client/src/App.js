@@ -36,7 +36,7 @@ function App() {
 						// <BuyerHome />
 						} */}
 						<Switch>
-							<PrivateRoute path="/seller">
+							<PrivateRoute path="/" exact>
 								<SellerHome />
 							</PrivateRoute>
 							{/* <PrivateRoute path="/buyer">
