@@ -3,13 +3,15 @@ import {
 	Route,
 	Switch,
 	Redirect,
+	useRouteMatch,
 } from "react-router-dom";
 import React, { lazy, Suspense, useContext } from "react";
 
 import MainNavigation from "./layout/MainNavigation";
 import { AuthProvider, AuthContext } from "./contexts/Auth";
+//Change
+import HomePage from "./pages/Buyer/HomePage";
 
-// import AboutHome from "./pages/AboutHome";
 // import BuyerInfo from "./pages/Buyer/BuyerInfo";
 // import Checkout from "./pages/Buyer/Checkout";
 // import HowToPage from "./pages/HowToPage";
@@ -36,13 +38,21 @@ function App() {
 						// <BuyerHome />
 						} */}
 						<Switch>
+
 							<PrivateRoute path="/" exact>
 								<SellerHome />
 							</PrivateRoute>
+<<<<<<< Updated upstream
 							<PrivateRoute path="/buyer">
 								<p>BUYER</p>
 								{/* <BuyerHome /> */}
 							</PrivateRoute>
+=======
+							
+							{/* <PrivateRoute path="/buyer">
+								<BuyerHome />
+							</PrivateRoute> */}
+>>>>>>> Stashed changes
 							{/* <PrivateRoute path="/" exact>
 								<Products />
 							</PrivateRoute>
@@ -76,6 +86,11 @@ function App() {
 							<PublicRoute path="/cognito">
 								<Cognito />
 							</PublicRoute>
+{/* ADDED THIS FOR TESTING BUYER HOMEPAGE */}
+							<PublicRoute path="/HomePage">
+								<HomePage />
+							</PublicRoute>
+
 							{/* <PublicRoute path="/AboutUs">
 								<AboutHome />
 							</PublicRoute> */}

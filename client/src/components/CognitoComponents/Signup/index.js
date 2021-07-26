@@ -8,35 +8,44 @@ export default function Registration() {
 	const { formik } = RegistrationFormBL();
 	return (
 		<div className="container">
+				<br/><br/>
 			<center>
 				<div className="container-form-registration">
-					<h2>REGISTRATION</h2>
+					<br/><br/><br/>
+					<h1>REGISTRATION</h1>
 					<div>
-						<form className="form-registration" onSubmit={formik.handleSubmit}>
+					<br/>
+						<form onSubmit={formik.handleSubmit}>
 							<div className="input-box">
-								<span className="form-details">First name: </span>
+								<span className="form-details">EMAIL:</span> 
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<input
 									id="email"
 									name="email"
 									type="text"
+									placeholder="Enter Email"
 									onChange={formik.handleChange}
 									onBlur={formik.handleBlur}
 									value={formik.values.email}
+									required
 								/>
 								{formik.touched.email && formik.errors.email ? (
 									<div>{formik.errors.email}</div>
 								) : null}{" "}
-								<br />
+							
 							</div>{" "}
 							<div className="input-box">
-								<span className="form-details">Password: </span>
+								<span className="form-details">PASSWORD: </span>
+								&nbsp;
 								<input
 									id="password"
 									name="password"
 									type="password"
+									placeholder="Enter New Password"
 									onChange={formik.handleChange}
 									onBlur={formik.handleBlur}
 									value={formik.values.password}
+									required
 								/>
 								{formik.touched.password && formik.errors.password ? (
 									<div>{formik.errors.password}</div>
@@ -61,15 +70,14 @@ export default function Registration() {
 									Retail Owner
 								</label>
 							</div>{" "}
+							<br />
 							<input type="submit" value="Register" />
 						</form>
+						<br /><br />
 						Already have an account? <Link to="/"> Login here</Link>
 					</div>
 				</div>
 			</center>
-			<br />
-			<br /> <br />
-			
 		</div>
 	);
 }

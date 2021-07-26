@@ -2,7 +2,6 @@ import React from "react";
 
 import businessLogic from "./bl";
 import { Link } from "react-router-dom";
-import f from "../../../assets/img/merkado.png";
 import "../../../assets/css/Pages.css";
 export default function LoginForm() {
 	const { handleSubmit } = businessLogic();
@@ -26,7 +25,7 @@ export default function LoginForm() {
 								placeholder="Enter Username"
 								required
 							></input>{" "}
-							<br />
+							<br /><br />
 							PASSWORD:{" "}
 							<input
 								name="password"
@@ -51,9 +50,8 @@ export default function LoginForm() {
 							<br />
 							<center>
 								
-									<button className="button-login" type="submit" value="LOGIN">LOGIN
-
-									</button>
+									<input className="button-login" type="submit" value="LOGIN">
+									</input>
 								
 							</center>
 						</form>

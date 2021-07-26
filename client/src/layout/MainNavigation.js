@@ -1,43 +1,40 @@
 import {Link} from 'react-router-dom';
-
-import classes from './MainNavigation.module.css';
-
-
+import './MainNavigation.css';
+import merkado from './Merkado4.png';
 
 function MainNavigation(){
     return(
         
-    <header className={classes.header}>
+    <div className="header">
+          <div className="merkado-header">
+              <img src={merkado} height="85px;" width="82px"/>
+               &nbsp; <h1>MERKADO</h1>
+          
+          </div>
+               
+          <div className="header-nav">
+                <div className="Nav">
+                         <Link to ='/'>Home</Link>
+                    </div>
+                    <div className="Nav">
+                         <Link to ='/'>Products</Link>
+                    </div>
+                    <div className="Nav">
+                         <Link to ='/Login'>Login</Link>
+                    </div>
+                    <div className="Nav">
+                         <Link to ='/SellerInfo'>SellerInfo</Link>
+                    </div>
+                    <div className="Nav">
+                         <Link to ='/HomePage'>BHomepage</Link>
+               </div>
+               
+            </div>
+          <div className="nav-search">
+                    <input type="search" placeholder="Search here"></input>
+          </div>
 
-            <div className="merkado-header">
-             <Link to ='/' >MERKADO</Link>
-            </div>
-            
-            <div className="header-right">
-                <div className="Nav">
-                     <Link to ='/'>Products</Link>
-                </div>
-                <div className="Nav">
-                     <Link to ='/Login'>Login</Link>
-                </div>
-                <div className="Nav">
-                     <Link to ='/SellerInfo'>SellerInfo</Link>
-                </div>
-                <div className="Nav">
-                    <Link to ='/SellerPage'>SellerPage</Link>
-            </div>
-                   
-              
-                  
-                
-                  
-                
-                   
-           
-            </div>
-        
-
-    </header>
+          </div>
     );
 }
 
