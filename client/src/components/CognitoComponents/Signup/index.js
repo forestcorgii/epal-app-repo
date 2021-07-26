@@ -43,6 +43,24 @@ export default function Registration() {
 								) : null}{" "}
 								<br />
 							</div>{" "}
+							<br />
+							<div className="radio">
+								<label>
+									<input
+										type="radio"
+										name="logged_as"
+										value="BUYER"
+										defaultChecked
+									/>
+									Customer
+								</label>
+							</div>
+							<div className="radio">
+								<label>
+									<input type="radio" name="logged_as" value="SELLER" />
+									Retail Owner
+								</label>
+							</div>{" "}
 							<input type="submit" value="Register" />
 						</form>
 						Already have an account? <Link to="/"> Login here</Link>
