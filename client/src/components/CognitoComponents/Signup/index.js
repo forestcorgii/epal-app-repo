@@ -8,13 +8,13 @@ export default function Registration() {
 	const { formik } = RegistrationFormBL();
 	return (
 		<div className="container">
-				<br/><br/>
+				<br/>
 			<center>
 				<div className="container-form-registration">
-					<br/><br/><br/>
+					<br/>
 					<h1>REGISTRATION</h1>
 					<div>
-					<br/>
+				
 						<form onSubmit={formik.handleSubmit}>
 							<div className="input-box">
 								<span className="form-details">EMAIL:</span> 
@@ -50,9 +50,9 @@ export default function Registration() {
 								{formik.touched.password && formik.errors.password ? (
 									<div>{formik.errors.password}</div>
 								) : null}{" "}
-								<br />
+								
 							</div>{" "}
-							<br />
+							
 							<div className="radio">
 								<label>
 									<input
@@ -71,11 +71,12 @@ export default function Registration() {
 								</label>
 							</div>{" "}
 							<br />
-							<input type="submit" value="Register" />
+							<input className="button-btn" type="submit" value="REGISTER" />
 						</form>
-						<br /><br />
+						<br />
 						Already have an account? <Link to="/"> Login here</Link>
 					</div>
+					<br/><br />
 				</div>
 			</center>
 		</div>

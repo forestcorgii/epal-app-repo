@@ -1,6 +1,8 @@
-import React, { Component } from "react";
+
 import { Link } from "react-router-dom";
 import "../../assets/css/buyer.css";
+// import React, { lazy, Suspense, useContext } from "react";
+// import { AuthProvider, AuthContext } from "./contexts/Auth";
 
 function HomePage(){
 
@@ -19,16 +21,26 @@ function HomePage(){
                 <div className="nav-btn">
                <Link to ='/BuyerProfile'>Profile</Link>
                 </div> 
-            </div>
-            <div className="buyer-search">
                 
-            <span>Search: </span> <input type="search"></input>
+            
+                
             </div>
-            <div className="buyer-date-time">
+            <div className="nav-btn-logout">
+                    <Link to ='/BuyerProfile'> LOGOUT</Link>
+                </div>
+            {/* <div className="buyer-date-time">
             July 27, 2021 5:22PM
-            </div>
+            </div> */}
+            
+            {/* <LogoutButton/> */}
+            
         </div>
       );
     }
+// function LogoutButton() {
+//         const { logout } = useContext(AuthContext);
+//         return (<button onClick={() => { logout(); window.location.reload()}}>Logout</button>)
+// }
+    
 
 export default HomePage;

@@ -9,7 +9,7 @@ export default function LoginForm() {
 	return (
 		<div className="container">
 			<center>
-			<br /><br /><br />
+			<br />
 				<div className="container-form1">
 				<br /><br />
 					<center>
@@ -50,7 +50,7 @@ export default function LoginForm() {
 							<br />
 							<center>
 								
-									<input className="button-login" type="submit" value="LOGIN">
+									<input  className="button-btn" type="submit" value="LOGIN">
 									</input>
 								
 							</center>
@@ -61,7 +61,7 @@ export default function LoginForm() {
 					</div>
 				</div>
 			</center>
-			<br/><br/><br/><br/><br/>
+			<br/><br/>
 		</div>
 	);
 }

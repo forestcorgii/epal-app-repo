@@ -23,12 +23,12 @@ function MainNavigation(){
                          <Link to ='/Login'>Login</Link>
                     </div>
                     <div className="Nav">
-                         <Link to ='/SellerInfo'>SellerInfo</Link>
+                         <Link to ='/SHomePage'>SHomePage</Link>
                     </div>
                     <div className="Nav">
-                         <Link to ='/HomePage'>BHomepage</Link>
-               </div>
-               
+                         <Link to ='/BHomePage'>BHomepage</Link>
+                     </div>
+              
             </div>
           <div className="nav-search">
                     <input type="search" placeholder="Search here"></input>

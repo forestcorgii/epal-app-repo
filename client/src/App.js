@@ -10,7 +10,9 @@ import React, { lazy, Suspense, useContext } from "react";
 import MainNavigation from "./layout/MainNavigation";
 import { AuthProvider, AuthContext } from "./contexts/Auth";
 //Change
-import HomePage from "./pages/Buyer/HomePage";
+import BHomePage from "./pages/Buyer/HomePage";
+import SHomePage from "./pages/Seller/HomePage";
+import Verification from "./components/CognitoComponents/EmailVerification/index";
 
 // import BuyerInfo from "./pages/Buyer/BuyerInfo";
 // import Checkout from "./pages/Buyer/Checkout";
@@ -28,7 +30,7 @@ function App() {
 	return (
 		<div>
 			<AuthProvider>
-				<LogoutButton/>
+				
 				<Suspense fallback={<div>Loading..</div>}>
 					<Router>
 						 <MainNavigation />
@@ -42,17 +44,10 @@ function App() {
 							<PrivateRoute path="/" exact>
 								<SellerHome />
 							</PrivateRoute>
-<<<<<<< Updated upstream
 							<PrivateRoute path="/buyer">
 								<p>BUYER</p>
 								{/* <BuyerHome /> */}
 							</PrivateRoute>
-=======
-							
-							{/* <PrivateRoute path="/buyer">
-								<BuyerHome />
-							</PrivateRoute> */}
->>>>>>> Stashed changes
 							{/* <PrivateRoute path="/" exact>
 								<Products />
 							</PrivateRoute>
@@ -86,10 +81,18 @@ function App() {
 							<PublicRoute path="/cognito">
 								<Cognito />
 							</PublicRoute>
-{/* ADDED THIS FOR TESTING BUYER HOMEPAGE */}
-							<PublicRoute path="/HomePage">
-								<HomePage />
+
+{/* ADDED THESE ROUTES FOR TESTING */}
+
+							<PublicRoute path="/BHomePage">
+								<BHomePage />
 							</PublicRoute>
+							<PublicRoute path="/SHomePage">
+								<SHomePage />
+							</PublicRoute>
+							{/* <PublicRoute path="/Verification">
+								<Verification/>
+							</PublicRoute> */}
 
 							{/* <PublicRoute path="/AboutUs">
 								<AboutHome />
@@ -102,10 +105,6 @@ function App() {
 	);
 }
 
-function LogoutButton() {
-	const { logout } = useContext(AuthContext);
-	return (<button onClick={() => { logout(); window.location.reload()}}>Logout</button>)
-}
 
 function PrivateRoute({ children, ...props }) {
 	const { user } = useContext(AuthContext);
