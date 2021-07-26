@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import React, { lazy, Suspense, useContext } from "react";
 
-// import MainNavigation from "./layout/MainNavigation";
+import MainNavigation from "./layout/MainNavigation";
 import { AuthProvider, AuthContext } from "./contexts/Auth";
 
 // import AboutHome from "./pages/AboutHome";
@@ -29,7 +29,7 @@ function App() {
 			<AuthProvider>
 				<Suspense fallback={<div>Loading..</div>}>
 					<Router>
-						{/* <MainNavigation /> */}
+						 <MainNavigation />
 						{/* {user && user.logged_as === "SELLER" ? (
 							<Redirect to="seller" />
 						) : null

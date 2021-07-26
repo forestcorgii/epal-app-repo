@@ -5,13 +5,16 @@ body {
 
 .header {
   overflow: hidden;
-  background-color: #f1f1f1;
+  background-color: #f5951f;
   padding: 20px 10px;
+}
+.merkado-header{
+  color: antiquewhite;
 }
 
 .header a {
   float: left;
-  color: black;
+  color: white;
   text-align: center;
   padding: 12px;
   text-decoration: none;
@@ -20,14 +23,11 @@ body {
   border-radius: 4px;
 }
 
-.header a.logo {
-  font-size: 25px;
-  font-weight: bold;
-}
 
 .header a:hover {
-  background-color: #ddd;
+  background-color: rgb(255, 232, 206);
   color: black;
+  
 }
 
 .header a.active {
@@ -37,6 +37,7 @@ body {
 
 .header-right {
   float: right;
+
 }
 
 @media screen and (max-width: 500px) {
@@ -46,9 +47,15 @@ body {
     text-align: left;
   }
   
-  .header-right {
-    float: none;
-  }
+  
+}
+.header-right {
+  float: right;
+
+}
+.nav{
+  background-color: aqua;
+  padding: 30px;
 }
 
 

@@ -1,33 +1,54 @@
 
 /* LOGIN AND REGISTRATION */
-
 .container{
     
     background-image: url(../img/market.jpeg);
     background-size: cover;
     background-attachment: fixed;
-    background-position: center center;
-    height: 610px;
+    background-position: center;
+    margin: auto;
     max-height: 100%;
-    
+    max-width: 100%;
+    overflow-y: hidden
   }
-/* .container-form1{
-    position: absolute;
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 5;
+ .container-form1{
     background-color: rgba(0,0,0,0.6);
-   
     color: white;
-    padding-left: 80px;
-    padding-right: 80px;
-    padding-bottom: 50px;
-    position:fixed;
-    text-align: left;
-   
-  
+    padding-bottom: 100px;
+    width: 50%;
+    text-align: center;
+    margin: auto;
   }
+  
+.button-login{
+    background-color: #f5951f;
+    border: none;
+    padding: 6px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.button{
+  background-color: #f5951f;
+  border: none;
+}
+.radio{
+}
+.container-form-login{
+  margin:auto;
+}
+.container-form-login a:hover,
+.container-form-login a:active,
+.container-form-login a.active {
+    color: #f5951f;
+}
+.container-form-login a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+
+
+/*
   .input-box{
     margin-bottom: 10px;
   }
