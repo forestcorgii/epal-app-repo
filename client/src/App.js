@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import React, { lazy, Suspense, useContext } from "react";
 
-// import MainNavigation from "./layout/MainNavigation";
+import MainNavigation from "./layout/MainNavigation";
 import { AuthProvider, AuthContext } from "./contexts/Auth";
 
 // import AboutHome from "./pages/AboutHome";
@@ -29,6 +29,12 @@ function App() {
 				<LogoutButton/>
 				<Suspense fallback={<div>Loading..</div>}>
 					<Router>
+						 <MainNavigation />
+						{/* {user && user.logged_as === "SELLER" ? (
+							<Redirect to="seller" />
+						) : null
+						// <BuyerHome />
+						} */}
 						<Switch>
 							<PrivateRoute path="/" exact>
 								<SellerHome />
