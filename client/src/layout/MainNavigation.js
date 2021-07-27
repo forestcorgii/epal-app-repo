@@ -1,7 +1,6 @@
 import {Link} from 'react-router-dom';
 import './MainNavigation.css';
 import merkado from './Merkado4.png';
-
 function MainNavigation(){
     return(
         
@@ -16,17 +15,19 @@ function MainNavigation(){
                 <div className="Nav">
                          <Link to ='/'>Home</Link>
                     </div>
-                    <div className="Nav">
-                         <Link to ='/'>Products</Link>
-                    </div>
+                    
                     <div className="Nav">
                          <Link to ='/Login'>Login</Link>
                     </div>
+{/* TESTING PAGES */}
                     <div className="Nav">
-                         <Link to ='/SHomePage'>SHomePage</Link>
+                         <Link to ='/Products'>Products</Link>
                     </div>
                     <div className="Nav">
-                         <Link to ='/BHomePage'>BHomepage</Link>
+                         <Link to ='/Inventory'>Inventory</Link>
+                    </div>
+                    <div className="Nav">
+                         <Link to ='/SProfile'>SProfile</Link>
                      </div>
               
             </div>

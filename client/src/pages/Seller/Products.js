@@ -9,6 +9,7 @@ import M2 from "./imagesProducts/marijuana2.jpeg";
 import M3 from "./imagesProducts/marijuana3.jpeg";
 import "./Products.css";
 import ProductsBL from "./ProductsBL";
+
 function Products() {
 	const { user, getProducts, loading, error } = ProductsBL();
 	console.log(getProducts)
@@ -65,4 +66,144 @@ function ProductItem({ image, name, price }) {
 		</div>
 	);
 }
+
+
+// <div className="SellerPage-whole-page">
+// 			<section>
+// 				<center>
+// 					{" "}
+// 					<h1>Seller Page</h1>{" "}
+// 				</center>
+// 				{loading ? <div>Loading...</div> : null}
+// 				{error ? <div>Error!!</div> : null}
+// 				{data ? (
+// 					<div className="SellerPage">
+						
+
+// 						{/* THIS PLAY PRODUCTS HERE! HAHAHA */}
+
+// 						<div className="seller-product-display">
+// 							<center>
+// 								<div className="layer">
+// 									<div className="catalog-product">
+// 										<img
+// 											src={SocksBlack}
+// 											alt="Brownies"
+// 											height="200px"
+// 											width="130px;"
+// 										></img>
+// 										<br />
+// 										<span className="product-name">Black Socks</span>
+// 										<br />
+// 										<span className="price">₱100.00</span>
+// 									</div>
+// 									<div className="catalog-product">
+// 										<img
+// 											src={SocksNude}
+// 											alt="Brownies"
+// 											height="200px"
+// 											width="130px;"
+// 										></img>
+// 										<br />
+// 										<span className="product-name">Brown Socks</span>
+// 										<br />
+// 										<span className="price">₱100.00</span>
+// 									</div>
+// 									<div className="catalog-product">
+// 										<img
+// 											src={M2}
+// 											alt="marijuana2"
+// 											height="200px"
+// 											width="150px;"
+// 										></img>
+// 										<br />
+// 										<span className="product-name">Green1</span>
+// 										<br />
+// 										<span className="price">₱100.00</span>
+// 									</div>
+// 								</div>
+// 								<div className="layer">
+// 									<div className="catalog-product">
+// 										<img
+// 											src={WatchBlack}
+// 											alt="Brownies"
+// 											height="200px"
+// 											width="200px;"
+// 										></img>
+// 										<br />
+// 										<span className="product-name">Black Watch</span>
+// 										<br />
+// 										<span className="price">₱100.00</span>
+// 									</div>
+// 									<div className="catalog-product">
+// 										<img
+// 											src={ShoesBlack}
+// 											alt="Brownies"
+// 											height="200px"
+// 											width="250px;"
+// 										></img>
+// 										<br />
+// 										<span className="product-name">Black Shoes</span>
+// 										<br />
+// 										<span className="price">₱100.00</span>
+// 									</div>
+// 									<div className="catalog-product">
+// 										<img
+// 											src={Brownies}
+// 											alt="Brownies"
+// 											height="200px"
+// 											width="250px;"
+// 										></img>
+// 										<br />
+// 										<span className="product-name">Brownies</span>
+// 										<br />
+// 										<span className="price">₱100.00</span>
+// 									</div>
+// 								</div>
+// 								<div className="layer">
+// 									<div className="catalog-product">
+// 										<img
+// 											src={M1}
+// 											alt="marijuana1"
+// 											height="200px"
+// 											width="250px;"
+// 										></img>
+// 										<br />
+// 										<span className="product-name">Green2</span>
+// 										<br />
+// 										<span className="price">₱100.00</span>
+// 									</div>
+
+// 									<div className="catalog-product">
+// 										<img
+// 											src={TshirtBlack}
+// 											alt="Brownies"
+// 											height="200px"
+// 											width="250px;"
+// 										></img>
+// 										<br />
+// 										<span className="product-name">Black Tshirt</span>
+// 										<br />
+// 										<span className="price">₱100.00</span>
+// 									</div>
+// 									<div className="catalog-product">
+// 										<img
+// 											src={M3}
+// 											alt="marijuana3"
+// 											height="200px"
+// 											width="250px;"
+// 										></img>
+// 										<br />
+// 										<span className="product-name">Green3</span>
+// 										<br />
+// 										<span className="price">₱100.00</span>
+// 									</div>
+// 								</div>
+// 							</center>
+// 						</div>
+// 					</div>
+// 				) : null}
+
+		
+
 export default Products;
