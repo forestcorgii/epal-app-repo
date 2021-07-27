@@ -125,7 +125,8 @@ function PublicRoute({ children, ...props }) {
 	console.log("public route " + JSON.stringify(user));
 	return (
 		<Route {...props}>
-			{user && user.email_verified ? (
+			{children}
+			{/* {user && user.email_verified ? (
 				user.logged_as === "SELLER" ? (
 					<Redirect to={{ pathname: "/" }} />
 				) : (
@@ -133,7 +134,7 @@ function PublicRoute({ children, ...props }) {
 				)
 			) : (
 				children
-			)}
+			)} */}
 		</Route>
 	);
 }

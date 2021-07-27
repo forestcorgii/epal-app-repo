@@ -3,19 +3,18 @@ const { gql } = require("apollo-server-lambda");
 module.exports = gql`
 	type Buyer {
 		id: ID!
-		createdAt: String
-		username: String!
-
+		user:User!
+		
 		address: String!
 		location: [Float!]!
 
 		orders: [Order!]!
+
+		createdAt: String
 	}
 	input BuyerInput {
-		username: String!
 		address: String!
 		location: [Float]!
-		store: StoreInput
 	}
 	extend type Query {
 		getBuyerInfo: Buyer

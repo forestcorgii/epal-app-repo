@@ -1,31 +1,27 @@
 const { gql } = require("apollo-server-lambda");
 
 module.exports = gql`
-	type Store {
+	type Seller {
+		id: ID!
+		user:User!
+		
 		storename: String
 		description: String
 		address: String
 		location: [Float!]
 		products: [Product!]
 		orders: [Order!]
-	}
-	type Seller {
-		id: ID!
-		username: String!
-		store: Store
+
 		createdAt: String
 	}
 
-	input StoreInput {
+	input SellerInput {
 		storename: String
 		description: String
 		address: String
 		location: [Float!]
 	}
-	input SellerInput {
-		username: String!
-		store: StoreInput
-	}
+
 	extend type Query {
 		getSellerInfo: Seller
 	}
