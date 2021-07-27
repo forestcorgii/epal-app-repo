@@ -3,7 +3,8 @@ env/*.env
 *.env
 /oldclient
 /infrastructure
-/client/build
+/client/build/static
+/client/build/assets/css
 .vscode/
 # Created by .ignore support plugin (hsz.mobi)
 ### Node template

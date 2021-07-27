@@ -1,14 +1,19 @@
 function BuyerInfo(){
     return (
-        <section>
-          <h1>Buyer Information</h1>
+       <div className="buyer-info">
+
+         <div>
+           
+         </div>
+         <div>
+ 
+         </div>
+
+
         
           
 
-
-
-
-        </section>
+       </div>
       );
     }
 

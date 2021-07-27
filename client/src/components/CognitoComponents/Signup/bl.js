@@ -6,8 +6,8 @@ export default function RegistrationFormBL() {
 	const history = useHistory();
 
 	const validationSchema = yup.object({
-		email: yup.string().email("Invalid Email format").required("Required"),
-		password: yup.string().required("Required"),
+		email: yup.string().email("Invalid Email format").required(""),
+		password: yup.string().required(""),
 	});
 
 	const formik = useFormik({

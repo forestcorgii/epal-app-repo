@@ -1,5 +1,6 @@
 
 /* LOGIN AND REGISTRATION */
+/* LOGIN */
 .container{
     
     background-image: url(../img/market.jpeg);
@@ -20,15 +21,15 @@
     margin: auto;
   }
   
-.button-login{
+.button-btn{
     background-color: #f5951f;
     border: none;
     padding: 6px;
     padding-left: 50px;
     padding-right: 50px;
 }
-.button{
-  background-color: #f5951f;
+.button-btn {
+  color: white;
   border: none;
 }
 .radio{
@@ -46,46 +47,18 @@
   color: #ffffff;
 }
 
+/* REGISTRATION */
 
-
-/*
-  .input-box{
-    margin-bottom: 10px;
-  }
-  .container-form-registration{
-    
-    position: absolute;
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 5;
-    background-color: rgba(0,0,0,0.6);
-    color: white;
-    padding-left: 40px;
-    padding-right: 50px;
-    padding-bottom: 40px;
-    position:fixed;
-    text-align: left;
-  }
-.container-form-registration form .form-details{
-  display: flex;
-  flex-wrap:  wrap;
-  justify-content: left;
+.container-form-registration{
+  background-color: rgba(0,0,0,0.6);
+  color: white;
+  padding-bottom: 100px;
+  background-attachment: fixed;
+  width: 50%;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 4%;
 }
-
-form .form-details .input-box{
-  width: calc(100% /2 - 20px);
-}
-.container-form-login a:hover,
-.container-form-login a:active,
-.container-form-login a.active {
-    color: #f5951f;
-}
-.container-form-login a {
-  text-decoration: none;
-  color: #ffffff;
-}
-
 .container-form-registration a:hover,
 .container-form-registration a:active,
 .container-form-registration a.active {
@@ -94,13 +67,42 @@ form .form-details .input-box{
 .container-form-registration a {
   text-decoration: none;
   color: #ffffff;
-} */
+}
+.input-box{
+  margin:auto;
+  max-width: 100%;
+  padding-bottom: 30px;
+ 
+}
+
+/* EMAIL VERIFICATION */
+.verification{
+  background-color: #f5951f;
+  height: 300px;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 3%;
+  justify-content: center center;
+
+}
+.verification-code{
+  font-size: 22px;
+  color: white;
+}
+.verification-code input {
+  height: 30px;
+  width: 400px;
+}
+.btn-submit input{
+  height: 30px;
+  width: 200px;
+}
 
 /* SELLER PAGE AND SELLER INFO */
 
 
 
-/* .SellerPage-whole-page{
+.SellerPage-whole-page{
 
   background-image: url(../img/market.jpeg);
 }
@@ -144,15 +146,15 @@ form .form-details .input-box{
 }
 
 
-/* .seller-product-add{
+.seller-product-add{
   background-color: orange;
   max-height: 200px;
   width: 500px;
   max-width: 100%;
 
-} */
+}
 
-/* .seller-product-display{
+.seller-product-display{
   background-color:rgb(255, 255, 255);
   height:100px;
   height: 600px;
@@ -187,4 +189,4 @@ form .form-details .input-box{
   color: rgb(129, 129, 129);
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 23px;
-} */ 
+}
