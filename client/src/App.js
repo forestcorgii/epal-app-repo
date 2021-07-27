@@ -6,12 +6,11 @@ import {
 	useRouteMatch,
 } from "react-router-dom";
 import React, { lazy, Suspense, useContext } from "react";
-
 import MainNavigation from "./layout/MainNavigation";
 import { AuthProvider, AuthContext } from "./contexts/Auth";
 //Change
-import BHomePage from "./pages/Buyer/HomePage";
-import SHomePage from "./pages/Seller/HomePage";
+import Inventory from "./pages/Seller/Inventory";
+import SellerProfile from "./pages/Seller/SellerProfile";
 import Verification from "./components/CognitoComponents/EmailVerification/index";
 
 // import BuyerInfo from "./pages/Buyer/BuyerInfo";
@@ -84,11 +83,11 @@ function App() {
 
 {/* ADDED THESE ROUTES FOR TESTING */}
 
-							<PublicRoute path="/BHomePage">
-								<BHomePage />
+							<PublicRoute path="/Inventory">
+								<Inventory />
 							</PublicRoute>
-							<PublicRoute path="/SHomePage">
-								<SHomePage />
+							<PublicRoute path="/SellerProfile">
+								<SellerProfile />
 							</PublicRoute>
 							{/* <PublicRoute path="/Verification">
 								<Verification/>
