@@ -98,15 +98,97 @@
   .inventory{
     height:  500px;
     width: auto;
+    display: flex;
+    margin: auto;
   }
 
   th, td{
-    border-bottom: 1px solid gray;
+    border: none;
+    border-bottom: 1px solid rgb(58, 58, 58);
     padding-top: 15px;
     padding-bottom: 15px;
     padding-right: 25px;
     padding-left: 25px;
-
+    text-align: left;
+    margin: auto;
 
   }
-  tr:hover {background-color: #f5f5f5;}
+  .table-items{
+    width: 70%;
+    padding-left: 10px;
+    /* border: solid 2px black; */
+  }
+  .side-nav{
+    background-color: lightgray;
+    height: 110%;
+    width:45%;
+    color: gray;
+    padding-left: 20px;
+  
+    /* border: solid 2px black; */
+  }
+  .inventory-input-details{
+    padding-bottom: 18px;
+    
+  }
+  tr:hover {
+    background-color: #f5f5f5;
+  }
+  table{
+    overflow-x:auto;
+    border-collapse: collapse;
+  }
+  input{
+    height: 30px;
+    width: 250px;
+    border-color: gray;
+    border-style: solid;
+    border-radius: 5px;
+    margin: auto;
+  }
+  form{
+    
+  }
+  p{
+    font-size: 25px;
+
+  }
+  .btn-add-product{
+    margin-top: 15%;
+    display: grid;
+  }
+  .btn-add-product input{
+    margin-bottom: 10px;
+    display: grid;
+  }
+
+  @media screen and (max-width: 500px){
+
+
+
+    .inventory{
+      float: left;
+      display: grid;
+      text-align: left;
+    }
+    .table-items{
+      width:50%;
+      font-size: 10px;
+    }
+    .side-nav{
+      width:90%;
+      display: grid;
+      text-align: left;
+
+    }
+    .btn-add-product{
+      margin: auto;
+      display: grid;
+      text-align: left;
+    }
+    .btn-add-product input{
+      margin-bottom: 10px;
+      display: grid;
+    }
+
+}

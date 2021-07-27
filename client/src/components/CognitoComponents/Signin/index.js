@@ -35,16 +35,16 @@ export default function LoginForm() {
 							></input>
 							<br /><br />
 							<div className="radio">
-								<label>
+								
 									<input type="radio" name="logged_as" value="BUYER" checked={true} />
 									Customer
-								</label>
+							
 							</div>
 							<div className="radio">
-								<label>
+								
 									<input type="radio" name="logged_as" value="SELLER" />
 									Retail Owner
-								</label>
+								
 							</div>
 							<br />
 							<br />

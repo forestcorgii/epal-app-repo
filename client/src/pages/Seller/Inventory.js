@@ -3,10 +3,9 @@ import "../../assets/css/seller.css";
 function Inventory(){
     return (
             <div className="inventory">
-                <div>
-
-                </div>
-                <div>
+              <br/>
+                <div className="table-items">
+{/* ADD ANOTHER CELL FOR ITEM IMAGE */}
                     <table>
                         <tr>
                             <th>ItemNo.</th>
@@ -46,7 +45,34 @@ function Inventory(){
                     </table>
                     
                 </div>
-                
+                <div className="side-nav">
+                    <p>Add new product here</p>
+
+                    <form>
+                        <div className="inventory-input-details">
+                            <input type="text" placeholder="Enter ItemNo."></input>
+                        </div>
+                        <div  className="inventory-input-details">
+                          <input type="text"  placeholder="Enter Name"></input>
+                        </div>
+                        <div  className="inventory-input-details">
+                          <input type="text"  placeholder="Enter description"></input>
+                        </div>
+                        <div  className="inventory-input-details">
+                          <input type="text"  placeholder="Enter price"></input>
+                        </div>
+                        <div  className="inventory-input-details">
+                         <input type="text" placeholder="Enter quantity"></input>
+                        </div>
+                    </form>
+                        <div class="btn-add-product">
+                            <input type="submit" value="ADD ITEM IMAGE"></input>
+                            <input type="submit" value="SAVE"></input>
+                        </div>
+
+
+                </div>
+
             </div>
 
 

@@ -32,8 +32,7 @@
   color: white;
   border: none;
 }
-.radio{
-}
+
 .container-form-login{
   margin:auto;
 }
@@ -46,6 +45,9 @@
   text-decoration: none;
   color: #ffffff;
 }
+/* input [type=radio] {
+   border: 0px; width: 100%; height: 1em; 
+} */
 
 /* REGISTRATION */
 
@@ -96,97 +98,4 @@
 .btn-submit input{
   height: 30px;
   width: 200px;
-}
-
-/* SELLER PAGE AND SELLER INFO */
-
-
-
-.SellerPage-whole-page{
-
-  background-image: url(../img/market.jpeg);
-}
-.SellerPage{
-  background-color:  rgb(255, 232, 206);
-  max-height: 100%;
-  border-radius: 30px;
-
-
-}
-
-.seller-top-box{
-  display:flex;
-  
-}
-.seller-information{
-
-  height: 300px;
-  width: 700px;
-  margin: 20px;
-
-}
-.seller-add-product{
-  
-  height:300px;
-  width: 500px;
-  padding-left: 300px;
-  margin: 20px;
-}
-
-.seller-name{
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 40px;
-  color: #f5951f;
-  font-weight: bolder;
-}
-.seller-store-name{
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 20px;
-  font-weight: bolder;
-}
-
-
-.seller-product-add{
-  background-color: orange;
-  max-height: 200px;
-  width: 500px;
-  max-width: 100%;
-
-}
-
-.seller-product-display{
-  background-color:rgb(255, 255, 255);
-  height:100px;
-  height: 600px;
-}
-.layer{
-  height:300px;
-  max-width: 100%;
-  margin-bottom: 20px;
-  display: flex;
-  padding: 20px;
-  justify-content: center;
-}
-.catalog-product{
-  height: 280px;
-  width: 450px;
-  background-color: rgb(218, 218, 218);
-  padding-top: 30px;
-  margin-left: 10px;
-  margin-right: 10px;
-  border: 2px 2px double rgb(129, 129, 129);
-  border-radius: 10px;
-  
-}
-.product-info{
-  margin-top: 10px;
-}
-.price{
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-size: 15px;
-}
-.product-name{
-  color: rgb(129, 129, 129);
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-size: 23px;
 }
