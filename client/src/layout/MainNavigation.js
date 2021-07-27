@@ -20,8 +20,8 @@ function MainNavigation(){
                          <Link to ='/Login'>Login</Link>
                     </div>
 {/* TESTING PAGES */}
-<div className="Nav">
-                         <Link to ='/'>Products</Link>
+                    <div className="Nav">
+                         <Link to ='/Products'>Products</Link>
                     </div>
                     <div className="Nav">
                          <Link to ='/Inventory'>Inventory</Link>

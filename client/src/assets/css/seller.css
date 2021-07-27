@@ -98,5 +98,15 @@
   .inventory{
     height:  500px;
     width: auto;
-    background-color: aqua;
   }
+
+  th, td{
+    border-bottom: 1px solid gray;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 25px;
+    padding-left: 25px;
+
+
+  }
+  tr:hover {background-color: #f5f5f5;}
