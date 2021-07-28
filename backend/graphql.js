@@ -1,4 +1,7 @@
 const { ApolloServer } = require("apollo-server-lambda");
+const {
+	ApolloServerPluginLandingPageGraphQLPlayground,
+} = require("apollo-server-core");
 
 const resolvers = require("./graphql/resolvers/index");
 const typeDefs = require("./graphql/typeDefs/index");
@@ -10,11 +13,11 @@ const server = new ApolloServer({
 	context: ({ express }) => {
 		user = "";
 		user = verify(express.req);
+
 		return { user };
 	},
-	playground: {
-		endpoint: "/dev/graphql",
-	},
+	introspection: true,
+	plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
 });
 
 const mongoose = require("mongoose");

@@ -7,17 +7,23 @@ const { AuthenticationError } = require("apollo-server-lambda");
 module.exports = function (req) {
 	const token = req.header("authorization");
 	var user = "";
-	jwt.verify(
-		token,
-		pem,
-		{ algorithms: ["RS256"] },
-		function (err, decodedToken) {
-			if (err) {
-				// res.status(400).send(err);
-				throw new AuthenticationError(err);
+	try {
+		jwt.verify(
+			token,
+			pem,
+			{ algorithms: ["RS256"] },
+			function (err, decodedToken) {
+				if (err) {
+					// res.status(400).send(err);
+					// throw new AuthenticationError(err);
+					user = null;
+				} else {
+					user = decodedToken.username;
+				}
 			}
-			user = decodedToken.username;
-		}
-	);
+		);
+	} catch (err) {
+		throw new Error("ASDA");
+	}
 	return user;
 };

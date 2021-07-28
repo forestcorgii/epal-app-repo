@@ -30,21 +30,20 @@ function App() {
 	return (
 		<div>
 			<AuthProvider>
-				
+				{/* 
+Public Route - Cannot Access if Authenticated
+Private Route - Cannot Access if not Authenticated
+Route - Can be Accessed eitherway
+*/}
 				<Suspense fallback={<div>Loading..</div>}>
 					<Router>
-						 <MainNavigation />
+						<MainNavigation />
 						{/* {user && user.logged_as === "SELLER" ? (
 							<Redirect to="seller" />
 						) : null
 						// <BuyerHome />
 						} */}
 						<Switch>
-{/* 
-Public Route - Cannot Access if Authenticated
-Private Route - Cannot Access if not Authenticated
-Route - Can be Accessed eitherway
-*/}
 							<PrivateRoute path="/seller">
 								<SellerHome />
 							</PrivateRoute>
@@ -86,7 +85,7 @@ Route - Can be Accessed eitherway
 								<Cognito />
 							</PublicRoute>
 
-{/* ADDED THESE ROUTES FOR TESTING */}
+							{/* ADDED THESE ROUTES FOR TESTING */}
 							<PublicRoute path="/Products">
 								<Products />
 							</PublicRoute>
@@ -110,7 +109,6 @@ Route - Can be Accessed eitherway
 		</div>
 	);
 }
-
 
 function PrivateRoute({ children, ...props }) {
 	const { user } = useContext(AuthContext);
@@ -136,7 +134,7 @@ function PublicRoute({ children, ...props }) {
 				user.logged_as === "SELLER" ? (
 					<Redirect to={{ pathname: "/seller" }} />
 				) : (
-					<Redirect to={{ pathname: "/" }} />					
+					<Redirect to={{ pathname: "/" }} />
 				)
 			) : (
 				children
