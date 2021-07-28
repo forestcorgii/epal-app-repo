@@ -1,7 +1,7 @@
 const { ApolloServer } = require("apollo-server-lambda");
 
 const resolvers = require("./graphql/resolvers/index");
-const typeDefs = require("./graphql/typeDefs");
+const typeDefs = require("./graphql/typeDefs/index");
 
 const verify = require("./router/verifyToken");
 const server = new ApolloServer({
