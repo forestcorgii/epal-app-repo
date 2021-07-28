@@ -40,14 +40,18 @@ function App() {
 						// <BuyerHome />
 						} */}
 						<Switch>
-
-							<PrivateRoute path="/" exact>
+{/* 
+Public Route - Cannot Access if Authenticated
+Private Route - Cannot Access if not Authenticated
+Route - Can be Accessed eitherway
+*/}
+							<PrivateRoute path="/seller">
 								<SellerHome />
 							</PrivateRoute>
-							<PrivateRoute path="/Login">
+							<Route path="/" exact>
 								<p>BUYER</p>
 								{/* <BuyerHome /> */}
-							</PrivateRoute>
+							</Route>
 							{/* <PrivateRoute path="/" exact>
 								<Products />
 							</PrivateRoute>
@@ -86,12 +90,12 @@ function App() {
 							<PublicRoute path="/Products">
 								<Products />
 							</PublicRoute>
-							<PublicRoute path="/Inventory">
+							<PrivateRoute path="/Inventory">
 								<Inventory />
-							</PublicRoute>
-							<PublicRoute path="/SellerProfile">
+							</PrivateRoute>
+							<PrivateRoute path="/SellerProfile">
 								<SellerProfile />
-							</PublicRoute>
+							</PrivateRoute>
 							{/* <PublicRoute path="/Verification">
 								<Verification/>
 							</PublicRoute> */}
@@ -127,16 +131,16 @@ function PublicRoute({ children, ...props }) {
 	console.log("public route " + JSON.stringify(user));
 	return (
 		<Route {...props}>
-			{children}
-			{/* {user && user.email_verified ? (
+			{/* {children} */}
+			{user && user.email_verified ? (
 				user.logged_as === "SELLER" ? (
-					<Redirect to={{ pathname: "/" }} />
+					<Redirect to={{ pathname: "/seller" }} />
 				) : (
-					<Redirect to={{ pathname: "/buyer" }} />
+					<Redirect to={{ pathname: "/" }} />					
 				)
 			) : (
 				children
-			)} */}
+			)}
 		</Route>
 	);
 }

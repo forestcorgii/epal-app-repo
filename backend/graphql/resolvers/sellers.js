@@ -34,16 +34,20 @@ module.exports = {
 				throw new AuthenticationError("Request is not Authorized");
 			}
 			const user = await User.findOne({ username: context.user }).populate('profile.seller');
-			if (!user && !user.profile.seller) {
-				const newUser = new Seller({
+			if (user && !user.profile.seller) {
+				const seller = new Seller({
 					user: user._id,
 					storename,
 					description,
 					address,
 					location,
 				});
-				newUser.save();
-				return newUser;
+				await seller.save();
+
+				user.profile.seller = seller
+				await user.save()
+				
+				return seller;
 			} else {
 				throw new UserInputError("You already have Seller Profile");
 			}

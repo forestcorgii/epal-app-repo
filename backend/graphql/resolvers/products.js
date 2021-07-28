@@ -16,17 +16,27 @@ module.exports = {
 	Mutation: {
 		async createProduct(
 			_,
-			{ data: { name, price, description, technicalDefinition,categories } },
+			{
+				data: {
+					name,
+					imageURL,
+					price,
+					description,
+					technicalDefinition,
+					categories,
+				},
+			},
 			{ user }
 		) {
 			const seller = await Seller.findOne({ username: user });
 			// if (seller) {
 			const product = new Product({
-				name,				
+				name,
+				imageURL,
 				price,
 				description,
 				technicalDefinition,
-				categories,	
+				categories,
 				seller: seller._id,
 			});
 			await product.save();
@@ -38,16 +48,17 @@ module.exports = {
 		},
 		async updateProduct(
 			_,
-			{ id, name, price, description, quantity },
+			{ id, name, imageURL, price, description, quantity },
 			{ user }
 		) {
 			const seller = await Seller.findOne({ username: user });
 			if (seller) {
 				const product = await Product.findByIdAndUpdate(id, {
-					name: name,
-					price: price,
-					description: description,
-					quantity: quantity,
+					name,
+					imageURL,
+					price,
+					description,
+					quantity,
 					seller: seller._id,
 				});
 				await product.save();

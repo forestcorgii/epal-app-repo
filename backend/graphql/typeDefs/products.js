@@ -7,6 +7,7 @@ module.exports = gql`
 	}
 	input ProductInput {
 		name: String!
+		imageURL:String
 		price: Float!
 		description: String!
 		technicalInformation: TechnicalInformationInput
@@ -19,6 +20,7 @@ module.exports = gql`
 	type Product {
 		id: ID!
 		name: String!
+		imageURL:String
 		price: Float!
 		description: String!
 		technicalInformation: TechnicalInformation

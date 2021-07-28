@@ -4,12 +4,9 @@ var jwk = require("../jwks");
 var pem = jwkToPem(jwk.keys[1]);
 const { AuthenticationError } = require("apollo-server-lambda");
 
-// module.exports = function (req, res, next) {
 module.exports = function (req) {
 	const token = req.header("authorization");
-	// if (!token) return res.status(401).send("Access Denied");
 	var user = "";
-	// const verified = jwt.verify(
 	jwt.verify(
 		token,
 		pem,
@@ -22,7 +19,5 @@ module.exports = function (req) {
 			user = decodedToken.username;
 		}
 	);
-	// req.user = verified;
-	// next();
 	return user;
 };

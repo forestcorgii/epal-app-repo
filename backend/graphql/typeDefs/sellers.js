@@ -23,7 +23,8 @@ module.exports = gql`
 	}
 
 	extend type Query {
-		getSellerInfo: Seller
+		getSellerPublicInfo: Seller
+		getSellerPrivateInfo: Seller
 	}
 	extend type Mutation {
 		createSellerInfo(data: SellerInput): Seller

@@ -17,7 +17,7 @@ function MainNavigation(){
                     </div>
                     
                     <div className="Nav">
-                         <Link to ='/Login'>Login</Link>
+                         <Link to ='/cognito'>Login</Link>
                     </div>
 {/* TESTING PAGES */}
                     <div className="Nav">
