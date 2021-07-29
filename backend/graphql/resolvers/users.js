@@ -10,8 +10,11 @@ module.exports = {
 			}
 			try {
 				const user = await User.findOne({ username: context.user })
-					.populate("profile.buyer")
-					.populate("profile.seller");
+					.populate("profile.buyer profile.seller profile.seller.products")
+					// .populate("profile.seller");
+
+			await	user.profile.seller.populate("products");
+
 				return user;
 			} catch (err) {
 				throw new Error(err);

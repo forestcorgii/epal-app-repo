@@ -10,7 +10,7 @@ const GET_PRODUCTS = gql`
 		getProducts {
 			id
 			name
-			username
+			imageURL
 			price
 			description
 		}

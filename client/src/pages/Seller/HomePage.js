@@ -10,11 +10,11 @@ function SellerPage() {
 				<SellerNavigation />
 				<Switch>
 					{/* <Route path="/Inventory">
-								<Inventory/>
-							</Route> */}
+						<Inventory />
+					</Route> */}
 					{/* <PublicRoute path="/AboutUs">
-								<AboutHome />
-							</PublicRoute> */}
+						<AboutHome />
+					</PublicRoute> */}
 				</Switch>
 			</Router>
 		</div>

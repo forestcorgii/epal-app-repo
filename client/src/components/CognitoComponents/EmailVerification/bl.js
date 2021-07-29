@@ -1,14 +1,21 @@
-import  { useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
+import {
+	ConfirmRegistration,
+	ResendConfirmationCode,
+} from "../../../adapters/CognitoAdapter/emailverifier";
 
 export default function EmailVerifierBL() {
-  const [code, setcode] = useState("");
+	const history = useHistory();
+	const { username } = useParams();
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		ConfirmRegistration(username, e.target.code.value, (success) => {
+			if (success) history.push("/");
+		});
+	};
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
-
-  const handleChange = (e) => {
-    setcode(e.target.code.value);
-  };
-  return {handleSubmit,handleChange,code,setcode}
+	function resendConfirmationCode() {
+		ResendConfirmationCode(username);
+	}
+	return { handleSubmit, resendConfirmationCode };
 }

@@ -7,20 +7,22 @@ module.exports = {
 			if (!context.user) {
 				throw new AuthenticationError("Request is not Authorized");
 			}
+			const username = context.user;
+			const user = await User.findOne({ username }).populate("profile.seller");
 
-			const seller = await Seller.findOne({ username: context.user })
-				.populate("store.products")
-				.populate("store.orders");
+			// const seller = await Seller.findOne({ username: context.user })
+			const seller = await Seller.findById(user.profile.seller._id)
+				.populate("products orders");
+
 			return seller;
 		},
-		async getSellerPublicInfo(_, {id}, context) {
+		async getSellerPublicInfo(_, { id }, context) {
 			if (!context.user) {
 				throw new AuthenticationError("Request is not Authorized");
 			}
 
-			const seller = await Seller.findById(id)
-				.populate("store.products")
-				// .populate("store.orders");
+			const seller = await Seller.findById(id).populate("products");
+			// .populate("store.orders");
 			return seller;
 		},
 	},
@@ -33,7 +35,9 @@ module.exports = {
 			if (!context.user) {
 				throw new AuthenticationError("Request is not Authorized");
 			}
-			const user = await User.findOne({ username: context.user }).populate('profile.seller');
+			const user = await User.findOne({ username: context.user }).populate(
+				"profile.seller"
+			);
 			if (user && !user.profile.seller) {
 				const seller = new Seller({
 					user: user._id,
@@ -44,9 +48,9 @@ module.exports = {
 				});
 				await seller.save();
 
-				user.profile.seller = seller
-				await user.save()
-				
+				user.profile.seller = seller;
+				await user.save();
+
 				return seller;
 			} else {
 				throw new UserInputError("You already have Seller Profile");

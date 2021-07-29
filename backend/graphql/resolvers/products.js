@@ -1,7 +1,7 @@
 const Seller = require("../../model/Seller");
 const Product = require("../../model/Product");
 const { UserInputError } = require("apollo-server-lambda");
-
+const User = require("../../model/User");
 module.exports = {
 	Query: {
 		async getProducts(_, body, context) {
@@ -26,9 +26,12 @@ module.exports = {
 					categories,
 				},
 			},
-			{ user }
+			context
 		) {
-			const seller = await Seller.findOne({ username: user });
+			const username = context.user;
+			const user = await User.findOne({ username }).populate("profile.seller");
+			const seller = user.profile.seller.populate("products");
+			// const seller = await Seller.findOne({ username: user });
 			// if (seller) {
 			const product = new Product({
 				name,
@@ -41,7 +44,7 @@ module.exports = {
 			});
 			await product.save();
 
-			await seller.store.products.push(product);
+			await seller.products.push(product);
 			await seller.save();
 			return product;
 			// } else throw new UserInputError("Request is not Authorized");

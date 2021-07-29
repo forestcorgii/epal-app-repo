@@ -13,6 +13,7 @@ export function GetSession(callback) {
 	var userPool = new CognitoUserPool(poolData);
 	var cognitoUser = userPool.getCurrentUser();
 	if (cognitoUser != null) {
+		// cognitoUser.GetSession()
 		cognitoUser.getSession(function (err, session) {
 			if (err) {
 				alert(err.message || JSON.stringify(err));
@@ -43,6 +44,7 @@ export function GetSession(callback) {
 					authKey: session.getIdToken().getJwtToken(),
 				},
 			});
+			
 			cognitoUser.getUserData((err, result) => {
 				if (!err) {
 					result = getAttributes(result);
@@ -105,10 +107,15 @@ export function SignIn(authenticationData, callback) {
 				}
 			});
 		},
-
 		onFailure: function (err) {
-			alert(err.message || JSON.stringify(err));
-			callback(false, {});
+			if (err.code === "UserNotConfirmedException") {
+				callback(false, {
+					email_verified: false,
+					Username: authenticationData.Username,
+				});
+			} else {
+				alert(err.message || JSON.stringify(err));
+			}
 		},
 	});
 }

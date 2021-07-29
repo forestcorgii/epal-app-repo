@@ -30,7 +30,7 @@ export default function Login() {
         <Route path={`${path}/signup`}>
           <RegistrationForm />
         </Route>
-        <Route path={`${path}/verifyemail`}>
+        <Route path={`${path}/verifyemail/:username`}>
           <EmailVerificationForm />
         </Route>
         <Route path={`${path}/`}>
