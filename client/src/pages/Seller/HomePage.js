@@ -6,6 +6,8 @@ import {
 import React from "react";
 import "../../assets/css/seller.css";
 import SellerNavigation from "./SellerNavigation";
+// import Inventory from "./pages/Seller/Inventory";
+// import SellerProfile from "./pages/Seller/SellerProfile ";
 
 function SellerPage() {
 
@@ -17,9 +19,9 @@ function SellerPage() {
 							
 							{/* <Route path="/Inventory">
 								<Inventory/>
-							</Route> */}
-							{/* <PublicRoute path="/AboutUs">
-								<AboutHome />
+							</Route>
+							<PublicRoute path="/SellerProfile">
+								<SellerProfile />
 							</PublicRoute> */}
 						</Switch>
 					</Router>

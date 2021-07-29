@@ -27,7 +27,7 @@ function MainNavigation(){
                          <Link to ='/Inventory'>Inventory</Link>
                     </div>
                     <div className="Nav">
-                         <Link to ='/SProfile'>SProfile</Link>
+                         <Link to ='/SellerProfile'>SProfile</Link>
                      </div>
               
             </div>
