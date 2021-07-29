@@ -1,7 +1,7 @@
 const Seller = require("../../model/Seller");
 const Product = require("../../model/Product");
 const { UserInputError } = require("apollo-server-lambda");
-
+const User = require("../../model/User");
 module.exports = {
 	Query: {
 		async getProducts(_, body, context) {
@@ -16,38 +16,52 @@ module.exports = {
 	Mutation: {
 		async createProduct(
 			_,
-			{ data: { name, price, description, technicalDefinition,categories } },
-			{ user }
+			{
+				data: {
+					name,
+					imageURL,
+					price,
+					description,
+					technicalDefinition,
+					categories,
+				},
+			},
+			context
 		) {
-			const seller = await Seller.findOne({ username: user });
+			const username = context.user;
+			const user = await User.findOne({ username }).populate("profile.seller");
+			const seller = user.profile.seller.populate("products");
+			// const seller = await Seller.findOne({ username: user });
 			// if (seller) {
 			const product = new Product({
-				name,				
+				name,
+				imageURL,
 				price,
 				description,
 				technicalDefinition,
-				categories,	
+				categories,
 				seller: seller._id,
 			});
 			await product.save();
 
-			await seller.store.products.push(product);
+			await seller.products.push(product);
 			await seller.save();
 			return product;
 			// } else throw new UserInputError("Request is not Authorized");
 		},
 		async updateProduct(
 			_,
-			{ id, name, price, description, quantity },
+			{ id, name, imageURL, price, description, quantity },
 			{ user }
 		) {
 			const seller = await Seller.findOne({ username: user });
 			if (seller) {
 				const product = await Product.findByIdAndUpdate(id, {
-					name: name,
-					price: price,
-					description: description,
-					quantity: quantity,
+					name,
+					imageURL,
+					price,
+					description,
+					quantity,
 					seller: seller._id,
 				});
 				await product.save();

@@ -9,13 +9,14 @@ export default function LoginForm() {
 	return (
 		<div className="container">
 			<center>
-			<br />
+				<br />
 				<div className="container-form1">
-				<br /><br />
+					<br />
+					<br />
 					<center>
 						<h1>LOGIN</h1>
 					</center>
-					
+
 					<div className="container-form-login">
 						<form onSubmit={handleSubmit}>
 							USERNAME:{" "}
@@ -25,7 +26,8 @@ export default function LoginForm() {
 								placeholder="Enter Username"
 								required
 							></input>{" "}
-							<br /><br />
+							<br />
+							<br />
 							PASSWORD:{" "}
 							<input
 								name="password"
@@ -33,35 +35,40 @@ export default function LoginForm() {
 								placeholder="Password"
 								required
 							></input>
-							<br /><br />
+							<br />
+							<br />
 							<div className="radio">
-								
-									<input type="radio" name="logged_as" value="BUYER" checked={true} />
-									Customer
-							
+								<input
+									type="radio"
+									name="logged_as"
+									value="BUYER"
+									checked={true}
+								/>
+								Customer
 							</div>
 							<div className="radio">
-								
-									<input type="radio" name="logged_as" value="SELLER" />
-									Retail Owner
-								
+								<input type="radio" name="logged_as" value="SELLER" />
+								Retail Owner
 							</div>
 							<br />
 							<br />
 							<center>
-								
-									<input  className="button-btn" type="submit" value="LOGIN">
-									</input>
-								
+								<input
+									className="button-btn"
+									type="submit"
+									value="LOGIN"
+								></input>
 							</center>
 						</form>
-						<br /><br />
+						<br />
+						<br />
 						Don't have account yet?{" "}
 						<Link to="/cognito/signup">Register here</Link>
 					</div>
 				</div>
 			</center>
-			<br/><br/>
+			<br />
+			<br />
 		</div>
 	);
 }

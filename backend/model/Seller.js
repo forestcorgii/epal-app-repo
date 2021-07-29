@@ -3,7 +3,7 @@ const Product = require("./Product");
 const Order = require("./Order");
 const User = require("./User");
 const SellerSchema = Schema({
-	user: { type: Schema.Types.ObjectId, ref: User },
+	user: { type: Schema.Types.ObjectId, ref: 'User' },
 	storename: String,
 	descrtiption: String,
 	category: String,

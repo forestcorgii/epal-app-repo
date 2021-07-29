@@ -104,3 +104,4 @@ db/
 *-dev
 *.dev*
 oldclient.zip
+backend/serverless.yml

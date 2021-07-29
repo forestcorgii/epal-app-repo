@@ -24,81 +24,30 @@ import Verification from "./components/CognitoComponents/EmailVerification/index
 // import SellerPage from "./pages/Seller/SellerPage";
 
 import Cognito from "./pages/CognitoPage";
+const BuyerHome = lazy(() => import("./pages/Buyer/HomePage"));
 const SellerHome = lazy(() => import("./pages/Seller/HomePage"));
-// const BuyerHome = lazy(() => import("./pages/Buyer/HomePage"));
+
+// Public Route - Cannot Access if Authenticated
+// Private Route - Cannot Access if not Authenticated
+// BuyerRoute - Cannot be accessed if Authenticated as a Seller(Only for Anonymous User and Buyer)
+
 function App() {
 	return (
 		<div>
 			<AuthProvider>
-				
 				<Suspense fallback={<div>Loading..</div>}>
 					<Router>
-						 <MainNavigation />
-						{/* {user && user.logged_as === "SELLER" ? (
-							<Redirect to="seller" />
-						) : null
-						// <BuyerHome />
-						} */}
+						<MainNavigation />
 						<Switch>
-
-							<PrivateRoute path="/" exact>
+							<PrivateRoute path="/seller">
 								<SellerHome />
 							</PrivateRoute>
-							<PrivateRoute path="/Login">
-								<p>BUYER</p>
-								{/* <BuyerHome /> */}
-							</PrivateRoute>
-							{/* <PrivateRoute path="/" exact>
-								<Products />
-							</PrivateRoute>
-							<Route path="/buyerinfo">
-								<BuyerInfo />
-							</Route>
-							<Route path="/checkout">
-								<Checkout />
-							</Route>
-							<Route path="/howtopage">
-								<HowToPage />
-							</Route>
-							<Route path="/locate">
-								<Locate />
-							</Route>
-							<Route path="/order">
-								<Order />
-							</Route>
-							<Route path="/sellerInfo">
-								<SellerInfo />
-							</Route>
-							<Route path="/sellerPage">
-								<SellerPage />
-							</Route>
-							<Route path="/Login">
-								<UserLogin />
-							</Route>
-							<Route path="/userRegistration">
-								<UserRegistration />
-							</Route> */}
+							<BuyerRoute path="/" exact>
+								<BuyerHome />
+							</BuyerRoute>
 							<PublicRoute path="/cognito">
 								<Cognito />
 							</PublicRoute>
-
-{/* ADDED THESE ROUTES FOR TESTING */}
-							<PublicRoute path="/Products">
-								<Products />
-							</PublicRoute>
-							<PublicRoute path="/Inventory">
-								<Inventory />
-							</PublicRoute>
-							<PublicRoute path="/SellerProfile">
-								<SellerProfile />
-							</PublicRoute>
-							{/* <PublicRoute path="/Verification">
-								<Verification/>
-							</PublicRoute> */}
-
-							{/* <PublicRoute path="/AboutUs">
-								<AboutHome />
-							</PublicRoute> */}
 						</Switch>
 					</Router>
 				</Suspense>
@@ -106,7 +55,6 @@ function App() {
 		</div>
 	);
 }
-
 
 function PrivateRoute({ children, ...props }) {
 	const { user } = useContext(AuthContext);
@@ -121,23 +69,38 @@ function PrivateRoute({ children, ...props }) {
 		</Route>
 	);
 }
+function BuyerRoute({ children, ...props }) {
+	const { user } = useContext(AuthContext);
+	console.log("buyer route " + JSON.stringify(user));
+	return (
+		<Route {...props}>
+			{user && user.email_verified ? (
+				user.logged_as === "SELLER" ? (
+					<Redirect to={{ pathname: "/seller" }} />
+				) : children
+			) : (
+				children
+			)}
+		</Route>
+	);
+}
 
 function PublicRoute({ children, ...props }) {
 	const { user } = useContext(AuthContext);
 	console.log("public route " + JSON.stringify(user));
 	return (
 		<Route {...props}>
-			{children}
-			{/* {user && user.email_verified ? (
+			{user && user.email_verified ? (
 				user.logged_as === "SELLER" ? (
-					<Redirect to={{ pathname: "/" }} />
+					<Redirect to={{ pathname: "/seller" }} />
 				) : (
-					<Redirect to={{ pathname: "/buyer" }} />
+					<Redirect to={{ pathname: "/" }} />
 				)
 			) : (
 				children
-			)} */}
+			)}
 		</Route>
 	);
 }
+
 export default App;

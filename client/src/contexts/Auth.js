@@ -1,5 +1,6 @@
 import { createContext, useReducer } from "react";
-import * as CognitoAdapter from "../adapters/CognitoAdapter/signin";
+import {SignIn,SignOut,GetSession} from "../adapters/CognitoAdapter/signin";
+import {ConfirmRegistration} from "../adapters/CognitoAdapter/emailverifier";
 export const AuthContext = createContext({
 	user: null,
 	login: (userData) => {},
@@ -11,28 +12,34 @@ export function authReducer(state, action) {
 	let logged_as;
 	switch (action.type) {
 		case "LOGIN":
-			CognitoAdapter.SignIn(action.payload, (valid, result) => {
+			SignIn(action.payload, (valid, result) => {
+				logged_as = action.payload.logged_as;
+				localStorage.setItem("merkado_logged_as", logged_as);
 				if (valid) {
-					logged_as = action.payload.logged_as;
-					localStorage.setItem("merkado_logged_as", logged_as);
-					
 					userData ={ logged_as, ...result } ;
+				} else {
+					if (!result.email_verified) {
+						// redirect to verify page
+					userData ={ logged_as, ...result } ;
+					}
 				}
 			});
 			
 			return { ...state, user: userData};
 		case "RELOGIN":
-			CognitoAdapter.GetSession((valid, result) => {
+			GetSession((valid, result) => {
 				if (valid) {
 					logged_as = localStorage.getItem("merkado_logged_as");
 					userData ={ logged_as, ...result } ;
 				}
 			});
-
 			return { ...state, user: userData};
 		case "LOGOUT":
-			CognitoAdapter.SignOut();
+			SignOut();
 			return { ...state, user: null };
+		case "VERIFY":
+			ConfirmRegistration('','')
+return 
 		default:
 			return state;
 	}

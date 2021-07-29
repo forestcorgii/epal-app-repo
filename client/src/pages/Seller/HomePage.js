@@ -1,8 +1,4 @@
-import {
-	BrowserRouter as Router,
-	Route,
-	Switch,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import React from "react";
 import "../../assets/css/seller.css";
 import SellerNavigation from "./SellerNavigation";
@@ -10,7 +6,6 @@ import SellerNavigation from "./SellerNavigation";
 // import SellerProfile from "./pages/Seller/SellerProfile ";
 
 function SellerPage() {
-
 	return (
         <div class="Seller-Navigation">
 					<Router>
@@ -26,8 +21,7 @@ function SellerPage() {
 						</Switch>
 					</Router>
 		</div>
-
-  );
+	);
 }
 
 export default SellerPage;

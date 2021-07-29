@@ -1,6 +1,6 @@
 const User = require("../../model/User");
-const Seller = require('../../model/Seller')
-const Buyer = require('../../model/Buyer')
+const Seller = require("../../model/Seller");
+const Buyer = require("../../model/Buyer");
 const { UserInputError, AuthenticationError } = require("apollo-server-lambda");
 module.exports = {
 	Query: {
@@ -10,23 +10,28 @@ module.exports = {
 			}
 			try {
 				const user = await User.findOne({ username: context.user })
-					.populate("profile.buyer")
-					.populate("profile.seller");
+					.populate("profile.buyer profile.seller profile.seller.products")
+					// .populate("profile.seller");
+
+			await	user.profile.seller.populate("products");
+
 				return user;
 			} catch (err) {
 				throw new Error(err);
 			}
 		},
 	},
+
 	Mutation: {
 		async createUser(_, {}, context) {
 			if (!context.user) {
 				throw new AuthenticationError("Request is not Authorized");
 			}
-			const user = await User.findOne({ username: context.user });
+			const username = context.user;
+			const user = await User.findOne({ username });
 			if (!user) {
-				const newUser = new Seller({ username });
-				newUser.save();
+				const newUser = new User({ username });
+				await newUser.save();
 				return newUser;
 			} else {
 				throw new UserInputError("Username already exists");

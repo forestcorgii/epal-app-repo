@@ -20,9 +20,9 @@ module.exports = {
 			}
 
 			const user = await User.findOne({ username: context.user }).populate('profile.buyer');
-			if (!user && !user.profile.buyer) {
+			if (user && !user.profile.buyer) {
 				const newUser = new Buyer({
-					user: user._id,
+					// user: user._id,
 					address,
 					location,
 				});

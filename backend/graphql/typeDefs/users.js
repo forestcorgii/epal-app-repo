@@ -7,7 +7,8 @@ module.exports = gql`
 	}
 	
 	type User{
-		username: String!
+		id:ID!
+		username: String
 		profile: Profile
 
 		createdAt: String
@@ -20,7 +21,7 @@ module.exports = gql`
 
 	extend type Mutation{
 		createUser:User!
-		deleteUser:(id:ID!):String!
+		deleteUser(id:ID!):String!
 		# deactivateUser
 	}	
 `;
