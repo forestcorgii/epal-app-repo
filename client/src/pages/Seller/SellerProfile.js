@@ -3,8 +3,8 @@ import "../../assets/css/seller.css";
 import user from "../../assets/img/user.jpg"
 
 import {useState} from 'react';
-import Modal from '../../components/Modal';
-import Backdrop from '../../components/Backdrop';
+import Modal from '../../components/OtherComponents/Modal';
+import Backdrop from '../../components/OtherComponents/Backdrop';
 
 
 function SellerProfile(props){
