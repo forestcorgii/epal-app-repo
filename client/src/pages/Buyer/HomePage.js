@@ -3,12 +3,15 @@ import "../../assets/css/buyer.css";
 import React, { lazy, Suspense, useContext } from "react";
 import { AuthContext } from "../../contexts/Auth";
 import Products from "./Products";
+import MainBanner from "../../src/assets/img/MainBanner.jpeg"
 
 function HomePage() {
 	return (
-		<div>
 			<div className="buyer-homepage">
-				{/* <div className="navigation">
+				<div className="main-banner">
+					<img src={MainBanner}/>
+				</div>
+				<div className="navigation">
 					<div className="nav-btn">
 						<Link to="/">Home</Link>
 					</div>
@@ -21,23 +24,23 @@ function HomePage() {
 					<div className="nav-btn">
 						<Link to="/BuyerProfile">Profile</Link>
 					</div>
+
+					{/* <div className="logout">
+						<LogoutButton />
 				</div> */}
-				<LogoutButton />
-				{/* <div className="nav-btn-logout">
-					<Link to="/BuyerProfile"> LOGOUT</Link>
+
+					
 				</div>
-				<div className="buyer-date-time">
-            July 27, 2021 5:22PM
-            </div> */}
+				
+				
+				<div>
+					<Router>
+						<Route path="/">
+							<Products />
+						</Route>
+					</Router>
+				</div>
 			</div>
-			<div>
-				<Router>
-					<Route path="/">
-						<Products />
-					</Route>
-				</Router>
-			</div>
-		</div>
 	);
 }
 function LogoutButton() {

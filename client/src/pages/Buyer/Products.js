@@ -34,13 +34,15 @@ function Products() {
 	return (
 		<div className="product-layout">
 				<div class="dropdown">
-  <button class="dropbtn">Dropdown</button>
-  <div class="dropdown-content">
-  <a href="#">Link 1</a>
-  <a href="#">Link 2</a>
-  <a href="#">Link 3</a>
-  </div>
-</div>
+					<button class="dropbtn">Categories</button>
+					<div class="dropdown-content">
+					<a href="#">Clothes</a>
+					<a href="#">Shoes</a>
+					<a href="#">Accesories</a>
+					<a href="#">Fruits</a>
+					<a href="#">Vegetables</a>
+					</div>
+				</div>
 			
 
 			<div className="product-display">
@@ -54,6 +56,7 @@ function Products() {
 								image={item.imageURL}
 								name={item.name}
 								price={item.price}
+
 							/>
 
 
@@ -68,7 +71,7 @@ function Products() {
 	);
 }
 
-function ProductItem({ image, name, price }) {
+function ProductItem({ image, name, price, order }) {
 	return (
 		<div className="product">
 			{/* <center> */}
@@ -77,6 +80,10 @@ function ProductItem({ image, name, price }) {
 				<span className="product-name">{name}</span>
 				<br />
 				<span className="price">₱{price}</span>
+
+				<div className="order-btn">
+					<input type="button" value="Order"/>
+				</div>
 			{/* </center> */}
 		</div>
 	);

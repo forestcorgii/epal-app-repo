@@ -2,11 +2,9 @@
 .header {
   overflow: hidden;
   background-color: #f5951f;
-  padding-top: 20px;
-  padding-left: 30px;
-  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   display: flex;
-  flex-wrap: wrap;
 }
 
 
@@ -27,18 +25,20 @@
   color: black;
   
 }
-.header a.active {
-  background-color: dodgerblue;
-  color: white;
+.header a:focus{
+  background-color: rgb(255, 232, 206);
+  color: black;
 }
 .merkado-header{
   margin-left: 5px;
-  margin-right: 10px;
   display: flex;
+ 
 }
 .header-nav{
   margin: auto;
   display: flex;
+
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
 }
 
@@ -52,18 +52,19 @@
   .merkado-header {
     float: none;
     display: block;
-    text-align: left;
   }
-  
+  .header-nav{
+    display: grid;
+    text-align: left;
+  } 
   
 }
 .header-right {
   float: right;
 
 }
-.nav{
-  background-color: aqua;
-  padding: 30px;
+.Nav{
+ 
 }
 .nav-search{
 margin: auto;
@@ -73,6 +74,11 @@ margin: auto;
   width: 400px;
 }
 
+.btn-logout input{
+  width: 70px;
+  margin-right: 10px;
+  margin-top: 28px;
+}
 
 
 /* 
