@@ -10,7 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "apollo-server-express": "^3.1.1",
     "apollo-server-lambda": "^3.0.2",
+    "aws-sdk": "^2.957.0",
+    "cors": "^2.8.5",
     "graphql": "^15.5.1",
     "jsonwebtoken": "^8.5.1",
     "jwk-to-pem": "^2.0.5",
