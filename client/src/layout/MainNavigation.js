@@ -19,7 +19,7 @@ function MainNavigation() {
 							<Link to ='/Products'>Products</Link>
 							</div>
 							<div className="Nav">
-							<Link to ='/Inventory'></Link>
+							<Link to ='/Inventory'>Inventory</Link>
 							</div>
 							<div className="Nav">
 							<Link to ='/SProfile'>Profile</Link>

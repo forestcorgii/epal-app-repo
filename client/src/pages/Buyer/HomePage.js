@@ -3,14 +3,11 @@ import "../../assets/css/buyer.css";
 import React, { lazy, Suspense, useContext } from "react";
 import { AuthContext } from "../../contexts/Auth";
 import Products from "./Products";
-import MainBanner from "../../src/assets/img/MainBanner.jpeg"
+
 
 function HomePage() {
 	return (
 			<div className="buyer-homepage">
-				<div className="main-banner">
-					<img src={MainBanner}/>
-				</div>
 				<div className="navigation">
 					<div className="nav-btn">
 						<Link to="/">Home</Link>
