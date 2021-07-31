@@ -56,8 +56,8 @@ function ProductItem({ image, name, price, order }) {
 				<span className="price">₱{price}</span>
 
 				<div className="order">
-					<Todo/>
 					
+				<Todo/>
 				</div>
 
 			{/* </center> */}
@@ -78,19 +78,21 @@ function closeModalHandler(){
 }
 
     return(
-       <div className='order'>
-           <h2>{props.text}</h2>
-           <div className='actions-order'>
-               <button className='btn-order' onClick={deleteHandler}>Order</button>
-           </div>
-           {modalIsOpen && (
-           <Modal onCancel={closeModalHandler} onConfirm={closeModalHandler} />
-           )} 
-           {modalIsOpen && <Backdrop onClick={closeModalHandler} />} 
-           {/* shortcut, than to use the one below *
-           **if modalIsOpen is true, we render Modal,else, we dont output anything (null) HAKDOG */}
-      
-       </div>
+		<div className='order-btn'>
+		<h2>{props.text}</h2>
+		<div className='order-actions'>
+			
+			<button className='order-btn-btn' onClick={deleteHandler}>Order</button>
+		</div>
+		{modalIsOpen && (
+		<Modal onCancel={closeModalHandler} onConfirm={closeModalHandler} />
+		)} 
+		{modalIsOpen && <Backdrop onClick={closeModalHandler} />} 
+		{/* shortcut, than to use the one below */}
+		{/* {modalIsOpen ? <Modal/> : null}
+		**if modalIsOpen is true, we render Modal,else, we dont output anything (null) */}
+   
+	</div>
     );
 }
 
