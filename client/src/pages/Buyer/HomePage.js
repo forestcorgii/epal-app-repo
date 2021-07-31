@@ -2,14 +2,13 @@ import { Link, BrowserRouter as Router, Route } from "react-router-dom";
 import "../../assets/css/buyer.css";
 import React, { lazy, Suspense, useContext } from "react";
 import { AuthContext } from "../../contexts/Auth";
-
 import Products from "./Products";
 
 function HomePage() {
 	return (
 		<div>
 			<div className="buyer-homepage">
-				<div className="navigation">
+				{/* <div className="navigation">
 					<div className="nav-btn">
 						<Link to="/">Home</Link>
 					</div>
@@ -22,7 +21,7 @@ function HomePage() {
 					<div className="nav-btn">
 						<Link to="/BuyerProfile">Profile</Link>
 					</div>
-				</div>
+				</div> */}
 				<LogoutButton />
 				{/* <div className="nav-btn-logout">
 					<Link to="/BuyerProfile"> LOGOUT</Link>

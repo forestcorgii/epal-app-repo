@@ -8,18 +8,7 @@ import SellerNavigation from "./SellerNavigation";
 function SellerPage() {
 	return (
         <div class="Seller-Navigation">
-					<Router>
-						 <SellerNavigation/>
-						<Switch>
-							
-							{/* <Route path="/Inventory">
-								<Inventory/>
-							</Route>
-							<PublicRoute path="/SellerProfile">
-								<SellerProfile />
-							</PublicRoute> */}
-						</Switch>
-					</Router>
+					
 		</div>
 	);
 }

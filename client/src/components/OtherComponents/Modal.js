@@ -3,7 +3,7 @@ function Modal(props){
     function cancelHandler(){
         props.onCancel();
     }
-    function confirmHandler(){
+    function doneHandler(){
         props.onCancel();
     }
 
@@ -13,10 +13,10 @@ function Modal(props){
 
         <div>
             <form>
-                <input type="text" placeholder="Enter first name"/>
-                <input type="text" placeholder="Enter first name"/>
-                <input type="text" placeholder="Enter first name"/>
-                <input type="text" placeholder="Enter first name"/>
+                <input type="text" placeholder="Enter First name"/>
+                <input type="text" placeholder="Enter Last name"/>
+                <input type="text" placeholder="Enter Age"/>
+                <input type="text" placeholder="Enter Address"/>
                 <input type="text" placeholder="Enter first name"/>
                 <input type="text" placeholder="Enter first name"/>
 
@@ -26,7 +26,7 @@ function Modal(props){
 
         </div>
         <button className='btn btn--alt' onClick={cancelHandler}> Cancel</button>
-        <button className='btn' onClick={confirmHandler}>Confirm</button>
+        <button className='btn' onClick={doneHandler}>Done</button>
     </div>
     )
 }
