@@ -9,20 +9,39 @@ import SocksBlack from "../Seller/imagesProducts/socks black.jpeg";
 // import M3 from "./imagesProducts/marijuana3.jpeg";
 // import "./Products.css";
 import ProductsBL from "./ProductsBL";
-
+import "../../assets/css/buyer.css";
+// import { Dropdown } from 'semantic-ui-react'
 function Products() {
 	const { user, getProducts, loading, error } = ProductsBL();
 	console.log(getProducts);
+	// const DropdownExampleDropdown = () => (
+	// 	<Dropdown text='File'>
+	// 	  <Dropdown.Menu>
+	// 		<Dropdown.Item text='New' />
+	// 		<Dropdown.Item text='Open...' description='ctrl + o' />
+	// 		<Dropdown.Item text='Save as...' description='ctrl + s' />
+	// 		<Dropdown.Item text='Rename' description='ctrl + r' />
+	// 		<Dropdown.Item text='Make a copy' />
+	// 		<Dropdown.Item icon='folder' text='Move to folder' />
+	// 		<Dropdown.Item icon='trash' text='Move to trash' />
+	// 		<Dropdown.Divider />
+	// 		<Dropdown.Item text='Download As...' />
+	// 		<Dropdown.Item text='Publish To Web' />
+	// 		<Dropdown.Item text='E-mail Collaborators' />
+	// 	  </Dropdown.Menu>
+	// 	</Dropdown>
+	//   )
 	return (
 		<div className="product-layout">
-			<div className="products-navigation">
-				<h1>Products</h1>
-				<nav>
-					<ul>List</ul>
-					<ul>Categories</ul>
-					<ul>Color</ul>
-				</nav>
-			</div>
+				<div class="dropdown">
+  <button class="dropbtn">Dropdown</button>
+  <div class="dropdown-content">
+  <a href="#">Link 1</a>
+  <a href="#">Link 2</a>
+  <a href="#">Link 3</a>
+  </div>
+</div>
+			
 
 			<div className="product-display">
 				{loading ? <div>Loading Products...</div> : null}
@@ -36,6 +55,12 @@ function Products() {
 								name={item.name}
 								price={item.price}
 							/>
+
+
+
+
+							
+							
 						);
 					})}
 			</div>
@@ -45,9 +70,9 @@ function Products() {
 
 function ProductItem({ image, name, price }) {
 	return (
-		<div className="catalog-product">
+		<div className="product">
 			{/* <center> */}
-				<img src={image} alt={name} height="200px" width="130px;"></img>
+				<img src={image} alt={name} height="150px" width="160px;"></img>
 				<br />
 				<span className="product-name">{name}</span>
 				<br />
@@ -56,140 +81,5 @@ function ProductItem({ image, name, price }) {
 		</div>
 	);
 }
-
-// <div className="SellerPage-whole-page">
-// 			<section>
-// 				<center>
-// 					{" "}
-// 					<h1>Seller Page</h1>{" "}
-// 				</center>
-// 				{loading ? <div>Loading...</div> : null}
-// 				{error ? <div>Error!!</div> : null}
-// 				{data ? (
-// 					<div className="SellerPage">
-
-// 						{/* THIS PLAY PRODUCTS HERE! HAHAHA */}
-
-// 						<div className="seller-product-display">
-// 							<center>
-// 								<div className="layer">
-// 									<div className="catalog-product">
-// 										<img
-// 											src={SocksBlack}
-// 											alt="Brownies"
-// 											height="200px"
-// 											width="130px;"
-// 										></img>
-// 										<br />
-// 										<span className="product-name">Black Socks</span>
-// 										<br />
-// 										<span className="price">₱100.00</span>
-// 									</div>
-// 									<div className="catalog-product">
-// 										<img
-// 											src={SocksNude}
-// 											alt="Brownies"
-// 											height="200px"
-// 											width="130px;"
-// 										></img>
-// 										<br />
-// 										<span className="product-name">Brown Socks</span>
-// 										<br />
-// 										<span className="price">₱100.00</span>
-// 									</div>
-// 									<div className="catalog-product">
-// 										<img
-// 											src={M2}
-// 											alt="marijuana2"
-// 											height="200px"
-// 											width="150px;"
-// 										></img>
-// 										<br />
-// 										<span className="product-name">Green1</span>
-// 										<br />
-// 										<span className="price">₱100.00</span>
-// 									</div>
-// 								</div>
-// 								<div className="layer">
-// 									<div className="catalog-product">
-// 										<img
-// 											src={WatchBlack}
-// 											alt="Brownies"
-// 											height="200px"
-// 											width="200px;"
-// 										></img>
-// 										<br />
-// 										<span className="product-name">Black Watch</span>
-// 										<br />
-// 										<span className="price">₱100.00</span>
-// 									</div>
-// 									<div className="catalog-product">
-// 										<img
-// 											src={ShoesBlack}
-// 											alt="Brownies"
-// 											height="200px"
-// 											width="250px;"
-// 										></img>
-// 										<br />
-// 										<span className="product-name">Black Shoes</span>
-// 										<br />
-// 										<span className="price">₱100.00</span>
-// 									</div>
-// 									<div className="catalog-product">
-// 										<img
-// 											src={Brownies}
-// 											alt="Brownies"
-// 											height="200px"
-// 											width="250px;"
-// 										></img>
-// 										<br />
-// 										<span className="product-name">Brownies</span>
-// 										<br />
-// 										<span className="price">₱100.00</span>
-// 									</div>
-// 								</div>
-// 								<div className="layer">
-// 									<div className="catalog-product">
-// 										<img
-// 											src={M1}
-// 											alt="marijuana1"
-// 											height="200px"
-// 											width="250px;"
-// 										></img>
-// 										<br />
-// 										<span className="product-name">Green2</span>
-// 										<br />
-// 										<span className="price">₱100.00</span>
-// 									</div>
-
-// 									<div className="catalog-product">
-// 										<img
-// 											src={TshirtBlack}
-// 											alt="Brownies"
-// 											height="200px"
-// 											width="250px;"
-// 										></img>
-// 										<br />
-// 										<span className="product-name">Black Tshirt</span>
-// 										<br />
-// 										<span className="price">₱100.00</span>
-// 									</div>
-// 									<div className="catalog-product">
-// 										<img
-// 											src={M3}
-// 											alt="marijuana3"
-// 											height="200px"
-// 											width="250px;"
-// 										></img>
-// 										<br />
-// 										<span className="product-name">Green3</span>
-// 										<br />
-// 										<span className="price">₱100.00</span>
-// 									</div>
-// 								</div>
-// 							</center>
-// 						</div>
-// 					</div>
-// 				) : null}
 
 export default Products;
