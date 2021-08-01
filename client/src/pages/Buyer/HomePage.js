@@ -13,10 +13,7 @@ function HomePage() {
 						<Link to="/">Home</Link>
 					</div>
 					<div className="nav-btn">
-						<Link to="/BuyerOrder">Order</Link>
-					</div>
-					<div className="nav-btn">
-						<Link to="/BuyerCheckout">Checkout</Link>
+						<Link to="/Orders">Orders</Link>
 					</div>
 					<div className="nav-btn">
 						<Link to="/BuyerProfile">Profile</Link>
