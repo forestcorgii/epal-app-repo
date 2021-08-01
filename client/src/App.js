@@ -9,7 +9,7 @@ import React, { lazy, Suspense, useContext } from "react";
 import MainNavigation from "./layout/MainNavigation";
 import { AuthProvider, AuthContext } from "./contexts/Auth";
 //Change
-import Inventory from "./pages/Seller/Inventory";
+import Inventory from "./pages/Seller/Inventory/Inventory";
 import Products from "./pages/Seller/Products";
 import SellerProfile from "./pages/Seller/SellerProfile";
 import Verification from "./components/CognitoComponents/EmailVerification/index";
@@ -24,8 +24,8 @@ import Verification from "./components/CognitoComponents/EmailVerification/index
 // import SellerPage from "./pages/Seller/SellerPage";
 
 import Cognito from "./pages/CognitoPage";
+import  SellerHome from "./pages/Seller/HomePage";
 const BuyerHome = lazy(() => import("./pages/Buyer/HomePage"));
-const SellerHome = lazy(() => import("./pages/Seller/HomePage"));
 
 // Public Route - Cannot Access if Authenticated
 // Private Route - Cannot Access if not Authenticated
@@ -42,12 +42,12 @@ function App() {
 							<PrivateRoute path="/seller">
 								<SellerHome />
 							</PrivateRoute>
-							<BuyerRoute path="/" exact>
-								<BuyerHome />
-							</BuyerRoute>
 							<PublicRoute path="/cognito">
 								<Cognito />
 							</PublicRoute>
+							<BuyerRoute path="/buyer">
+								<BuyerHome />
+							</BuyerRoute>
 						</Switch>
 					</Router>
 				</Suspense>
@@ -64,7 +64,7 @@ function PrivateRoute({ children, ...props }) {
 			{user && user.Username && user.email_verified ? (
 				children
 			) : (
-				<Redirect to={{ pathname: "/cognito" }} />
+				<Redirect to="/cognito" />
 			)}
 		</Route>
 	);
@@ -76,8 +76,10 @@ function BuyerRoute({ children, ...props }) {
 		<Route {...props}>
 			{user && user.email_verified ? (
 				user.logged_as === "SELLER" ? (
-					<Redirect to={{ pathname: "/seller" }} />
-				) : children
+					<Redirect to="/seller" />
+				) : (
+					children
+				)
 			) : (
 				children
 			)}
@@ -92,9 +94,9 @@ function PublicRoute({ children, ...props }) {
 		<Route {...props}>
 			{user && user.email_verified ? (
 				user.logged_as === "SELLER" ? (
-					<Redirect to={{ pathname: "/seller" }} />
+					<Redirect to="/seller" />
 				) : (
-					<Redirect to={{ pathname: "/" }} />
+					<Redirect to="/buyer" />
 				)
 			) : (
 				children

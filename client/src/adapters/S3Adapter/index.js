@@ -1,43 +1,31 @@
-import S3 from "react-aws-s3";
+import axios from "axios";
 
-const config = {
-	bucketName: "myBucket",
-	//  dirName: 'media', /* optional */
-	region: "eu-west-1",
-	accessKeyId: "JAJHAFJFHJDFJSDHFSDHFJKDSF",
-	secretAccessKey: "jhsdf99845fd98qwed42ebdyeqwd-3r98f373f=qwrq3rfr3rf",
-	s3Url: "https:/your-custom-s3-url.com/" /* optional */,
-};
-
-const ReactS3Client = new S3(config);
-
-export function createFile(filename, newFilename) {
-	ReactS3Client.uploadFile(filename, newFilename)
-		.then((data) => console.log(data))
-		.catch((err) => console.error(err));
+export function UploadImage(file) {
+	return axios
+		.get("http://localhost:3001/s3/signin/upload", {
+			params: {
+				filename: file.name,
+				filetype: file.type,
+			},
+		})
+		.then((res) => {
+			const options = {
+				headers: {
+					"Content-Type": file.type,
+				},
+			};
+			return axios.put(res.data.url, file, options);
+		})
+		.then((res) => {
+			const { name } = res.config.data;
+			return {
+				name,
+				isUploading: true,
+				url: `https://merkado-clienr.s3.amazonaws.com/${file.name}`,
+			};
+		});
 }
-//  {
-//    Response: {
-//      bucket: "myBucket",
-//      key: "image/test-image.jpg",
-//      location: "https://myBucket.s3.amazonaws.com/media/test-file.jpg"
-//    }
-//  }
-// });
 
-export function deleteFile(filename) {
-	ReactS3Client.deleteFile(filename)
-		.then((response) => console.log(response))
-		.catch((err) => console.error(err));
-}
-/**
-   * {
-   *   Response: {
-   *      ok: true,
-          status: 204,
-          message: 'File deleted',
-          fileName: 'hello-world.docx'
-   *   }
-   * }
-   */
-// });
+// export function DeleteImage() {
+// 	return axios.
+// }

@@ -1,13 +1,4 @@
-import SocksBlack from "../Seller/imagesProducts/socks black.jpeg";
-// import ShoesBlack from "./imagesProducts/shoes black.jpeg";
-// import SocksNude from "./imagesProducts/socks nude.jpeg";
-// import TshirtBlack from "./imagesProducts/tshirt black.jpeg";
-// import WatchBlack from "./imagesProducts/watch black.jpeg";
-// import Brownies from "./imagesProducts/brownies1.jpeg";
-// import M1 from "./imagesProducts/marijuana1.jpeg";
-// import M2 from "./imagesProducts/marijuana2.jpeg";
-// import M3 from "./imagesProducts/marijuana3.jpeg";
-// import "./Products.css";
+
 import ProductsBL from "./ProductsBL";
 import "../../assets/css/buyer.css";
 // import { Dropdown } from 'semantic-ui-react'
@@ -55,12 +46,6 @@ function Products() {
 								name={item.name}
 								price={item.price}
 							/>
-
-
-
-
-							
-							
 						);
 					})}
 			</div>

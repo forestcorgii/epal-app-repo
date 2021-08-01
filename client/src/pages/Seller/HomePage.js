@@ -8,7 +8,7 @@ import SellerNavigation from "./SellerNavigation";
 function SellerPage() {
 	return (
         <div class="Seller-Navigation">
-					
+				<SellerNavigation/>	
 		</div>
 	);
 }
