@@ -10,19 +10,15 @@ function MainNavigation() {
 			</div>
 
 			<div className="header-nav">
-					<div className="Nav">
-						<Link to="/">Home</Link>
-					</div>
-
-					{/* TESTING PAGES */}
-					<div className="Nav">
+							<div className="Nav">
+							<Link to="/">Home</Link>
 							<Link to ='/Products'>Products</Link>
 							</div>
 							<div className="Nav">
 							<Link to ='/Inventory'>Inventory</Link>
 							</div>
 							<div className="Nav">
-							<Link to ='/SProfile'>Profile</Link>
+							<Link to ='/About Us'>About Us</Link>
 							</div> 
 							<div className="Nav">
 								<Link to="/cognito">Login</Link>

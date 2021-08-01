@@ -1,11 +1,20 @@
 function Order(){
     return (
-        <section>
-          <h1>Order</h1>
-          
-        </section>
+        <div>
+            <p>ORDERS</p>
+
+
+        </div>
+
       );
 
 }
 
+function Transanctions_Table(){
+  return (
+      <div></div>
+
+  );
+
+}
 export default Order;

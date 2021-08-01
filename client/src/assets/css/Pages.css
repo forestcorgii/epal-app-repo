@@ -99,3 +99,73 @@
   height: 30px;
   width: 200px;
 }
+
+/*----------------- ABOUT PAGE---------------*/
+.aboutbanner{
+  display: block;
+}
+.about-container1{
+    background-image: url(../img/MainBanner.jpeg);
+    background-size: cover;
+    background-position: center;
+    height: 50vh;
+    width: 100%;
+    
+  
+}
+
+.about-content1{
+  background-color: rgba(0,0,0,0.8);
+  padding-top: 5px;
+  color: white;
+  width: 100%;
+  height: 50vh;
+}
+.title{
+ height: 100px;
+}
+.merkado{
+  font-size: 50px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  letter-spacing: 20px;
+  text-align: center;
+  
+}
+.about-slogan{
+  height: 100px;
+}
+.slogan{
+  font-size: 22px;
+  font-family: 'Courier New', Courier, monospace;
+  /* 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+  text-align: center;
+  word-spacing: 6px;
+}
+
+.about-container2{
+  height: 50%;
+  width: 100%;
+  
+  
+}
+.about-content2{
+  height: 100vh;
+  width: 100%;
+  background-color: burlywood;
+  display: block;
+  position: absolute;
+
+}
+.whatIs{
+  padding-left: 20%;
+  padding-right: 20%;
+  padding-top: 5%;
+  justify-content: center;
+  text-align: left;
+  color: black;
+  
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 15px;
+  word-spacing: 2px;
+  line-height: 35px;
+}
