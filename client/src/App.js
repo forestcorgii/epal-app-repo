@@ -9,9 +9,9 @@ import React, { lazy, Suspense, useContext } from "react";
 import MainNavigation from "./layout/MainNavigation";
 import { AuthProvider, AuthContext } from "./contexts/Auth";
 //Change
-import Inventory from "./pages/Seller/Inventory/Inventory";
+import Inventory from "./pages/Seller/Inventory";
 import Products from "./pages/Seller/Products";
-import SellerProfile from "./pages/Seller/SellerProfile";
+import SellerProfile from "./pages/Seller/Profile";
 import Verification from "./components/CognitoComponents/EmailVerification/index";
 
 // import BuyerInfo from "./pages/Buyer/BuyerInfo";

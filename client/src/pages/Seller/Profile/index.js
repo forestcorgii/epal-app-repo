@@ -1,13 +1,14 @@
-import HomePageBL from "./HomePageBL";
-import "../../assets/css/seller.css";
-import user from "../../assets/img/user.jpg";
+// import HomePageBL from "../HomePageBL";
+import "../../../assets/css/seller.css";
+import user from "../../../assets/img/user.jpg";
 
 import { useState } from "react";
-import Modal from "../../components/OtherComponents/Modals/ModalAddProduct";
-import Backdrop from "../../components/OtherComponents/Backdrop";
-
+import Modal from "../../../components/OtherComponents/Modals/ModalAddProduct";
+import Backdrop from "../../../components/OtherComponents/Backdrop";
+import BL from "./bl";
 function SellerProfile(props) {
 	const [modalIsOpen, setModalIsOpen] = useState(false); //modal should not be opened first so false
+	const { data, loading } = BL();
 
 	function editHandler() {
 		setModalIsOpen(true);
@@ -30,38 +31,45 @@ function SellerProfile(props) {
 					<p className="seller-id">Seller ID: M3091437</p>
 				</center>
 			</div>
-			<div className="seller-info">
-				<p className="seller-name2">Naruto Uzamaki </p>
+			{loading ? (
+				<div>Loading Profile..</div>
+			) : (
+				<div className="seller-info">
+					{/* <p className="seller-name2">Naruto Uzamaki </p>
 				<p className="seller-gender"> ex. 28 </p>
-				<p className="seller-age"> ex. 28 </p>
-				<p className="seller-ID"> ex. SMG019243439 </p>
-				<p className="seller-store-name">ex. Mafia Store</p>
-				<p className="seller-address">
-					{" "}
-					ex. 12345 qwerty st. asdfjkl, metro manila{" "}
-				</p>
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
+				<p className="seller-age"> ex. 28 </p> */}
+					<p className="seller-ID">{data.getSellerPrivateInfo.id}</p>
+					<p className="seller-store-name">
+						{data.getSellerPrivateInfo.storename}
+					</p>
+					<p className="seller-address">{data.getSellerPrivateInfo.address}</p>
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
 
-				<div className="card">
-					<h2>{props.text}</h2>
-					<div className="actions">
-						<button className="btn" onClick={editHandler}>
-							Edit Information
-						</button>
+					<div className="card">
+						<h2>{props.text}</h2>
+						<div className="actions">
+							<button className="btn" onClick={editHandler}>
+								Edit Information
+							</button>
+						</div>
+
+						{modalIsOpen && (
+							<Modal
+								{...data.getSellerPrivateInfo}
+								onCancel={closeModalHandler}
+								onConfirm={closeModalHandler}
+							/>
+						)}
+						{modalIsOpen && <Backdrop onClick={closeModalHandler} />}
 					</div>
-
-					{modalIsOpen && (
-						<Modal onCancel={closeModalHandler} onConfirm={closeModalHandler} />
-					)}
-					{modalIsOpen && <Backdrop onClick={closeModalHandler} />}
 				</div>
-			</div>
+			)}
 		</div>
 
 		//   <div className="seller-top-box">

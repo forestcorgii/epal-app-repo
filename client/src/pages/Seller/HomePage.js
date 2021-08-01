@@ -1,4 +1,3 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import React from "react";
 import "../../assets/css/seller.css";
 import SellerNavigation from "./SellerNavigation";

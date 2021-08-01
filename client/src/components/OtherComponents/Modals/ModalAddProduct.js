@@ -1,12 +1,12 @@
 
-function Modal(props){
+function Modal({onCancel,storename,description,address}){
     function cancelHandler(){
-        props.onCancel();
+        onCancel();
     }
     function doneHandler(){
-        props.onCancel();
+        onCancel();
     }
-
+console.log(storename)
     return(
     
     <div className='modal'>
@@ -19,9 +19,6 @@ function Modal(props){
                 <input type="text" placeholder="Enter Address"/>
                 <input type="text" placeholder="Enter first name"/>
                 <input type="text" placeholder="Enter first name"/>
-
-
-
             </form>
 
         </div>

@@ -10,6 +10,7 @@ module.exports = gql`
 		imageURL:String
 		price: Float!
 		description: String!
+		quantity: Int
 		technicalInformation: TechnicalInformationInput
 		categories: [String]
 	}
@@ -22,6 +23,7 @@ module.exports = gql`
 		name: String!
 		imageURL:String
 		price: Float!
+		quantity: Int
 		description: String!
 		technicalInformation: TechnicalInformation
 		categories: [String]

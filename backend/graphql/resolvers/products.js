@@ -21,6 +21,7 @@ module.exports = {
 					name,
 					imageURL,
 					price,
+					quantity,
 					description,
 					technicalDefinition,
 					categories,
@@ -38,6 +39,7 @@ module.exports = {
 				imageURL,
 				price,
 				description,
+				quantity,
 				technicalDefinition,
 				categories,
 				seller: seller._id,
@@ -51,7 +53,16 @@ module.exports = {
 		},
 		async updateProduct(
 			_,
-			{ id, name, imageURL, price, description, quantity },
+			{
+				id,
+				name,
+				imageURL,
+				price,
+				description,
+				quantity,
+				technicalDefinition,
+				categories,
+			},
 			{ user }
 		) {
 			const seller = await Seller.findOne({ username: user });
@@ -60,6 +71,8 @@ module.exports = {
 					name,
 					imageURL,
 					price,
+					technicalDefinition,
+					categories,
 					description,
 					quantity,
 					seller: seller._id,

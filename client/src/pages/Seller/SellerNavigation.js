@@ -9,8 +9,8 @@ import {
 } from "react-router-dom";
 
 import Products from "./Products";
-import Inventory from "./Inventory/Inventory";
-import Profile from './SellerProfile'
+import Inventory from "./Inventory";
+import Profile from './Profile'
 function SellerNavigation() {
 	let { path, url } = useRouteMatch();
 

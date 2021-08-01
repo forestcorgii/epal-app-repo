@@ -1,9 +1,9 @@
-import { useMutation, useQuery } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { useFormik } from "formik";
 import ValidationSchema from "./validition";
-import { CREATE_PRODUCT, GET_PRODUCTS } from "./graphql";
-import { UploadImage } from "../../../adapters/S3Adapter";
-export default function BL() {
+import { CREATE_PRODUCT } from "./graphql";
+import { UploadImage } from "../../../../adapters/S3Adapter";
+export default function AddProductFormBL() {
 	const [createProduct, { data, loading, error }] =
 		useMutation(CREATE_PRODUCT);
 
@@ -24,6 +24,7 @@ export default function BL() {
 						description: values.description,
 						name: values.productName,
 						price: values.price,
+						quantity: values.quantity,
 						imageURL: imageURL,
 					},
 				},
@@ -37,6 +38,7 @@ export default function BL() {
 			productName: "",
 			description: "",
 			price: 0,
+			quantity:0,
 			image: null,
 		},
 		validationSchema: ValidationSchema,
