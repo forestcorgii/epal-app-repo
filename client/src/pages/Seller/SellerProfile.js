@@ -3,7 +3,7 @@ import "../../assets/css/seller.css";
 import user from "../../assets/img/user.jpg";
 
 import { useState } from "react";
-import Modal from "../../components/OtherComponents/Modal";
+import Modal from "../../components/OtherComponents/Modals/ModalAddProduct";
 import Backdrop from "../../components/OtherComponents/Backdrop";
 
 function SellerProfile(props) {
