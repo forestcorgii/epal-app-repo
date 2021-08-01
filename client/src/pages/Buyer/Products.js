@@ -1,4 +1,3 @@
-import SocksBlack from "../Seller/imagesProducts/socks black.jpeg";
 
 import ProductsBL from "./ProductsBL";
 import "../../assets/css/buyer.css";
@@ -35,9 +34,7 @@ function Products() {
 								image={item.imageURL}
 								name={item.name}
 								price={item.price}
-
 							/>
-							
 						);
 					})}
 			</div>

@@ -13,7 +13,7 @@ export default function LoginFormBL() {
 		}
 		if (user) {
 			if (user.UserNotConfirmed) {
-				history.push("/cognito/");
+				history.push("/cognito");
 			} else {
 				history.push("/");
 			}
