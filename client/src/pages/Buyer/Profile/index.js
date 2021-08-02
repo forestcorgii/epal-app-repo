@@ -3,7 +3,7 @@ import "../../../assets/css/seller.css";
 import user from "../../../assets/img/user.jpg";
 
 import { useState } from "react";
-import Modal from "../../../components/OtherComponents/Modals/Modals";
+import Modal from "../../../components/OtherComponents/Modals/ModalAddProduct";
 import Backdrop from "../../../components/OtherComponents/Backdrop";
 import BL from "./bl";
 function SellerProfile(props) {
@@ -12,8 +12,8 @@ function SellerProfile(props) {
 
 	function editHandler() {
 		setModalIsOpen(true);
-		console.log('Clicked!');
-		console.log(props.text);
+		// console.log('Clicked!');
+		// console.log(props.text);
 	}
 	function closeModalHandler() {
 		setModalIsOpen(false);
@@ -36,8 +36,8 @@ function SellerProfile(props) {
 			) : (
 				<div className="seller-info">
 					{/* <p className="seller-name2">Naruto Uzamaki </p>
-				   <p className="seller-gender"> ex. 28 </p>
-				 <p className="seller-age"> ex. 28 </p> */}
+				<p className="seller-gender"> ex. 28 </p>
+				<p className="seller-age"> ex. 28 </p> */}
 					<p className="seller-ID">{data.getSellerPrivateInfo.id}</p>
 					<p className="seller-store-name">
 						{data.getSellerPrivateInfo.storename}
@@ -50,9 +50,7 @@ function SellerProfile(props) {
 					<br />
 					<br />
 					<br />
-					<br />
-					
-				
+
 					<div className="card">
 						<h2>{props.text}</h2>
 						<div className="actions">

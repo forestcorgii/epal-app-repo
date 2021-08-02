@@ -27,6 +27,7 @@ import Cognito from "./pages/CognitoPage";
 import AboutHome from "./pages/AboutHome";
 const BuyerHome = lazy(() => import("./pages/Buyer"));
 const SellerHome = lazy(() => import("./pages/Seller/HomePage"));
+// const AboutHome = lazy(() => import("./pages/AboutHome"));
 
 // Public Route - Cannot Access if Authenticated
 // Private Route - Cannot Access if not Authenticated
@@ -61,6 +62,10 @@ function App() {
 							<PublicRoute path="/cognito">
 								<Cognito />
 							</PublicRoute>
+							<Route path="/" exact>
+								<Redirect to="/aboutUs"/>
+								<AboutHome />
+							</Route>
 							<BuyerRoute path="/buyer">
 								<BuyerHome />
 							</BuyerRoute>
