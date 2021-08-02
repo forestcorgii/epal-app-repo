@@ -1,53 +1,58 @@
-import { Link, BrowserRouter as Router, Route } from "react-router-dom";
+import {
+	Link,
+	BrowserRouter as Router,
+	Route,
+	useRouteMatch,
+	Redirect,
+	Switch,
+} from "react-router-dom";
 import "../../assets/css/buyer.css";
-import React, { lazy, Suspense, useContext } from "react";
+import React, { lazy, useEffect, Suspense, useContext } from "react";
 import { AuthContext } from "../../contexts/Auth";
 import Products from "./Products/Products";
 
+import CognitoBL from "../../components/CognitoComponents/Signin/bl";
 
 function HomePage() {
-	return (
-			<div className="buyer-homepage">
-				<div className="navigation">
-					<div className="nav-btn">
-						<Link to="/">Home</Link>
-					</div>
-					<div className="nav-btn">
-						<Link to="/Orders">Orders</Link>
-					</div>
-					<div className="nav-btn">
-						<Link to="/BuyerProfile">Profile</Link>
-					</div>
+	const {  } = CognitoBL();
 
-					{/* <div className="logout">
+	let { path, url } = useRouteMatch();
+	return (
+		<div className="buyer-homepage">
+			<Suspense fallback={<div>Loading</div>}>
+				<Router>
+					<div className="navigation">
+						<div className="nav-btn">
+							<Link to={`${url}/products`}>Home</Link>
+						</div>
+						<div className="nav-btn">
+							<Link to={`${url}/orders`}>Orders</Link>
+						</div>
+						<div className="nav-btn">
+							<Link to={`${url}/profile`}>Profile</Link>
+						</div>
+						{/* <div className="logout">
 						<LogoutButton />
 				</div> */}
-
-					
-				</div>
-				
-				
-				<div>
-					<Router>
-						<Route path="/">
-							<Products />
-						</Route>
-					</Router>
-				</div>
-			</div>
-	);
-}
-function LogoutButton() {
-	const { logout } = useContext(AuthContext);
-	return (
-		<button
-			onClick={() => {
-				logout();
-				window.location.reload();
-			}}
-		>
-			Logout
-		</button>
+					</div>
+					<div>
+						<Switch>
+							<Route path={`${path}/`} exact>
+								<Redirect to={`${path}/products`} />
+							</Route>
+							<Route path={`${path}/products`}>
+								<Products />
+							</Route>
+							<Route path={`${path}/orders`}>Orders{/* <Inventory /> */}</Route>
+							<Route path={`${path}/profile`}>
+								Profile
+								{/* <Profile /> */}
+							</Route>
+						</Switch>
+					</div>
+				</Router>
+			</Suspense>
+		</div>
 	);
 }
 

@@ -4,21 +4,25 @@ import { AuthContext } from "../../../contexts/Auth";
 
 export default function LoginFormBL() {
 	let history = useHistory();
-	const { user, relogin, login } = useContext(AuthContext);
+	const { user, relogin, login, saveUserData } = useContext(AuthContext);
 	// useEffect(() => {
 	// }, []);
 	useEffect(() => {
 		if (!user) {
-			relogin();
+			relogin((valid, result) => {
+				if (valid) {
+					saveUserData(result);
+					if (result.UserNotConfirmed) {
+						history.push("/cognito");
+					} else {
+						history.push("/");
+					}
+				}
+			});
 		}
-		if (user) {
-			if (user.UserNotConfirmed) {
-				history.push("/cognito");
-			} else {
-				history.push("/");
-			}
-		}
-	}, [user]);
+		// if (user) {
+		// }
+	}, []);
 
 	function handleSubmit(e) {
 		e.preventDefault();
@@ -28,11 +32,20 @@ export default function LoginFormBL() {
 			logged_as: e.target.logged_as.value,
 		};
 
-		login(val);
+		login(val, (valid, UserNotConfirmed, result) => {
+			if (valid) {
+				saveUserData(result);
+				if (UserNotConfirmed) {
+					history.push("/cognito");
+				} else {
+					// history.push("/");
+					window.location.reload()
+				}
+			}
+		});
 		// history.push(`/cognito/verifyemail/${val.Username}`);
-		history.push(`/`);
+		// history.push(`/`);
 	}
 
-
-	return { handleSubmit };
+	return { handleSubmit, relogin };
 }

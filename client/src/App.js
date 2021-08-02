@@ -5,7 +5,7 @@ import {
 	Redirect,
 	useRouteMatch,
 } from "react-router-dom";
-import React, { lazy, Suspense, useContext,useEffect } from "react";
+import React, { lazy, Suspense, useContext, useEffect } from "react";
 import MainNavigation from "./layout/MainNavigation";
 import { AuthProvider, AuthContext } from "./contexts/Auth";
 //Change
@@ -25,6 +25,8 @@ import Verification from "./components/CognitoComponents/EmailVerification/index
 
 import Cognito from "./pages/CognitoPage";
 import AboutHome from "./pages/AboutHome";
+
+
 const BuyerHome = lazy(() => import("./pages/Buyer"));
 const SellerHome = lazy(() => import("./pages/Seller/HomePage"));
 // const AboutHome = lazy(() => import("./pages/AboutHome"));
@@ -35,17 +37,6 @@ const SellerHome = lazy(() => import("./pages/Seller/HomePage"));
 
 function App() {
 
-	useEffect(() => {
-		if ("geolocation" in navigator) {
-			navigator.geolocation.getCurrentPosition(function (position) {
-				console.log(`${position.coords.latitude},${position.coords.longitude}`);
-				// console.log("Longitude is :", position.coords.longitude);
-			});
-		} else {
-			console.log("Not Available");
-		}
-	});
-
 	return (
 		<div>
 			<AuthProvider>
@@ -54,7 +45,7 @@ function App() {
 						<MainNavigation />
 						<Switch>
 							<Route path="/" exact>
-								<Redirect to="/buyer"/>
+								<Redirect to="/buyer" />
 							</Route>
 							<PrivateRoute path="/seller">
 								<SellerHome />
@@ -63,7 +54,7 @@ function App() {
 								<Cognito />
 							</PublicRoute>
 							<Route path="/" exact>
-								<Redirect to="/aboutUs"/>
+								<Redirect to="/aboutUs" />
 								<AboutHome />
 							</Route>
 							<BuyerRoute path="/buyer">

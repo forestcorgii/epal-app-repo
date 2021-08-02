@@ -1,7 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+
+import { useContext } from "react";
+import { AuthContext } from "../contexts/Auth";
+
 import "./MainNavigation.css";
 import merkado from "./Merkado4.png";
 function MainNavigation() {
+	const { user } = useContext(AuthContext);
+
 	return (
 		<div className="header">
 			<div className="merkado-header">
@@ -28,23 +34,44 @@ function MainNavigation() {
 				<input type="search" placeholder="Search here"></input>
 			</div>
 			<div className="btn-logout">
-				<input type="button" value=" Logout" placeholder="Logout" />
+				{user ? (
+					<>
+						{user.email}
+						<LogoutButton />
+					</>
+				) : (
+					<LoginButton />
+				)}
+
+				{/* <input type="button" value=" Logout" placeholder="Logout" /> */}
 			</div>
 		</div>
 	);
 }
-// function LogoutButton() {
-// 	const { logout } = useContext(AuthContext);
-// 	return (
-// 		<button
-// 			onClick={() => {
-// 				logout();
-// 				window.location.reload();
-// 			}}
-// 		>
-// 			Logout
-// 		</button>
-// 	);
-// }
+function LoginButton() {
+	let history = useHistory();
+	return (
+		<input
+			type="button"
+			value="Login"
+			onClick={() => {
+				history.push("/cognito");
+			}}
+		/>
+	);
+}
+function LogoutButton() {
+	const { logout } = useContext(AuthContext);
+	return (
+		<input
+			type="button"
+			onClick={() => {
+				logout();
+				window.location.reload();
+			}}
+			value="Logout"
+		/>
+	);
+}
 
 export default MainNavigation;

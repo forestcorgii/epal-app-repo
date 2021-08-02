@@ -7,14 +7,13 @@ export default function BL() {
 
 	useEffect(() => {
 		navigator.geolocation.getCurrentPosition(function (position) {
-			console.log(`${position.coords.latitude},${position.coords.longitude}`);
 			getAvailableProducts({
 				variables: {
-					location:[position.coords.longitude,position.coords.latitude]
-				}
-			})
+					location: [position.coords.longitude, position.coords.latitude],
+				},
+			});
 		});
 	}, []);
 
-	return {  loading, error, data };
+	return { loading, error, data };
 }
