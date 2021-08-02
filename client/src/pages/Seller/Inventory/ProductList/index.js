@@ -1,5 +1,5 @@
 import BL from "./bl";
-export default function AddProductForm() {
+export default function AddProductForm(props) {
 	const { data, loading } = BL();
 	return (
 		<div className="table-items">
@@ -11,6 +11,7 @@ export default function AddProductForm() {
 					<th>Item Description</th>
 					<th>Price</th>
 					<th>Quantity</th>
+					{/* <th></th> */}
 				</tr>
 				{loading ? (
 					<div>Loading, please wait.</div>
@@ -18,6 +19,8 @@ export default function AddProductForm() {
 					data.getProducts &&
 					data.getProducts.map((item, i) => (
 						<Item
+							key={"productlist" + item.id}
+							onClick={props.handleClick(item)}
 							id={item.id}
 							name={item.name}
 							description={item.description}
@@ -31,14 +34,17 @@ export default function AddProductForm() {
 	);
 }
 
-function Item({ id, name, description, price, quantity }) {
+function Item({ id, name, description, price, quantity, onClick }) {
 	return (
 		<tr>
-			<td>{id}</td>
+			<td onClick={() => onClick}>{id}</td>
 			<td>{name}</td>
 			<td>{description}</td>
 			<td>{price}</td>
 			<td>{quantity}</td>
+			{/* <td>
+
+			</td> */}
 		</tr>
 	);
 }

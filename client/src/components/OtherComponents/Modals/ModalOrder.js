@@ -1,4 +1,4 @@
-function ModalOrder(props){
+function ModalOrder({name,imageURL,price,...props}){
     function cancelHandler(){
         props.onCancel();
     }
@@ -11,11 +11,14 @@ function ModalOrder(props){
          
     <div className='modal'>
 
-    <p>ORDER</p>
-    *Item's picture here<br/>
-    *Item's price
+    <p>ORDER</p>    
+            <h3>{name}</h3>
+            *Item's picture here<br />
+            <img src={imageURL}/><br/>
+            *Item's price
+            <p>{ price}</p>
     <br/><br/>
-    Quantity: &nbsp; <input type="text" placeholder="Enter Quantity"/>
+    Quantity: &nbsp; <input type="number" placeholder="Enter Quantity"/>
     <br/> <br/>
     Mode of Payment:<br/>
     1 <input type="radio" name="payment1"/><br/>

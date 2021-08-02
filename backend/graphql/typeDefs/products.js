@@ -19,7 +19,7 @@ module.exports = gql`
 		color: String
 	}
 	type Product {
-		id: ID!
+		_id: ID
 		name: String!
 		imageURL:String
 		price: Float!
@@ -28,10 +28,11 @@ module.exports = gql`
 		technicalInformation: TechnicalInformation
 		categories: [String]
 		createdAt: String
-		seller: Seller!
+		seller: Seller
 	}
 	extend type Query {
-		getProducts: [Product]
+		availableProductList(location:[Float!]!): [Product]
+		sellerProductList: [Product]
 		getProduct(id: ID!): Product
 	}
 	extend type Mutation {

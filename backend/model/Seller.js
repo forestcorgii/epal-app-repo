@@ -13,4 +13,7 @@ const SellerSchema = Schema({
 	orders: [{ type: Schema.Types.ObjectId, ref: Order }],
 	createdAt: { type: Date, default: Date.now },
 });
+
+SellerSchema.index({ location: "2dsphere" });
+
 module.exports = model("Seller", SellerSchema);

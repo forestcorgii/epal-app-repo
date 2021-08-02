@@ -10,28 +10,26 @@ function MainNavigation() {
 			</div>
 
 			<div className="header-nav">
-							<div className="Nav">
-							<Link to="/">Home</Link>
-							<Link to ='/Products'>Products</Link>
-							</div>
-							<div className="Nav">
-							<Link to ='/Inventory'>Inventory</Link>
-							</div>
-							<div className="Nav">
-							<Link to ='/About Us'>About Us</Link>
-							</div> 
-							<div className="Nav">
-								<Link to="/cognito">Login</Link>
-							</div>
-					</div>
-					<div className="nav-search">
-						<input type="search" placeholder="Search here"></input>
-					</div>
-					<div className="btn-logout">
-						<input type="button" value=" Logout" placeholder="Logout"/>
-					</div>
-					
-			
+				{/* <div className="Nav">
+					<Link to="/">Home</Link>
+					<Link to="/Products">Products</Link>
+				</div>
+				<div className="Nav">
+					<Link to="/Inventory">Inventory</Link>
+				</div>
+				<div className="Nav">
+					<Link to="/About Us">About Us</Link>
+				</div>
+				<div className="Nav">
+					<Link to="/cognito">Login</Link>
+				</div> */}
+			</div>
+			<div className="nav-search">
+				<input type="search" placeholder="Search here"></input>
+			</div>
+			<div className="btn-logout">
+				<input type="button" value=" Logout" placeholder="Logout" />
+			</div>
 		</div>
 	);
 }

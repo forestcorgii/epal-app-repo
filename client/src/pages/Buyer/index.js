@@ -2,7 +2,7 @@ import { Link, BrowserRouter as Router, Route } from "react-router-dom";
 import "../../assets/css/buyer.css";
 import React, { lazy, Suspense, useContext } from "react";
 import { AuthContext } from "../../contexts/Auth";
-import Products from "./Products";
+import Products from "./Products/Products";
 
 
 function HomePage() {

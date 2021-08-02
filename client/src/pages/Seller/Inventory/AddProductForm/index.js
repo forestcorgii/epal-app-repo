@@ -1,6 +1,6 @@
 import BL from "./bl";
-export default function AddProductForm() {
-	const { formik } = BL();
+export default function AddProductForm(props) {
+	const { formik } = BL(props.selectedProduct);
 
 	return (
 		<div className="side-nav">

@@ -4,7 +4,27 @@ const { UserInputError } = require("apollo-server-lambda");
 const User = require("../../model/User");
 module.exports = {
 	Query: {
-		async getProducts(_, body, context) {
+		async availableProductList(_, { location }, context) {
+			const res = await Seller.aggregate()
+				.near({
+					near: location, //[121.0392, 14.61185],
+					distanceField: "distance",
+					maxDistance: 1000,
+					key: "location",
+					// includeLocs: "location",
+				})
+				.lookup({
+					from: "products",
+					localField: "products",
+					foreignField: "_id",
+					as: "productArr",
+				})
+				.exec();
+			var prods = [];
+			res.forEach((seller) => (prods = prods.concat(seller.productArr)));
+			return prods;
+		},
+		async sellerProductList(_, body, context) {
 			const products = await Product.find().populate("seller");
 			return products;
 		},

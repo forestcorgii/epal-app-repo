@@ -14,6 +14,7 @@ module.exports = {
 			const seller = await Seller.findById(user.profile.seller._id)
 				.populate("products orders");
 
+			console.log(seller)
 			return seller;
 		},
 		async getSellerPublicInfo(_, { id }, context) {
@@ -22,6 +23,7 @@ module.exports = {
 			}
 
 			const seller = await Seller.findById(id).populate("products");
+			console.log(seller)
 			// .populate("store.orders");
 			return seller;
 		},

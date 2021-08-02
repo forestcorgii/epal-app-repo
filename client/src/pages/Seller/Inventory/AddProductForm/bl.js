@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import ValidationSchema from "./validition";
 import { CREATE_PRODUCT } from "./graphql";
 import { UploadImage } from "../../../../adapters/S3Adapter";
-export default function AddProductFormBL() {
+export default function AddProductFormBL(selectedProduct) {
 	const [createProduct, { data, loading, error }] =
 		useMutation(CREATE_PRODUCT);
 
@@ -32,15 +32,22 @@ export default function AddProductFormBL() {
 		}
 		setSubmitting(false);
 	};
+	const initialValues = (product) => {
+		console.log(product)
+		if (!product) {
+			return {
+				id: null,
+				productName: "",
+				description: "",
+				price: 0,
+				quantity:0,
+				image: null,			
+			}			
+		}
+		return product
+	}
 	const formik = useFormik({
-		initialValues: {
-			// id: null,
-			productName: "",
-			description: "",
-			price: 0,
-			quantity:0,
-			image: null,
-		},
+		initialValues: initialValues(selectedProduct),
 		validationSchema: ValidationSchema,
 		onSubmit: handleSubmit,
 	});
