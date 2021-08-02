@@ -14,9 +14,9 @@ function MainNavigation() {
 							<Link to="/">Home</Link>
 							<Link to ='/Products'>Products</Link>
 							</div>
-							<div className="Nav">
+							{/* <div className="Nav">
 							<Link to ='/Inventory'>Inventory</Link>
-							</div>
+							</div> */}
 							<div className="Nav">
 							<Link to ='/About Us'>About Us</Link>
 							</div> 

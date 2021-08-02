@@ -24,9 +24,11 @@ import Verification from "./components/CognitoComponents/EmailVerification/index
 // import SellerPage from "./pages/Seller/SellerPage";
 
 import Cognito from "./pages/CognitoPage";
-import AboutHome from "./pages/AboutHome";
-const BuyerHome = lazy(() => import("./pages/AboutHome"));
+import AboutHome from "./pages/CognitoPage";
+
+const BuyerHome = lazy(() => import("./pages/Buyer/HomePage"));
 const SellerHome = lazy(() => import("./pages/Seller/HomePage"));
+// const AboutHome = lazy(() => import("./pages/AboutHome"));
 
 // Public Route - Cannot Access if Authenticated
 // Private Route - Cannot Access if not Authenticated
@@ -40,12 +42,19 @@ function App() {
 					<Router>
 						<MainNavigation />
 						<Switch>
+							<Route path="/" exact>
+								<Redirect to="/buyer"/>
+							</Route>
 							<PrivateRoute path="/seller">
 								<SellerHome />
 							</PrivateRoute>
 							<PublicRoute path="/cognito">
 								<Cognito />
 							</PublicRoute>
+							<Route path="/" exact>
+								<Redirect to="/aboutUs"/>
+								<AboutHome />
+							</Route>
 							<BuyerRoute path="/buyer">
 								<BuyerHome />
 							</BuyerRoute>

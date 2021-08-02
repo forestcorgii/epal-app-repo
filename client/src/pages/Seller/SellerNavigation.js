@@ -20,26 +20,26 @@ function SellerNavigation() {
 			<Suspense fallback={<div>Loading...</div>}>
 				<Router>
 					<div className="navigation">
-						<div className="nav-btn">
+						{/* <div className="nav-btn">
 							<Link to={`${url}/`}>Home</Link>
-						</div>
+						</div> */}
 						<div className="nav-btn">
-							<Link to={`${url}/products`}>Products</Link>
+							<Link to={`${url}/products`}>My Products</Link>
 						</div>
 						<div className="nav-btn">
 							<Link to={`${url}/inventory`}>Inventory</Link>
 						</div>
 						<div className="nav-btn">
-							<Link to={`${url}/profile`}>SProfile</Link>
+							<Link to={`${url}/profile`}>Seller's Profile</Link>
 						</div>
 					</div>
 
-					<div className="nav-btn-logout">
+					{/* <div className="nav-btn-logout">
 						<Link to="/"> LOGOUT</Link>
-					</div>
+					</div> */}
 					
 					<Switch>
-						<Route path={`${path}/products`}>
+						<Route path={`${path}/products`} exact>
 							<div>products</div>
 							<Products />
 						</Route>
@@ -49,9 +49,9 @@ function SellerNavigation() {
 						<Route path={`${path}/profile`}>
 							<Profile/>
 						</Route>
-						<Route path={`${path}/`} exact>
+						{/* <Route path={`${path}/`} exact>
 							<div>Seller Home</div>
-						</Route>
+						</Route> */}
 					</Switch>
 				</Router>
 			</Suspense>

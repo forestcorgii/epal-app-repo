@@ -9,7 +9,7 @@ function Modal({onCancel,storename,description,address}){
 console.log(storename)
     return(
     
-    <div className='modal'>
+    <div className='modal-edit-info'>
 
         <div>
             <form>
@@ -17,12 +17,16 @@ console.log(storename)
                 <input type="text" placeholder="Enter Last name"/>
                 <input type="text" placeholder="Enter Age"/>
                 <input type="text" placeholder="Enter Address"/>
-                <input type="text" placeholder="Enter first name"/>
-                <input type="text" placeholder="Enter first name"/>
+                <input type="text" placeholder="Enter Store name"/>
             </form>
 
         </div>
-        <button className='btn btn--alt' onClick={cancelHandler}> Cancel</button>
+        <br/>
+        <br/> <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+        <button className='btn btn--alt' onClick={cancelHandler}> Cancel</button> &nbsp;
         <button className='btn' onClick={doneHandler}>Done</button>
     </div>
     )
