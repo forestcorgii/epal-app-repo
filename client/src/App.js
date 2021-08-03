@@ -76,7 +76,7 @@ function PrivateRoute({ children, ...props }) {
 			{user && user.Username && user.email_verified ? (
 				children
 			) : (
-				<Redirect to="/cognito" />
+				<Redirect to="/cognito" replace/>
 			)}
 		</Route>
 	);

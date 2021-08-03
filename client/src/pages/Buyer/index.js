@@ -19,43 +19,54 @@ function HomePage() {
 	let { path, url } = useRouteMatch();
 	return (
 		<div className="buyer-homepage">
-			<Suspense fallback={<div>Loading</div>}>
-				<Router>
-					<div className="navigation">
-						<div className="nav-btn">
-							<Link to={`${url}/products`}> Home</Link>
-						</div>
-						<div className="nav-btn">
-							<Link to={`${url}/orders`}>
-								<span class="material-icons">shopping_cart</span>Orders
-							</Link>
-						</div>
-						<div className="nav-btn">
-							<Link to={`${url}/profile`}>Profile</Link>
-						</div>
-						{/* <div className="logout">
+			<div className="navigation">
+				<div className="nav-btn">
+					<Link to={`${url}/products`}> Home</Link>
+				</div>
+				<div className="nav-btn">
+					<Link to={`${url}/orders`}>
+						<span class="material-icons">shopping_cart</span>Orders
+					</Link>
+				</div>
+				<div className="nav-btn">
+					<Link to={`${url}/profile`}>Profile</Link>
+				</div>
+				{/* <div className="logout">
 						<LogoutButton />
 				</div> */}
-					</div>
-					<div>
-						<Switch>
-							<Route path={`${path}/`} exact>
-								<Redirect to={`${path}/products`} />
-							</Route>
-							<Route path={`${path}/products`}>
-								<Products />
-							</Route>
-							<Route path={`${path}/orders`}>Orders{/* <Inventory /> */}</Route>
-							<Route path={`${path}/profile`}>
-								Profile
-								{/* <Profile /> */}
-							</Route>
-						</Switch>
-					</div>
-				</Router>
-			</Suspense>
+			</div>
+			<div>
+				<Switch>
+					<Route path={`${path}/`} exact>
+						<Redirect to={`${path}/products`} />
+					</Route>
+					<Route path={`${path}/products`}>
+						<Products />
+					</Route>
+					<PrivateRoute path={`${path}/orders`}>
+						Orders{/* <Inventory /> */}
+					</PrivateRoute>
+					<PrivateRoute path={`${path}/profile`}>
+						Profile
+						{/* <Profile /> */}
+					</PrivateRoute>
+				</Switch>
+			</div>
 		</div>
 	);
 }
 
+function PrivateRoute({ children, ...props }) {
+	const { user } = useContext(AuthContext);
+	console.log("private route " + JSON.stringify(user));
+	return (
+		<Route {...props}>
+			{user && user.Username && user.email_verified ? (
+				children
+			) : (
+				<Redirect to="/cognito" />
+			)}
+		</Route>
+	);
+}
 export default HomePage;
