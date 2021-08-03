@@ -10,10 +10,10 @@ function MainNavigation() {
 
 	return (
 		<div className="header">
-			{/* <div className="merkado-header">
+			<div className="merkado-header">
 			<Link to="/"><img src={merkado} height="85px;" width="82px" /></Link>
-				&nbsp; <h1><Link to="/">MERKADO</Link></h1>
-			</div> */}
+				&nbsp; <h1>MERKADO</h1>
+			</div>
 			<div className="header-nav">
 				<div className="Nav">
 					<Link to="/">HOME</Link>
