@@ -14,19 +14,16 @@ function MainNavigation() {
 			<Link to="/"><img src={merkado} height="85px;" width="82px" /></Link>
 				&nbsp; <h1>MERKADO</h1>
 			</div>
-			<div className="header-nav">
-				<div className="Nav">
-					<Link to="/">HOME</Link>
-				</div>
-				<div className="Nav">
-					<Link to="/About Us">ABOUT US</Link>
-				</div>
-			</div>
+			
 			
 			<div className="nav-search">
 				<input type="search" placeholder="Search here"></input>
 			</div>
-			
+			<div className="header-nav">
+				<div className="Nav">
+					<Link to="/About Us">ABOUT US</Link>
+				</div>
+			</div>
 			<div className="btn-logout">
 			  
 				{user ? (
