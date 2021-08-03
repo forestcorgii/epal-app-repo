@@ -46,7 +46,7 @@ function ProductItem({ imageURL, name, price, order }) {
 	return (
 		<div className="product">
 			{/* <center> */}
-			<img src={imageURL} alt={name} height="150px" width="160px;"></img>
+			<img src={imageURL} alt={name} height="150px" width="190px;"></img>
 			<br />
 			<span className="product-name">{name}</span>
 			<br />
@@ -78,7 +78,7 @@ function Todo(props) {
 			<h2>{props.text}</h2>
 			<div className="order-actions">
 				<button className="order-btn-btn" onClick={deleteHandler}>
-					Order
+				<span class="material-icons">info</span>
 				</button>
 			</div>
 			{modalIsOpen && (

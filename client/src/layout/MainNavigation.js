@@ -59,6 +59,7 @@ function LoginButton() {
 function LogoutButton() {
 	const { logout } = useContext(AuthContext);
 	return (
+		
 		<input
 			type="button"
 			onClick={() => {
