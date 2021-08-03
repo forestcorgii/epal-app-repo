@@ -14,7 +14,7 @@ import Products from "./Products/Products";
 import CognitoBL from "../../components/CognitoComponents/Signin/bl";
 
 function HomePage() {
-	const {  } = CognitoBL();
+	const {} = CognitoBL();
 
 	let { path, url } = useRouteMatch();
 	return (
@@ -23,10 +23,12 @@ function HomePage() {
 				<Router>
 					<div className="navigation">
 						<div className="nav-btn">
-							<Link to={`${url}/products`}>Home</Link>
+							<Link to={`${url}/products`}> Home</Link>
 						</div>
 						<div className="nav-btn">
-							<Link to={`${url}/orders`}>Orders</Link>
+							<Link to={`${url}/orders`}>
+								<span class="material-icons">shopping_cart</span>Orders
+							</Link>
 						</div>
 						<div className="nav-btn">
 							<Link to={`${url}/profile`}>Profile</Link>

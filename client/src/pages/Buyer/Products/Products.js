@@ -50,7 +50,7 @@ function ProductItem({ imageURL, name, price, order }) {
 			<span className="price">₱{price}</span>
 
 			<div className="order">
-				<Todo {...{name, price, imageURL}} />
+				<Todo {...{ name, price, imageURL }} />
 			</div>
 
 			{/* </center> */}
