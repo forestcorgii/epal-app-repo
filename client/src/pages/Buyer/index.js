@@ -19,23 +19,27 @@ function HomePage() {
 	let { path, url } = useRouteMatch();
 	return (
 		<div className="buyer-homepage">
-			<div className="navigation">
-				<div className="nav-btn">
-					<Link to={`${url}/products`}> Home</Link>
-				</div>
-				<div className="nav-btn">
-					<Link to={`${url}/orders`}>
-						<span class="material-icons">shopping_cart</span>Orders
-					</Link>
-				</div>
-				<div className="nav-btn">
-					<Link to={`${url}/profile`}>Profile</Link>
-				</div>
-				{/* <div className="logout">
-						<LogoutButton />
-				</div> */}
-			</div>
-			<div>
+			<Suspense fallback={<div>Loading</div>}>
+				<Router>
+					<div className="navigation">
+						<div className="nav-btn">
+							<Link to={`${url}/products`}>
+							<span class="material-icons">home</span> Home</Link>
+						</div>
+						<div className="nav-btn">
+							<Link to={`${url}/orders`}>
+								<span class="material-icons">shopping_cart</span>Orders
+							</Link>
+						</div>
+						<div className="nav-btn">
+							<Link to={`${url}/profile`}>
+							<span class="material-icons">person</span>Profile</Link>
+						</div>
+					</div>
+						
+				</Router>
+			</Suspense>
+	
 				<Switch>
 					<Route path={`${path}/`} exact>
 						<Redirect to={`${path}/products`} />
@@ -52,7 +56,7 @@ function HomePage() {
 					</PrivateRoute>
 				</Switch>
 			</div>
-		</div>
+		
 	);
 }
 

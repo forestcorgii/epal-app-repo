@@ -12,7 +12,7 @@ export default function Registration() {
 			<center>
 				<div className="container-form-registration">
 					<br/>
-					<h1>REGISTRATION</h1>
+					<p class="registration">REGISTRATION</p>
 					<div>
 				
 						<form onSubmit={formik.handleSubmit}>
@@ -53,23 +53,19 @@ export default function Registration() {
 								
 							</div>{" "}
 							
-							<div className="radio">
-								<label>
-									<input
-										type="radio"
-										name="logged_as"
-										value="BUYER"
-										defaultChecked
-									/>
-									Customer
-								</label>
+							<div className="btn-radio">
+								<div className="radios">
+								<input type="radio" name="logged_as" value="BUYER" checked={true}/>
+								Customer
+								
+								</div>
+								<div className="radios">
+								<input type="radio" name="logged_as" value="SELLER"/>
+								Retail Owner
+								
+								</div>
+								
 							</div>
-							<div className="radio">
-								<label>
-									<input type="radio" name="logged_as" value="SELLER" />
-									Retail Owner
-								</label>
-							</div>{" "}
 							<br />
 							<input className="button-btn" type="submit" value="REGISTER" />
 						</form>

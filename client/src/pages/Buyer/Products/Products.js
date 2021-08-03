@@ -21,8 +21,8 @@ function Products() {
 			</div>
 
 			<div className="product-display">
-				{loading ? <div>Loading Products...</div> : null}
-				{error ? <div>Error!! Products...</div> : null}
+				{loading ? <div>Searching for products near your place...please wait</div> : null}
+				{error ? <div>Sorry, no products.</div> : null}
 				{data &&
 					data.availableProductList.map((item) => {
 						return (

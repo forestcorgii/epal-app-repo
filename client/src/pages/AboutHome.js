@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link, useHistory } from "react-router-dom";
 import AboutBanner from '../assets/img/MainBanner.jpeg';
 function AboutHome() {
 	return (
@@ -14,6 +15,10 @@ function AboutHome() {
 							<p class="slogan">Everything you need is just around you</p>
 						</div>
 
+						<div className="shop-now">
+						<Link to="/Products">SHOP NOW</Link>
+						</div>
+
 					</div>
 				</div>
 				<div className="about-container2">
@@ -26,16 +31,10 @@ function AboutHome() {
 							While the term merkado can be used in general terms such as stock market. It's also the usual term applied in news. Both palengke and merkado are borrowed words. Palengke from Palenque which means palisades or stockades; and Mercado which means Market. 
 							Palengke is commonly referred to the public market..
 						</p>
-{/* 						
-							<p class="whatIs">WHAT IS MERKADO?
-							<br/><br/>
-								Merkado means "market" in english and it's wag ka na magtanong pa.</p> */}
-
-
+							
 					</div>
-					
-					</div>
-		</div>
+				</div>
+			</div>
 		
 	);
 }

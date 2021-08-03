@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/forestcorgii/merkado-app-repo/issues"
   },
-  "homepage": "https://github.com/forestcorgii/merkado-app-repo#readme"
+  "homepage": "https://github.com/forestcorgii/merkado-app-repo#readme",
+  "dependencies": {
+    "material-design-icons": "^3.0.1"
+  }
 }

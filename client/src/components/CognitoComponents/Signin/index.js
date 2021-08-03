@@ -11,13 +11,13 @@ export default function LoginForm() {
 			<center>
 				<br />
 				<div className="container-form1">
+				{/* black background */}
 					<br />
 					<br />
-					<center>
-						<h1>LOGIN</h1>
-					</center>
+					<p class="login">LOGIN</p>
 
 					<div className="container-form-login">
+						
 						<form onSubmit={handleSubmit}>
 							USERNAME:{" "}
 							<input
@@ -37,28 +37,28 @@ export default function LoginForm() {
 							></input>
 							<br />
 							<br />
-							<div className="radio">
-								<input
-									type="radio"
-									name="logged_as"
-									value="BUYER"
-									checked={true}
-								/>
+							<div className="btn-radio">
+								<div className="radios">
+								<input type="radio" name="logged_as" value="BUYER" checked={true}/>
 								Customer
-							</div>
-							<div className="radio">
-								<input type="radio" name="logged_as" value="SELLER" />
+								
+								</div>
+								<div className="radios">
+								<input type="radio" name="logged_as" value="SELLER"/>
 								Retail Owner
+								
+								</div>
+								
 							</div>
 							<br />
 							<br />
-							<center>
+							
 								<input
 									className="button-btn"
 									type="submit"
 									value="LOGIN"
 								></input>
-							</center>
+						
 						</form>
 						<br />
 						<br />
@@ -67,8 +67,7 @@ export default function LoginForm() {
 					</div>
 				</div>
 			</center>
-			<br />
-			<br />
+			
 		</div>
 	);
 }
