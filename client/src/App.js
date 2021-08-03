@@ -14,20 +14,13 @@ import Products from "./pages/Seller/Products";
 import SellerProfile from "./pages/Seller/Profile";
 import Verification from "./components/CognitoComponents/EmailVerification/index";
 
-// import BuyerInfo from "./pages/Buyer/BuyerInfo";
-// import Checkout from "./pages/Buyer/Checkout";
-// import HowToPage from "./pages/HowToPage";
-// import Locate from "./pages/Buyer/Locate";
-// import Order from "./pages/Buyer/Order";
-// import Products from "./pages/Seller/Products";
-// import SellerInfo from "./pages/Seller/SellerInfo";
-// import SellerPage from "./pages/Seller/SellerPage";
+
 
 import Cognito from "./pages/CognitoPage";
 import AboutHome from "./pages/AboutHome";
 
 
-const BuyerHome = lazy(() => import("./pages/Buyer"));
+const BuyerHome = lazy(() => import("./pages/AboutHome"));
 const SellerHome = lazy(() => import("./pages/Seller/HomePage"));
 // const AboutHome = lazy(() => import("./pages/AboutHome"));
 

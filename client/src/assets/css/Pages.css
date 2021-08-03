@@ -3,73 +3,84 @@
 /* LOGIN */
 .container{
     
-    background-image: url(../img/market.jpeg);
+    background-image: url(../img/white.jpeg);
     background-size: cover;
-    background-attachment: fixed;
     background-position: center;
     margin: auto;
-    max-height: 100%;
-    max-width: 100%;
-    overflow-y: hidden
+    height: 100vh;
+   
   }
  .container-form1{
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0,0,0,0.8);
     color: white;
     padding-bottom: 100px;
-    width: 50%;
+    width: 80%;
     text-align: center;
     margin: auto;
+    margin-top: 5%;
   }
-  
-.button-btn{
-    background-color: #f5951f;
-    border: none;
-    padding: 6px;
-    padding-left: 50px;
-    padding-right: 50px;
-}
-.button-btn {
-  color: white;
-  border: none;
-}
+  .login{
+    font-size: 30px;
+  }
+  .container-form-login{
+    margin:auto;
+    color: white;
+  }.container-form-login a {
+    text-decoration: none;
+    color: #ffffff;
+  }
+  .container-form-login a:hover{
+    text-decoration: none;
+    color: #2ce9e9;
+  }
+  .btn-radio{
+    display: flex;
+    font-size: 20px;
+    margin:auto;
+    margin-left: 10%;
+  }
+  .radios{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+    
+  }
 
-.container-form-login{
-  margin:auto;
+.button-btn{
+    background-color: gray;
+    border: none;
+    color: white;
+    
 }
-.container-form-login a:hover,
-.container-form-login a:active,
-.container-form-login a.active {
-    color: #f5951f;
+.button-btn:hover{
+  background-color: #2ce9e9;
+  border: none;
+  color: black;
 }
-.container-form-login a {
-  text-decoration: none;
-  color: #ffffff;
-}
-/* input [type=radio] {
-   border: 0px; width: 100%; height: 1em; 
-} */
 
 /* REGISTRATION */
 
 .container-form-registration{
-  background-color: rgba(0,0,0,0.6);
-  color: white;
-  padding-bottom: 100px;
-  background-attachment: fixed;
-  width: 50%;
-  text-align: center;
-  margin: auto;
-  margin-bottom: 4%;
+  background-color: rgba(0,0,0,0.8);
+    color: white;
+    padding-bottom: 100px;
+    width: 80%;
+    text-align: center;
+    margin: auto;
+    margin-top: 5%;
 }
-.container-form-registration a:hover,
-.container-form-registration a:active,
-.container-form-registration a.active {
-    color: #f5951f;
+.container-form-registration a:hover{
+  text-decoration: none;
+  color: #2ce9e9;
 }
 .container-form-registration a {
   text-decoration: none;
   color: #ffffff;
 }
+.registration{
+  font-size: 30px;
+}
+
 .input-box{
   margin:auto;
   max-width: 100%;
@@ -105,42 +116,58 @@
   display: block;
 }
 .about-container1{
-    background-image: url(../img/MainBanner.jpeg);
+    background-image: url(../img/white.jpeg);
     background-size: cover;
     background-position: center;
-    height: 50vh;
+    height: 100vh;
     width: 100%;
     
   
 }
 
 .about-content1{
-  background-color: rgba(0,0,0,0.8);
-  padding-top: 5px;
-  color: white;
+  padding-top: 105px;
+  color: black;
   width: 100%;
-  height: 50vh;
+  height: 100vh;
 }
 .title{
  height: 100px;
 }
 .merkado{
-  font-size: 50px;
+  font-size: 70px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   letter-spacing: 20px;
   text-align: center;
   
 }
 .about-slogan{
-  height: 100px;
+  height: 160px;
 }
 .slogan{
-  font-size: 22px;
+  font-size: 25px;
   font-family: 'Courier New', Courier, monospace;
   /* 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
   text-align: center;
   word-spacing: 6px;
 }
+.shop-now{
+  background-color: rgba(0,0,0,0.8);
+  padding: 20px;
+  margin: auto;
+  width: 50%;
+  height: auto;
+  text-align: center;
+  font-weight: bolder;
+}
+.shop-now a{
+  color:white;
+  text-decoration: none;
+  font-size: 20px;
+
+}
+
+
 
 .about-container2{
   height: 50%;
