@@ -20,7 +20,7 @@ import Cognito from "./pages/CognitoPage";
 import AboutHome from "./pages/AboutHome";
 
 
-const BuyerHome = lazy(() => import("./pages/AboutHome"));
+const BuyerHome = lazy(() => import("./pages/Buyer/index"));
 const SellerHome = lazy(() => import("./pages/Seller/HomePage"));
 // const AboutHome = lazy(() => import("./pages/AboutHome"));
 

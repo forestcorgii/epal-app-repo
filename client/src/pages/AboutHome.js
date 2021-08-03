@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link, useHistory } from "react-router-dom";
 import AboutBanner from '../assets/img/MainBanner.jpeg';
 function AboutHome() {
 	return (
@@ -16,7 +15,7 @@ function AboutHome() {
 						</div>
 
 						<div className="shop-now">
-						<Link to="/Products">SHOP NOW</Link>
+							<p>SHOP NOW!</p>
 						</div>
 
 					</div>
