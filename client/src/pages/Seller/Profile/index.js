@@ -3,8 +3,8 @@ import "../../../assets/css/seller.css";
 import user from "../../../assets/img/user.jpg";
 
 import { useState } from "react";
-import Modal from "../../../components/OtherComponents/Modals/Modals";
-import Backdrop from "../../../components/OtherComponents/Backdrop";
+import Modal from "../../../components/ModalComponents/ModalProfile";
+import Backdrop from "../../../components/ModalComponents/Backdrop";
 import BL from "./bl";
 function SellerProfile(props) {
 	const [modalIsOpen, setModalIsOpen] = useState(false); //modal should not be opened first so false

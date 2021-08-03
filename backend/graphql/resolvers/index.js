@@ -3,6 +3,7 @@ const sellerResolvers = require("./sellers");
 const productResolvers = require("./products");
 const orderResolvers = require("./orders");
 const userResolvers = require('./users')
+
 module.exports = {
 	Query: {
 		...buyerResolvers.Query,
