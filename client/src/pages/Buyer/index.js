@@ -35,29 +35,42 @@ function HomePage() {
 							<Link to={`${url}/profile`}>
 							<span class="material-icons">person</span>Profile</Link>
 						</div>
-						{/* <div className="logout">
-						<LogoutButton />
-				</div> */}
 					</div>
-					<div>
-						<Switch>
-							<Route path={`${path}/`} exact>
-								<Redirect to={`${path}/products`} />
-							</Route>
-							<Route path={`${path}/products`}>
-								<Products />
-							</Route>
-							<Route path={`${path}/orders`}>Orders{/* <Inventory /> */}</Route>
-							<Route path={`${path}/profile`}>
-								Profile
-								{/* <Profile /> */}
-							</Route>
-						</Switch>
-					</div>
+						
 				</Router>
 			</Suspense>
-		</div>
+	
+				<Switch>
+					<Route path={`${path}/`} exact>
+						<Redirect to={`${path}/products`} />
+					</Route>
+					<Route path={`${path}/products`}>
+						<Products />
+					</Route>
+					<PrivateRoute path={`${path}/orders`}>
+						Orders{/* <Inventory /> */}
+					</PrivateRoute>
+					<PrivateRoute path={`${path}/profile`}>
+						Profile
+						{/* <Profile /> */}
+					</PrivateRoute>
+				</Switch>
+			</div>
+		
 	);
 }
 
+function PrivateRoute({ children, ...props }) {
+	const { user } = useContext(AuthContext);
+	console.log("private route " + JSON.stringify(user));
+	return (
+		<Route {...props}>
+			{user && user.Username && user.email_verified ? (
+				children
+			) : (
+				<Redirect to="/cognito" />
+			)}
+		</Route>
+	);
+}
 export default HomePage;
