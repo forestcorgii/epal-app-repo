@@ -19,8 +19,8 @@ function HomePage() {
 	let { path, url } = useRouteMatch();
 	return (
 		<div className="buyer-homepage">
-			<Suspense fallback={<div>Loading</div>}>
-				<Router>
+			{/* <Suspense fallback={<div>Loading</div>}>
+				<Router> */}
 					<div className="navigation">
 						<div className="nav-btn">
 							<Link to={`${url}/products`}>
@@ -37,12 +37,12 @@ function HomePage() {
 						</div>
 					</div>
 						
-				</Router>
-			</Suspense>
+				{/* </Router>
+			</Suspense> */}
 	
 				<Switch>
 					<Route path={`${path}/`} exact>
-						<Redirect to={`${path}/products`} />
+						<Redirect to={`${url}/products`} />
 					</Route>
 					<Route path={`${path}/products`}>
 						<Products />

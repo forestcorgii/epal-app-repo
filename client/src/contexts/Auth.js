@@ -20,14 +20,14 @@ export function authReducer(state, action) {
 				localStorage.setItem("merkado_logged_as", logged_as);
 				if (valid) {
 					userData = { logged_as, ...result };
-					action.callback(true);
+					action.callback(true,true,userData);
 				} else {
 					if (!result.email_verified) {
 						// redirect to verify page
 						userData = { logged_as, ...result };
-						action.callback(true, true);
+						action.callback(true, true,userData);
 					} else {
-						action.callback(false);
+						action.callback(false,false,userData);
 					}
 				}
 			});

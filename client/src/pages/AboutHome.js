@@ -16,7 +16,8 @@ function AboutHome() {
 						</div>
 
 						<div className="shop-now">
-						<Link to="/Products">SHOP NOW</Link>
+						<Link to="/buyer/Products">SHOP NOW</Link>
+
 						</div>
 
 					</div>
