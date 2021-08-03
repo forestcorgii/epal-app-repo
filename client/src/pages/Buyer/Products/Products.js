@@ -49,9 +49,9 @@ function ProductItem({ imageURL, name, price, order }) {
 			<br />
 			<span className="price">₱{price}</span>
 
-			<div className="order">
+			{/* <div className="order"> */}
 				<Todo {...{ name, price, imageURL }} />
-			</div>
+			{/* </div> */}
 
 			{/* </center> */}
 		</div>

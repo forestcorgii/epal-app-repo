@@ -2,28 +2,27 @@ import "./Products.css";
 import ProductsBL from "./ProductsBL";
 
 function Products() {
-	const { user, getProducts, loading, error } = ProductsBL();
-	console.log(getProducts)
+	const {  data, loading, error } = ProductsBL();
+	
 	return (
 		<div className="product-layout">
 			<div class="dropdown">
-					<button class="dropbtn">Categories</button>
-					<div class="dropdown-content">
+				<button class="dropbtn">Categories</button>
+				<div class="dropdown-content">
 					<a href="#">Clothes</a>
 					<a href="#">Shoes</a>
 					<a href="#">Accesories</a>
 					<a href="#">Fruits and Vegetables</a>
-					</div>
-					
 				</div>
+			</div>
 			<div className="product-display">
 				{loading ? <div>Loading Products...</div> : null}
 				{error ? <div>Error!! Products...</div> : null}
-				{getProducts &&
-					getProducts.getProducts.map((item) => {
+				{data &&
+					data.sellerProductList.map((item) => {
 						return (
 							<ProductItem
-								key={item.id}
+								key={item._id}
 								image={item.imageURL}
 								name={item.name}
 								price={item.price}

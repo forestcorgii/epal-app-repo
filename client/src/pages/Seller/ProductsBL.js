@@ -7,8 +7,8 @@ import { AuthContext } from "../../contexts/Auth";
 
 const GET_PRODUCTS = gql`
 	query ExampleQuery {
-		getProducts {
-			id
+		sellerProductList {
+			_id
 			name
 			imageURL
 			price
@@ -19,7 +19,7 @@ const GET_PRODUCTS = gql`
 
 export default function BL() {
 	const { user } = useContext(AuthContext);
-	const { loading,error, data: getProducts } = useQuery(GET_PRODUCTS);
+	const { loading,error, data } = useQuery(GET_PRODUCTS);
 
-	return { user, loading,error, getProducts };
+	return { user, loading,error, data};
 }
