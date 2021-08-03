@@ -7,7 +7,7 @@ module.exports = gql`
 	}
 	input ProductInput {
 		name: String!
-		imageURL:String
+		imageURL: URL
 		price: Float!
 		description: String!
 		quantity: Int
@@ -19,19 +19,19 @@ module.exports = gql`
 		color: String
 	}
 	type Product {
-		_id: ID
+		_id: ObjectID!
 		name: String!
-		imageURL:String
+		imageURL: URL
 		price: Float!
 		quantity: Int
 		description: String!
 		technicalInformation: TechnicalInformation
 		categories: [String]
-		createdAt: String
+		createdAt: Timestamp
 		seller: Seller
 	}
 	extend type Query {
-		availableProductList(location:[Float!]!): [Product]
+		availableProductList(location: [Float!]!): [Product]
 		sellerProductList: [Product]
 		getProduct(id: ID!): Product
 	}

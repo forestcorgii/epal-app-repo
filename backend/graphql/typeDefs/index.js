@@ -4,6 +4,7 @@ const SellerType = require('./sellers')
 const ProductType = require('./products')
 const OrderType = require('./orders')
 const UserType = require('./users')
+
 module.exports = [
 	gql`
 		type Query

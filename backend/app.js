@@ -5,16 +5,19 @@ const {
 	ApolloServerPluginLandingPageGraphQLPlayground,
 } = require("apollo-server-core");
 
-const resolvers = require("./graphql/resolvers/index");
-const typeDefs = require("./graphql/typeDefs/index");
+const mainResolvers = require("./graphql/resolvers/index");
+const mainTypeDefs = require("./graphql/typeDefs/index");
 const express = require("express");
 const s3UploadRoute = require("./router/s3Upload");
-
+const {  typeDefs,resolvers} = require("graphql-scalars");
+const { makeExecutableSchema } = require("@graphql-tools/schema");
 const verify = require("./router/verifyToken");
 async function startApolloServer() {
 	const server = new ApolloServer({
-		typeDefs,
-		resolvers,
+		schema: makeExecutableSchema({
+			typeDefs: [...typeDefs,...mainTypeDefs],
+			resolvers: {...resolvers, ...mainResolvers },
+		}),
 		context: ({ req }) => {
 			user = "";
 			user = verify(req) || "7798f9ab-406d-4cad-94a7-8ef8da977333";

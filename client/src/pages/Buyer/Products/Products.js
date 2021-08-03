@@ -1,8 +1,8 @@
 import ProductsBL from "./ProductsBL";
 import "../../../assets/css/buyer.css";
 import { useState } from "react";
-import Modal from "../../../components/OtherComponents/Modals/ModalOrder";
-import Backdrop from "../../../components/OtherComponents/Backdrop";
+import Modal from "../../../components/ModalComponents/ModalOrder";
+import Backdrop from "../../../components/ModalComponents/Backdrop";
 // import { Dropdown } from 'semantic-ui-react'
 function Products() {
 	const { data, loading, error } = ProductsBL();

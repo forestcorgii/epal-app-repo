@@ -16,12 +16,12 @@ export default function AddProductForm(props) {
 				{loading ? (
 					<div>Loading, please wait.</div>
 				) : (
-					data.getProducts &&
-					data.getProducts.map((item, i) => (
+					data.sellerProductList &&
+					data.sellerProductList.map((item, i) => (
 						<Item
-							key={"productlist" + item.id}
+							key={"productlist" + item._id}
 							onClick={props.handleClick(item)}
-							id={item.id}
+							id={item._id}
 							name={item.name}
 							description={item.description}
 							price={item.price}
