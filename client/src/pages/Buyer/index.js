@@ -23,7 +23,8 @@ function HomePage() {
 				<Router>
 					<div className="navigation">
 						<div className="nav-btn">
-							<Link to={`${url}/products`}> Home</Link>
+							<Link to={`${url}/products`}>
+							<span class="material-icons">home</span> Home</Link>
 						</div>
 						<div className="nav-btn">
 							<Link to={`${url}/orders`}>
@@ -31,7 +32,8 @@ function HomePage() {
 							</Link>
 						</div>
 						<div className="nav-btn">
-							<Link to={`${url}/profile`}>Profile</Link>
+							<Link to={`${url}/profile`}>
+							<span class="material-icons">person</span>Profile</Link>
 						</div>
 						{/* <div className="logout">
 						<LogoutButton />

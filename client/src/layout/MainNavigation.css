@@ -8,27 +8,27 @@
 }
 
 
-.header a {
+ a {
   float: left;
-  color: white;
+  color: black;
   text-align: center;
   padding: 12px;
   text-decoration: none;
-  font-size: 18px; 
+  font-size: 35px; 
   line-height: 25px;
   border-radius: 4px;
 }
 
-
+/* 
 .header a:hover {
   background-color: rgb(255, 232, 206);
   color: black;
   
-}
-.header a:focus{
+} */
+/* .header a:focus{
   background-color: rgb(255, 232, 206);
   color: black;
-}
+} */
 .merkado-header{
   margin-left: 5px;
   display: flex;
@@ -68,16 +68,38 @@
 }
 .nav-search{
 margin: auto;
+
+margin-left: 40px;
 }
 .nav-search input {
   height: 30px;
   width: 400px;
 }
 
-.btn-logout input{
-  width: 70px;
-  margin-right: 10px;
-  margin-top: 2px;
+.btn-logout{
+  margin: auto;
+  right: 0;
+  margin-right: 50px;
+  
+
+}
+/* .btn-logout input{
+  width: 75px;
+  height: 50px;
+  padding-top: 5px;
+  padding: 20px;
+  margin: auto;
+  background-color: #f5951f;
+  border-radius: 0;
+  border-style: none;
+  font-weight: bold;
+  font-size: 20px;
+} */
+.btn-logout :hover{
+  cursor: pointer;
+  color: white;
+  
+ 
 }
 
 

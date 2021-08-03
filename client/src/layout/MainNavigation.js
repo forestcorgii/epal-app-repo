@@ -12,11 +12,11 @@ function MainNavigation() {
 		<div className="header">
 			<div className="merkado-header">
 				<img src={merkado} height="85px;" width="82px" />
-				&nbsp; <h1>MERKADO</h1>
+				&nbsp; <h1><Link to="/">MERKADO</Link></h1>
 			</div>
-
+				{/* 
 			<div className="header-nav">
-				{/* <div className="Nav">
+				<div className="Nav">
 					<Link to="/">Home</Link>
 					<Link to="/Products">Products</Link>
 				</div>
@@ -28,12 +28,13 @@ function MainNavigation() {
 				</div>
 				<div className="Nav">
 					<Link to="/cognito">Login</Link>
-				</div> */}
-			</div>
+				</div>
+			</div> */}
 			<div className="nav-search">
 				<input type="search" placeholder="Search here"></input>
 			</div>
 			<div className="btn-logout">
+			  
 				{user ? (
 					<>
 						{user.email}
@@ -51,13 +52,17 @@ function MainNavigation() {
 function LoginButton() {
 	let history = useHistory();
 	return (
-		<input
-			type="button"
-			value="Login"
-			onClick={() => {
-				history.push("/cognito");
-			}}
-		/>
+		<div>
+				<p onClick={() => { history.push("/cognito");}} >Login</p>
+		</div>
+		
+		// <input
+		// 	type="button"
+		// 	value="Login"
+		// 	onClick={() => {
+		// 		history.push("/cognito");
+		// 	}}
+		// />
 	);
 }
 function LogoutButton() {
