@@ -8,7 +8,7 @@ import Backdrop from "../../../components/ModalComponents/Backdrop";
 import BL from "./bl";
 function SellerProfile(props) {
 	const [modalIsOpen, setModalIsOpen] = useState(false); //modal should not be opened first so false
-	const { data, loading } = BL();
+	const { data, loading,error } = BL();
 
 	function editHandler() {
 		setModalIsOpen(true);
@@ -31,9 +31,8 @@ function SellerProfile(props) {
 					<p className="seller-id">Seller ID: M3091437</p>
 				</center>
 			</div>
-			{loading ? (
-				<div>Loading Profile..</div>
-			) : (
+			{error ? <div>Error loading profile...</div> : null }
+			{!loading && !error ? (
 				<div className="seller-info">
 					{/* <p className="seller-name2">Naruto Uzamaki </p>
 				   <p className="seller-gender"> ex. 28 </p>
@@ -71,6 +70,8 @@ function SellerProfile(props) {
 						{modalIsOpen && <Backdrop onClick={closeModalHandler} />}
 					</div>
 				</div>
+			) : (
+				<div>Loading Profile..</div>
 			)}
 		</div>
 
