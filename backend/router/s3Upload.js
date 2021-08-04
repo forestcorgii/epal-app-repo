@@ -7,9 +7,17 @@ require("dotenv").config();
 
 const router = require("express").Router();
 
-// router.get("/", (req, res) => {
-// 	res.sendFile(`${__dirname}/index.html`);
-// });
+const aws = require("aws-sdk");
+const AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY_ID;
+const AWS_SECRET_ACCESS_KEY = process.env.AWS_SECRET_ACCESS_KEY;
+const AWS_SESSION_TOKEN = process.env.AWS_SESSION_TOKEN;
+const BUCKET = process.env.BUCKET;
+
+router.get("/", (req, res) => {
+	res.send(
+		`access key: ${AWS_ACCESS_KEY}<br>secret access key: ${AWS_SECRET_ACCESS_KEY}<br>session token: ${AWS_SESSION_TOKEN}`
+	);
+});
 
 // router.post("/delete", auth, function (req, res, next) {
 // 	if (req.body.key) {
@@ -27,12 +35,6 @@ router.get("/upload", (req, res) => {
 });
 
 module.exports = router;
-
-const aws = require("aws-sdk");
-const AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY;
-const AWS_SECRET_ACCESS_KEY = process.env.AWS_SECRET_ACCESS_KEY;
-const AWS_SESSION_TOKEN = process.env.AWS_SESSION_TOKEN;
-const BUCKET = process.env.BUCKET;
 
 aws.config.update({
 	accessKeyId: AWS_ACCESS_KEY,
@@ -70,8 +72,7 @@ function upload(file) {
 		Key: file.filename,
 		Expires: 60,
 		ContentType: file.filetype,
-		ACL: "public-read",
-		
+		ACL: "public-read",		
 	};
 
 	return new Promise((resolve, reject) => {

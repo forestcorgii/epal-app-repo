@@ -36,7 +36,7 @@ export default function LoginFormBL() {
 			if (valid) {
 				saveUserData(result);
 				if (UserNotConfirmed) {
-					history.push("/cognito");
+					history.push(`/cognito/verifyemail/${result.Username}`);
 				} else {
 					// history.push("/");
 					window.location.reload()

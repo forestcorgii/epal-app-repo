@@ -2,7 +2,7 @@ import axios from "axios";
 
 export function UploadImage(file) {
 	return axios
-		.get("http://localhost:3001/s3/signin/upload", {
+		.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/s3/signin/upload`, {
 			params: {
 				filename: file.name,
 				filetype: file.type,
@@ -21,7 +21,7 @@ export function UploadImage(file) {
 			return {
 				name,
 				isUploading: true,
-				url: `https://merkado-clienr.s3.amazonaws.com/${file.name}`,
+				url: `https://${process.env.REACT_APP_BUCKET}.s3.amazonaws.com/${file.name}`,
 			};
 		});
 }

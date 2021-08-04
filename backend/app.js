@@ -5,13 +5,15 @@ const {
 	ApolloServerPluginLandingPageGraphQLPlayground,
 } = require("apollo-server-core");
 
+const express = require("express");
+const { makeExecutableSchema } = require("@graphql-tools/schema");
+const {  typeDefs,resolvers} = require("graphql-scalars");
 const mainResolvers = require("./graphql/resolvers/index");
 const mainTypeDefs = require("./graphql/typeDefs/index");
-const express = require("express");
 const s3UploadRoute = require("./router/s3Upload");
-const {  typeDefs,resolvers} = require("graphql-scalars");
-const { makeExecutableSchema } = require("@graphql-tools/schema");
 const verify = require("./router/verifyToken");
+
+
 async function startApolloServer() {
 	const server = new ApolloServer({
 		schema: makeExecutableSchema({

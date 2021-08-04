@@ -1,8 +1,8 @@
-import * as  yup from 'yup'
+import * as yup from "yup";
 
-export default  yup.object({
-	firstName:yup.string().max(40).min(2).required(),
-	lastName:yup.string().max(40).min(2).required(),
-	middleInitial:yup.string(),
-	birthDate:yup.date("Invalid Birth Date").required(),
-})
+export default yup.object({
+	productName: yup.string().max(40).min(3).required(),
+	description: yup.string().max(1500),
+	price: yup.number().required(),
+	quantity: yup.number().required(),
+});
