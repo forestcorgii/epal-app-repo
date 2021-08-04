@@ -22,36 +22,34 @@ function SellerProfile(props) {
 	// const { loading, error,data } = HomePageBL();
 	return (
 		<div className="seller-profile">
+		
 			{/* After the login, (After the seller have been verified), the seller's page will display */}
 			{/* Hi (Seller's full name) */}
 			<div className="user-logo">
 				<center>
 					<img src={user} height="200px" width="200px" />
-					<p className="seller-name1">Hi! Naruto!</p>
+					<p className="seller-name1">Hi! {data.getSellerPrivateInfo.storename}</p>
+					
 					<p className="seller-id">Seller ID: M3091437</p>
 				</center>
 			</div>
 			{error ? <div>Error loading profile...</div> : null }
 			{!loading && !error ? (
+
+
+
 				<div className="seller-info">
 					{/* <p className="seller-name2">Naruto Uzamaki </p>
 				   <p className="seller-gender"> ex. 28 </p>
 				 <p className="seller-age"> ex. 28 </p> */}
-					<p className="seller-ID">{data.getSellerPrivateInfo.id}</p>
-					<p className="seller-store-name">
-						{data.getSellerPrivateInfo.storename}
+					<p className="seller-ID">Seller ID: {data.getSellerPrivateInfo.id}</p>
+					<p>Age: </p>
+					<p>Birthday: </p>
+					<p className="seller-store-name"> Store Name: {data.getSellerPrivateInfo.storename}
 					</p>
-					<p className="seller-address">{data.getSellerPrivateInfo.address}</p>
-					<br />
-					<br />
-					<br />
-					<br />
-					<br />
-					<br />
-					<br />
+					<p className="seller-address">Address: {data.getSellerPrivateInfo.address}</p>
 					<br />
 					
-				
 					<div className="card">
 						<h2>{props.text}</h2>
 						<div className="actions">

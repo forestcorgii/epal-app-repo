@@ -9,7 +9,7 @@ function Products() {
 
 	return (
 		<div className="product-layout">
-			<div class="dropdown">
+			{/* <div class="dropdown">
 				<button class="dropbtn">Categories</button>
 				<div class="dropdown-content">
 					<a href="#">Clothes</a>
@@ -18,7 +18,7 @@ function Products() {
 					<a href="#">Fruits</a>
 					<a href="#">Vegetables</a>
 				</div>
-			</div>
+			</div> */}
 
 			<div className="product-display">
 			
