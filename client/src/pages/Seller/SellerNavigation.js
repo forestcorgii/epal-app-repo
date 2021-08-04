@@ -7,7 +7,7 @@ import {
 	useRouteMatch,
 	Link,
 } from "react-router-dom";
-
+import "./Products.css";
 import Products from "./Products";
 import Inventory from "./Inventory";
 import Profile from './Profile'
@@ -17,6 +17,17 @@ function SellerNavigation() {
 	return (
 		// const { loading, error,data } = HomePageBL();
 		<div className="buyer-homepage">
+			{/* <div class="dropdown">
+				<button class="dropbtn">Categories</button>
+				<div class="dropdown-content">
+					<a href="#">Clothes</a>
+					<a href="#">Shoes</a>
+					<a href="#">Accesories</a>
+					<a href="#">Fruits</a>
+					<a href="#">Vegetables</a>
+				</div>
+			</div> */}
+
 			<Suspense fallback={<div>Loading...</div>}>
 				<Router>
 					<div className="navigation">
