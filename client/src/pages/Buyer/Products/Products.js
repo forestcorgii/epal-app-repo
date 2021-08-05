@@ -26,7 +26,7 @@ function Products() {
 				
 				{error ? <div>&nbsp;&nbsp;&nbsp; Sorry, no products.</div> : null}
 
-				{data &&
+				{data && data.availableProductList.length > 0 ?
 					data.availableProductList.map((item) => {
 						return (
 							<ProductItem
@@ -36,7 +36,7 @@ function Products() {
 								price={item.price}
 							/>
 						);
-					})}
+					}) : <div>Sorry, there is no available items in your area...</div>}
 			</div>
 		</div>
 	);

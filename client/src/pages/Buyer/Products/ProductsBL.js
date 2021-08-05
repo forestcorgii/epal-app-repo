@@ -10,6 +10,7 @@ export default function BL() {
 			getAvailableProducts({
 				variables: {
 					location: [position.coords.longitude, position.coords.latitude],
+					maxDistance: 1.0,
 				},
 			});
 		});
