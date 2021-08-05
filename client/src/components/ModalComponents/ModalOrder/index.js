@@ -53,4 +53,35 @@ function ModalOrder({name,imageURL,price,...props}){
     )
 }
 
+// function Checkout(props) {
+// 	const [modalIsOpen, setModalIsOpen] = useState(false); //modal should not be opened first so false
+
+// 	function deleteHandler() {
+// 		setModalIsOpen(true);
+// 		// console.log('Clicked!');
+// 		// console.log(props.text);
+// 	}
+// 	function closeModalHandler() {
+// 		setModalIsOpen(false);
+// 	}
+
+// 	return (
+// 		<div className="order-btn">
+// 			<h2>{props.text}</h2>
+// 			<div className="order-actions">
+// 				<button className="order-btn-btn" onClick={deleteHandler}>
+// 				<span class="material-icons">info</span>
+// 				</button>
+// 			</div>
+// 			{modalIsOpen && (
+// 				<Modal {...props} onCancel={closeModalHandler} onConfirm={closeModalHandler} />
+// 			)}
+// 			{modalIsOpen && <Backdrop onClick={closeModalHandler} />}
+// 			{/* shortcut, than to use the one below */}
+// 			{/* {modalIsOpen ? <Modal/> : null}
+// 			 **if modalIsOpen is true, we render Modal,else, we dont output anything (null) */}
+// 		</div>
+// 	);
+// }
+
 export default ModalOrder;
