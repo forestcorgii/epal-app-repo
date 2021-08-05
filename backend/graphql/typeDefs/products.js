@@ -31,7 +31,7 @@ module.exports = gql`
 		seller: Seller
 	}
 	extend type Query {
-		availableProductList(location: [Float!]!): [Product]
+		availableProductList(location: [Float!]!, maxDistance: Float!): [Product]
 		sellerProductList: [Product]
 		getProduct(id: ID!): Product
 	}

@@ -4,12 +4,12 @@ const { UserInputError } = require("apollo-server-lambda");
 const User = require("../../model/User");
 module.exports = {
 	Query: {
-		async availableProductList(_, { location }, context) {
+		async availableProductList(_, { location, maxDistance }, context) {
 			const res = await Seller.aggregate()
 				.near({
 					near: location, //[121.0392, 14.61185],
 					distanceField: "distance",
-					maxDistance: 1000,
+					maxDistance: maxDistance / 111.12,
 					key: "location",
 					// includeLocs: "location",
 				})

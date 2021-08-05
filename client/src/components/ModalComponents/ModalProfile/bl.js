@@ -2,11 +2,16 @@ import { useMutation } from "@apollo/client";
 import { useFormik } from "formik";
 import { PersonalInformationValidation, ProfileValidation } from "./validition";
 import { UPDATE_SELLER_PROFILE } from "./graphql";
-import { ReverseGeocoding } from "../../../adapters/LocationAdapter";
+import { ForwardGeocoding } from "../../../adapters/LocationAdapter";
 import React, { useState } from "react";
+
+import UseDebouncedSearch from "../../../hooks/useDebouncedSearch";
+
 export default function UpdateProfileBL(selectedProduct) {
 	const [updateUser, updateUserStatus] = useMutation(UPDATE_SELLER_PROFILE);
-	const [updateSellerProfile, updateSellerProfileStatus] = useMutation(UPDATE_SELLER_PROFILE);
+	const [updateSellerProfile, updateSellerProfileStatus] = useMutation(
+		UPDATE_SELLER_PROFILE
+	);
 	const [storeInformation, setStoreInformation] = useState({});
 
 	const handlePersonalInformationSubmit = async (values, { setSubmitting }) => {
@@ -36,8 +41,16 @@ export default function UpdateProfileBL(selectedProduct) {
 	};
 	const handleProfileSubmit = (e) => {
 		e.preventDefault();
-		console.log(e.target.storeName.value);
-		console.log(e.target.address.value);
+		updateSellerProfile({
+			variables: {
+				profile: {
+					storename: e.target.storename.value,
+					description: e.target.description.value,
+					address: e.target.address.value,
+					location: [parseFloat(e.target.lng.value),parseFloat( e.target.lat.value)],
+				},
+			},
+		});
 	};
 
 	const user_formik = useFormik({
@@ -51,21 +64,29 @@ export default function UpdateProfileBL(selectedProduct) {
 		onSubmit: handlePersonalInformationSubmit,
 	});
 
-	const GetAddress = async () => {
-		navigator.geolocation.getCurrentPosition(function (position) {
-			const lat = position.coords.latitude;
-			const long = position.coords.longitude;
-			ReverseGeocoding(lat, long).then(({ items }) => {
-				if (items && items.length) {
-					setStoreInformation({
-						...storeInformation,
-						address: items[0].title,
-						location: [long, lat],
-					});
-				}
-			});
+	const GetAddress = async (text) => {
+		return await ForwardGeocoding(text).then(({ items }) => {
+			if (items && items.length) {
+				const { title, position } = items[0];
+				return {
+					address: title,
+					lng: position.lng,
+					lat: position.lat,
+				};
+			}
 		});
 	};
 
-	return { user_formik, GetAddress, storeInformation, handleProfileSubmit };
+	const handleAddressSearch = () =>
+		UseDebouncedSearch((text) => GetAddress(text));
+
+	return {
+		user_formik,
+		GetAddress,
+		storeInformation,
+		setStoreInformation,
+		handleProfileSubmit,
+		handleAddressSearch,
+		updateSellerProfileStatus
+	};
 }

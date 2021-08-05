@@ -1,7 +1,7 @@
 import BL from "./bl";
 import React from "react";
 
-function Modal({ onCancel, storename, description, address }) {
+function Modal({ onCancel }) {
 	function cancelHandler() {
 		onCancel();
 	}
@@ -10,7 +10,8 @@ function Modal({ onCancel, storename, description, address }) {
 	}
 	// user_formik, for user personal information form
 	// profile_formik, for seller profile form
-	const { user_formik, handleProfileSubmit } = BL();
+	const { user_formik, handleProfileSubmit, handleAddressSearch } = BL();
+	const { text, setText, results } = handleAddressSearch();
 
 	return (
 		<div className="modal-edit-info">
@@ -50,9 +51,42 @@ function Modal({ onCancel, storename, description, address }) {
 				<h2>Seller Profile</h2>
 
 				<form onSubmit={handleProfileSubmit}>
-					<input type="text" name="storeName" />{" "}
-					<input type="text" name="address" />{" "}
-					<input type="submit" value="Save Seller Profile" />
+					<input type="text" name="storename" placeholder="Store Name" />
+					<input type="text" name="description" placeholder="Description" />
+					<input
+						type="text"
+						name="address"
+						placeholder="Address"
+						value={text}
+						onChange={(e) => setText(e.target.value)}
+					/>
+					{results && (
+						<>
+							{results.loading && <div>...</div>}
+							{results.error && <div>Error: {results.error.message}</div>}
+							{results.result && (
+								<div>
+									{results.result.address}
+									<input
+										type="button"
+										onClick={() => setText(results.result.address)}
+										value="Accept"
+									/>
+									<input
+										type="hidden"
+										name="lng"
+										value={results.result.lng}
+									/>{" "}
+									<input
+										type="hidden"
+										name="lat"
+										value={results.result.lat}
+									/>
+								</div>
+							)}{" "}
+						</>
+					)}
+					<input type="submit" value="Save Store Information" />
 				</form>
 			</div>
 			<br />

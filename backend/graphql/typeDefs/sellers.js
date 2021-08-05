@@ -28,6 +28,6 @@ module.exports = gql`
 	}
 	extend type Mutation {
 		createSellerInfo(data: SellerInput): Seller
-		updateSellerInfo(id: ID!, data: SellerInput): Seller
+		updateSellerInfo(data: SellerInput): Seller
 	}
 `;

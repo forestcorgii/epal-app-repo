@@ -12,7 +12,8 @@ export function ForwardGeocoding(searchString) {
 
 	return axios(config)
 		.then(function (response) {
-			console.log(JSON.stringify(response.data));
+			// console.log(JSON.stringify(response.data));
+			return response.data
 		})
 		.catch(function (error) {
 			console.log(error);
@@ -34,7 +35,7 @@ export async function ReverseGeocoding(lat, long) {
 
 	return await axios(config)
 		.then(function (response) {
-			console.log(JSON.stringify(response.data));
+			// console.log(JSON.stringify(response.data));
 			return response.data
 		})
 		.catch(function (error) {

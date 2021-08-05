@@ -11,10 +11,11 @@ module.exports = {
 			const user = await User.findOne({ username }).populate("profile.seller");
 
 			// const seller = await Seller.findOne({ username: context.user })
-			const seller = await Seller.findById(user.profile.seller._id)
-				.populate("products orders");
+			const seller = await Seller.findById(user.profile.seller._id).populate(
+				"products orders"
+			);
 
-			console.log(seller)
+			console.log(seller);
 			return seller;
 		},
 		async getSellerPublicInfo(_, { id }, context) {
@@ -23,7 +24,7 @@ module.exports = {
 			}
 
 			const seller = await Seller.findById(id).populate("products");
-			console.log(seller)
+			console.log(seller);
 			// .populate("store.orders");
 			return seller;
 		},
@@ -60,13 +61,14 @@ module.exports = {
 		},
 		async updateSellerInfo(
 			_,
-			{ id, data: { storename, description, address, location } },
+			{ data: { storename, description, address, location } },
 			context
 		) {
 			if (!context.user) {
 				throw new AuthenticationError("Request is not Authorized");
 			}
-			const seller = await Seller.findByIdAndUpdate(id, {
+			const user = await User.findOne({ username: context.user })
+			const seller = await Seller.findByIdAndUpdate(user.profile.seller, {
 				storename,
 				description,
 				address,
