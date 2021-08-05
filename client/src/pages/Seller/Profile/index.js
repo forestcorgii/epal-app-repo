@@ -32,7 +32,6 @@ function SellerProfile(props) {
 							<p className="seller-name1">
 								Hi! {data.getSellerPrivateInfo.storename}
 							</p>
-
 							<p className="seller-id">Seller ID: M3091437</p>
 						</center>
 					</div>
