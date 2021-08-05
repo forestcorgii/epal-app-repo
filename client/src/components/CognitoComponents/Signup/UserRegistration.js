@@ -51,10 +51,6 @@ function UserRegistration(){
                  
               </div>
 
-
-
-
-
             </form>
 
          Already have an account? <Link to ='/'> Login here</Link>
