@@ -3,18 +3,10 @@ import {
 	Route,
 	Switch,
 	Redirect,
-	useRouteMatch,
 } from "react-router-dom";
-import React, { lazy, Suspense, useContext, useEffect } from "react";
+import React, { lazy, Suspense, useContext } from "react";
 import MainNavigation from "./layout/MainNavigation";
 import { AuthProvider, AuthContext } from "./contexts/Auth";
-//Change
-import Inventory from "./pages/Seller/Inventory";
-import Products from "./pages/Seller/Products";
-import SellerProfile from "./pages/Seller/Profile";
-import Verification from "./components/CognitoComponents/EmailVerification/index";
-
-
 
 import Cognito from "./pages/CognitoPage";
 // import AboutHome from "./pages/AboutHome";
@@ -46,7 +38,7 @@ function App() {
 							<PublicRoute path="/cognito">
 								<Cognito />
 							</PublicRoute>
-							<Route path="/aboutUs">
+							<Route path="/about">
 								<AboutHome />
 							</Route>
 							<BuyerRoute path="/buyer">

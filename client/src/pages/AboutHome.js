@@ -1,5 +1,5 @@
 import React from 'react'
-import AboutBanner from '../assets/img/MainBanner.jpeg';
+// import AboutBanner from '../assets/img/MainBanner.jpeg';
 function AboutHome() {
 	return (
 		<div className="aboutbanner">

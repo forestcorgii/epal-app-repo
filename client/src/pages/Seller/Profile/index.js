@@ -28,7 +28,7 @@ function SellerProfile(props) {
 				<>
 					<div className="user-logo">
 						<center>
-							<img src={user} height="200px" width="200px" />
+							<img src={user} height="200px" width="200px" alt="user" />
 							<p className="seller-name1">
 								Hi! {data.getSellerPrivateInfo.storename}
 							</p>

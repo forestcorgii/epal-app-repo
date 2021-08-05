@@ -1,7 +1,7 @@
-import React, { Suspense } from "react";
+import React from "react";
 
 import {
-	BrowserRouter as Router,
+	
 	Route,
 	Redirect,
 	Switch,
@@ -9,7 +9,7 @@ import {
 	Link,
 } from "react-router-dom";
 import "./Products.css";
-import Products from "./Products";
+// import Products from "./Products";
 import Inventory from "./Inventory";
 import Profile from "./Profile";
 function SellerNavigation() {

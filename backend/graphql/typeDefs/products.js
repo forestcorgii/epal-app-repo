@@ -20,7 +20,7 @@ module.exports = gql`
 	}
 	type Product {
 		_id: ObjectID!
-		name: String!
+		name: String
 		imageURL: URL
 		price: Float!
 		quantity: Int

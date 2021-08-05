@@ -21,7 +21,7 @@ function MainNavigation() {
 			</div>
 			<div className="header-nav">
 				<div className="Nav">
-					<Link to="/About Us">ABOUT US</Link>
+					<Link to="/about">ABOUT US</Link>
 				</div>
 			</div>
 			<div className="btn-logout">

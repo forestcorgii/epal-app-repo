@@ -25,8 +25,14 @@ module.exports = {
 			return prods;
 		},
 		async sellerProductList(_, body, context) {
-			const products = await Product.find().populate("seller");
-			return products;
+			if (!context.user) {
+				throw new AuthenticationError("Request is not Authorized");
+			}
+			const username = context.user;
+			const user = await User.findOne({ username })
+			const seller = await Seller.findById(user.profile.seller).populate("products");
+			// const products = await Product.find().populate("seller");
+			return seller.products;
 		},
 		async getProduct(_, { id }, { user }) {
 			const product = await Product.findById(id).populate("seller");
