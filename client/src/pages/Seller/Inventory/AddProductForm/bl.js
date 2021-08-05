@@ -18,17 +18,21 @@ export default function AddProductFormBL(selectedProduct) {
 
 		if (imageURL) {
 		console.log(values);
-			createProduct({
-				variables: {
-					product: {
-						description: values.description,
-						name: values.productName,
-						price: values.price,
-						quantity: values.quantity,
-						imageURL: imageURL,
+			try {
+				createProduct({
+					variables: {
+						product: {
+							description: values.description,
+							name: values.productName,
+							price: values.price,
+							quantity: values.quantity,
+							imageURL: imageURL,
+						},
 					},
-				},
-			});
+				});			
+			} catch (err) {
+			console.log(err)	
+		}
 		}
 		setSubmitting(false);
 	};

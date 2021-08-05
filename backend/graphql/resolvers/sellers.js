@@ -15,7 +15,7 @@ module.exports = {
 				"products orders"
 			);
 
-			console.log(seller);
+			// console.log(seller);
 			return seller;
 		},
 		async getSellerPublicInfo(_, { id }, context) {
@@ -24,7 +24,7 @@ module.exports = {
 			}
 
 			const seller = await Seller.findById(id).populate("products");
-			console.log(seller);
+			// console.log(seller);
 			// .populate("store.orders");
 			return seller;
 		},

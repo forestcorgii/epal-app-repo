@@ -5,6 +5,7 @@ export const GET_SELLER_PROFILE = gql`
 		getSellerPrivateInfo {
 			id
 			storename
+			imageURL
 			address
 			description
 			location
