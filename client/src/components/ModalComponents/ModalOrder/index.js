@@ -29,17 +29,17 @@ function ModalOrder({name,imageURL,price,...props}){
         Quantity: &nbsp; <input type="number" placeholder="Enter Quantity"/>
         <br/> <br/>
    
-        {/* <button className='order-btn-btn' onClick={cancelHandler}> Cancel</button>  */}
+        
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </center>
 
-        <br/> <br/><br/> <br/><br/> <br/>
+        <br/> <br/>
         <Checkout/>
         
-
+        <button className='order-btn-btn' onClick={cancelHandler}> Close</button> 
     </div>
     )
 }
