@@ -22,7 +22,7 @@ async function startApolloServer() {
 		}),
 		context: ({ req }) => {
 			user = "";
-			user = verify(req) || "7798f9ab-406d-4cad-94a7-8ef8da977333";
+			user = verify(req) ;
 
 			return { user };
 		},

@@ -5,7 +5,7 @@ export default function AddProductForm(props) {
 	return (
 		<div className="side-nav">
 			<p>Add new product here</p>
-			{JSON.stringify(formik.errors)}
+			{/* {JSON.stringify(formik.errors)} */}
 			<form onSubmit={formik.handleSubmit}>
 				{/* <div className="inventory-input-details">
 						<input
