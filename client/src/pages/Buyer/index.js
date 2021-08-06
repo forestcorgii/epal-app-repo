@@ -10,6 +10,8 @@ import "../../assets/css/buyer.css";
 import React, { lazy, useEffect, Suspense, useContext } from "react";
 import { AuthContext } from "../../contexts/Auth";
 import Products from "./Products/Products";
+import Order from "./Order";
+// import Profile from "./Profile/index";
 
 import CognitoBL from "../../components/CognitoComponents/Signin/bl";
 
@@ -48,7 +50,8 @@ function HomePage() {
 						<Products />
 					</Route>
 					<PrivateRoute path={`${path}/orders`}>
-						Orders{/* <Inventory /> */}
+						Orders
+						<Order/>
 					</PrivateRoute>
 					<PrivateRoute path={`${path}/profile`}>
 						Profile

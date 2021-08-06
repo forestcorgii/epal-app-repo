@@ -1,12 +1,11 @@
 function Order(){
     return (
         <div>
-            <div className="table-items">
+            <div className="order-table">
 			{/* ADD ANOTHER CELL FOR ITEM IMAGE */}
 			<table>
 				<tr>
-          <th>Cust Name</th>
-          <th>CustID</th>
+          <th>TransactionNo.</th>
 					<th>Image</th>
 					<th>ItemNo.</th>
 					<th>Item Name</th>
