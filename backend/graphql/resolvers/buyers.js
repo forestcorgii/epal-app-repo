@@ -21,13 +21,17 @@ module.exports = {
 
 			const user = await User.findOne({ username: context.user }).populate('profile.buyer');
 			if (user && !user.profile.buyer) {
-				const newUser = new Buyer({
-					// user: user._id,
+				const buyer = new Buyer({
+					user: user._id,
 					address,
 					location,
 				});
-				newUser.save();
-				return newUser;
+				await buyer.save();
+
+				user.profile.buyer = buyer
+				await user.save()
+				
+				return buyer;
 			} else {
 				throw new UserInputError("You already have a Buyer Profile");
 			}

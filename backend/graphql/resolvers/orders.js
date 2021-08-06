@@ -17,18 +17,15 @@ module.exports = {
 		},
 	},
 	Mutation: {
-		async createOrder(_, { buyerid, sellerid, productids }, { user }) {
+		async createOrder(_, { buyerid, sellerid, productid,quantity }, { user }) {
 			const buyer =  Buyer.findById(buyerid);
 			const seller =  Seller.findById(sellerid);
 
 			const order = new Order({
 				buyerid,
 				sellerid,
-			});
-
-			productids.map((productid) => {
-				const product =  Product.findById(productid);
-				order.products.push(product);
+				productid,
+				quantity
 			});
 
 			await order.save();

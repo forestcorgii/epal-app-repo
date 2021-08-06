@@ -5,9 +5,10 @@ module.exports = gql`
 		id: ID!
 		seller: Seller!
 		buyer: Buyer!
-		products: [Product!]!
+		product: Product!
+		quantity: Int
 		cancelledAt: String
-		successAt: String
+		paidAt: String
 	}
 
 	extend type Query {
@@ -15,7 +16,12 @@ module.exports = gql`
 		getOrder(id: ID!): Order
 	}
 	extend type Mutation {
-		createOrder(buyerid: ID!, sellerid: ID!, productids: [ID!]!): Order
+		createOrder(
+			buyerid: ID!
+			sellerid: ID!
+			productid: ID!
+			quantity: Int
+		): Order
 		cancelOrder(id: ID!): String
 		finishOrder(id: ID!): String
 	}

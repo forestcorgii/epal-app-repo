@@ -28,7 +28,7 @@ module.exports = gql`
 		technicalInformation: TechnicalInformation
 		categories: [String]
 		createdAt: Timestamp
-		seller: Seller
+		seller: ID
 	}
 	extend type Query {
 		availableProductList(location: [Float!]!, maxDistance: Float!): [Product]

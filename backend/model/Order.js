@@ -6,7 +6,12 @@ const OrderSchema = Schema({
 	paidAt: Date,
 	cancelledAt: Date,
 	price: Number,
-
+	quantity: Number,
+	
+	product: {
+		type: Schema.Types.ObjectId,
+		ref: "Seller",
+	},
 	seller: {
 		type: Schema.Types.ObjectId,
 		ref: "Seller",
