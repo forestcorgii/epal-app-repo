@@ -7,6 +7,7 @@ module.exports = {
 			if (!context.user) {
 				throw new AuthenticationError("Request is not Authorized");
 			}
+			
 			const username = context.user;
 			const user = await User.findOne({ username }).populate("profile.seller");
 
