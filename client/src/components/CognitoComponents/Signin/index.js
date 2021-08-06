@@ -9,10 +9,8 @@ export default function LoginForm() {
 	return (
 		<div className="container">
 			<center>
-				<br />
 				<div className="container-form1">
 				{/* black background */}
-					<br />
 					<br />
 					<p class="login">LOGIN</p>
 
@@ -60,7 +58,6 @@ export default function LoginForm() {
 								></input>
 						
 						</form>
-						<br />
 						<br />
 						Don't have account yet?{" "}
 						<Link to="/cognito/signup">Register here</Link>

@@ -38,7 +38,7 @@ export default function AddProductForm(props) {
 function Item({imageURL, id, name, description, price, quantity, onClick }) {
 	return (
 		<tr>
-			<td><img src={ imageURL} height="100"/></td>
+			<td><img src={ imageURL} width="80"/></td>
 			<td onClick={() => onClick}>{id}</td>
 			<td>{name}</td>
 			<td>{description}</td>

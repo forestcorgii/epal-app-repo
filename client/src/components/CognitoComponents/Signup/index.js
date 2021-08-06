@@ -8,7 +8,6 @@ export default function Registration() {
 	const { formik } = RegistrationFormBL();
 	return (
 		<div className="container">
-				<br/>
 			<center>
 				<div className="container-form-registration">
 					<br/>

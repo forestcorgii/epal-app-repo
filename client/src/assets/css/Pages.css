@@ -32,10 +32,10 @@
     color: #2ce9e9;
   }
   .btn-radio{
-    display: flex;
+    display: grid;
     font-size: 20px;
     margin:auto;
-    margin-left: 10%;
+    
   }
   .radios{
     padding-top: 10px;
@@ -44,11 +44,10 @@
     
   }
 
-.button-btn{
+.button-btn button{
     background-color: gray;
     border: none;
     color: white;
-    
 }
 .button-btn:hover{
   background-color: #2ce9e9;
