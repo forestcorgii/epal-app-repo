@@ -1,20 +1,17 @@
-import { useState } from "react";
-import Modal from "../../../components/ModalComponents/ModalOrder";
-import Backdrop from "../../../components/ModalComponents/Backdrop";
 
 
 function ModalCheckout({name,imageURL,price,...props}){
     function cancelHandler(){
         props.onCancel();
     }
-    function checkoutHandler(){
+    function doneHandler(){
         props.onCancel();
     }
 
     return(
 
          
-    <div className='modal'>
+    <div className='modal-checkout'>
 <center>
     <p> CHECKOUT</p>    
     <hr/>
@@ -29,7 +26,7 @@ function ModalCheckout({name,imageURL,price,...props}){
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <button className='order-btn-btn' onClick={checkoutHandler}>Checkout</button>
+    <button className='order-btn-btn' onClick={doneHandler}>Done</button>
     </center>
 </div>
 

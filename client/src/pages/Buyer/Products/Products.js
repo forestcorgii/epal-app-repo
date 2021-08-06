@@ -77,6 +77,7 @@ function Todo(props) {
 		<div className="order-btn">
 			<h2>{props.text}</h2>
 			<div className="order-actions">
+			see details &nbsp;
 				<button className="order-btn-btn" onClick={deleteHandler}>
 				<span class="material-icons">info</span>
 				</button>

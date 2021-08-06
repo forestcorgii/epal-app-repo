@@ -9,7 +9,7 @@ function Inventory() {
 		<div className="inventory">
 			<br />
 			<ProductList handleClick={handleClick} />
-			<AddProductForm selectedProduct={product} />
+			<AddProductForm  />
 		</div>
 	);
 }
